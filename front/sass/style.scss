@@ -1,0 +1,21 @@
+@import'variables';
+@import'header';
+@import'main';
+@import'footer';
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    .container-fluid {
+        padding: 0;
+        margin: 0;
+    }
+    .row {
+        --bs-gutter-x: 0;
+    }
+}
+
+::selection {
+    background-color: $blue-color;
+    color: white;
+}
