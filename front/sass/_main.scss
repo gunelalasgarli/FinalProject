@@ -31,9 +31,13 @@ body {
                 a {
                     img {
                         object-fit: contain;
+                        filter: grayscale(100%);
+                        &:hover {
+                            filter: grayscale(0%);
+                        }
                     }
                     .googleplay {
-                        height: 70px;
+                        height: 71px;
                     }
                     .appstore {
                         height: 48px;

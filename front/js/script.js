@@ -10,12 +10,13 @@ $(document).ready(function() {
         cssEase: "ease",
         adaptiveHeight: false,
         arrows: true,
-        nextArrow: `<i class="fal fa-chevron-right iconright"></i>`,
-        prevArrow: `<i class="fal fa-chevron-left iconleft"></i>`,
+        nextArrow: `<i class="fal fa-chevron-right iconright slick-next"></i>`,
+        prevArrow: `<i class="fal fa-chevron-left iconleft slick-prev"></i>`,
         respondTo: 'window',
 
 
     });
+
 
 
 });

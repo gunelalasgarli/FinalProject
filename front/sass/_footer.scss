@@ -21,6 +21,7 @@ body {
             justify-content: center;
             a {
                 img {
+                    height: 31px;
                     filter: grayscale(100%);
                     &:hover {
                         filter: grayscale(0%);
@@ -29,7 +30,7 @@ body {
             }
             .store-list {
                 img {
-                    height: 48px;
+                    height: 31px;
                     object-fit: contain;
                 }
             }
