@@ -73,10 +73,6 @@
           box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
-#navmenu .nav-list .domino {
-  max-width: 60px !important;
-}
-
 #navmenu .nav-list .nav-item {
   padding: 15px 5px;
   text-align: center;
@@ -95,90 +91,118 @@
   max-width: 45px;
 }
 
-body main {
+#navmenu #domino {
+  -ms-flex-item-align: baseline;
+      align-self: baseline;
+}
+
+#navmenu #domino .domino {
+  max-width: 60px !important;
+}
+
+.stickynavbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 999;
+}
+
+main {
   text-transform: uppercase;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   font-weight: bold !important;
 }
 
-body main .btn {
+main .btn {
   text-transform: uppercase;
   margin: 0 10px;
   background-color: #d2112c;
   color: white;
 }
 
-body main .section-text {
+main .btn:hover {
+  color: white;
+  -webkit-box-shadow: 0px 0px 5px 0px gray;
+          box-shadow: 0px 0px 5px 0px gray;
+}
+
+main section {
+  margin-top: 30px;
+  margin-bottom: 90px;
+}
+
+main .section-text {
   text-align: left;
   letter-spacing: 2px;
 }
 
-body main .section-text .text-blue {
+main .section-text .text-blue {
   font-size: 30px;
   color: #007eb0;
 }
 
-body main .section-text .text-red {
+main .section-text .text-red {
   font-size: 46px;
   color: #dd2237;
 }
 
-body main .section-text .inner-text {
+main .section-text .inner-text {
   font-size: 22px;
   color: #a4a4a4;
 }
 
-body main .section-text .stores a img {
+main .section-text .stores a img {
   -o-object-fit: contain;
      object-fit: contain;
   -webkit-filter: grayscale(100%);
           filter: grayscale(100%);
 }
 
-body main .section-text .stores a img:hover {
+main .section-text .stores a img:hover {
   -webkit-filter: grayscale(0%);
           filter: grayscale(0%);
 }
 
-body main .section-text .stores a .googleplay {
+main .section-text .stores a .googleplay {
   height: 71px;
 }
 
-body main .section-text .stores a .appstore {
+main .section-text .stores a .appstore {
   height: 48px;
 }
 
-body main .section-image img {
+main .section-image img {
   width: 100%;
 }
 
-body main #createpizza .innersection {
+main #createpizza .innersection {
   position: relative;
 }
 
-body main #createpizza .innersection .bgimg {
+main #createpizza .innersection .bgimg {
   max-width: 100%;
 }
 
-body main #createpizza .innersection .rightimg {
+main #createpizza .innersection .rightimg {
   position: absolute;
   right: 0;
   height: 59%;
   top: 20%;
 }
 
-body main #createpizza .innersection button {
+main #createpizza .innersection button {
   position: absolute;
   right: 4.5%;
   top: 75%;
 }
 
-body footer {
+footer {
   background-color: #f2f2f2;
   color: #a4a4a4;
 }
 
-body footer .img-list {
+footer .img-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -189,17 +213,17 @@ body footer .img-list {
           justify-content: center;
 }
 
-body footer .img-list img {
+footer .img-list img {
   cursor: pointer;
   margin: 20px;
   width: 70px;
 }
 
-body footer .link-list {
+footer .link-list {
   font-size: 14px;
 }
 
-body footer .lists {
+footer .lists {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -208,32 +232,32 @@ body footer .lists {
           justify-content: center;
 }
 
-body footer .lists a img {
+footer .lists a img {
   height: 31px;
   -webkit-filter: grayscale(100%);
           filter: grayscale(100%);
 }
 
-body footer .lists a img:hover {
+footer .lists a img:hover {
   -webkit-filter: grayscale(0%);
           filter: grayscale(0%);
 }
 
-body footer .lists .store-list img {
+footer .lists .store-list img {
   height: 31px;
   -o-object-fit: contain;
      object-fit: contain;
 }
 
-body footer .lists .social-list img {
+footer .lists .social-list img {
   margin: 0px 10px;
 }
 
-body footer .copyrights p {
+footer .copyrights p {
   margin-bottom: 0px;
 }
 
-body footer ul {
+footer ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -247,17 +271,17 @@ body footer ul {
   padding-left: 0px;
 }
 
-body footer ul .right-line {
+footer ul .right-line {
   border-right: 1px solid gray;
   margin: 0px 10px;
 }
 
-body footer ul a {
+footer ul a {
   text-decoration: none;
   color: #a4a4a4;
 }
 
-body footer ul a:hover {
+footer ul a:hover {
   color: #dd2237;
 }
 
@@ -275,6 +299,31 @@ body footer ul a:hover {
 
 * .row {
   --bs-gutter-x: 0;
+}
+
+#loader {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.507);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 99999;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+#loader img {
+  position: absolute;
+  display: inline-block;
+  width: 8%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 ::-moz-selection {

@@ -59,9 +59,6 @@
         justify-content: space-between;
         align-items: center;
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.20);
-        .domino {
-            max-width: 60px!important;
-        }
         .nav-item {
             padding: 15px 5px;
             text-align: center;
@@ -77,4 +74,18 @@
             }
         }
     }
+    #domino {
+        align-self: baseline;
+        .domino {
+            max-width: 60px!important;
+        }
+    }
+}
+
+.stickynavbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 999;
 }

@@ -1,67 +1,65 @@
-body {
-    footer {
-        background-color: $footer-bg-color;
-        color: $footer-text-color;
-        .img-list {
-            display: flex;
-            list-style: none;
-            margin-top: 40px;
-            justify-content: center;
+footer {
+    background-color: $footer-bg-color;
+    color: $footer-text-color;
+    .img-list {
+        display: flex;
+        list-style: none;
+        margin-top: 40px;
+        justify-content: center;
+        img {
+            cursor: pointer;
+            margin: 20px;
+            width: 70px;
+        }
+    }
+    .link-list {
+        font-size: 14px;
+    }
+    .lists {
+        display: flex;
+        justify-content: center;
+        a {
             img {
-                cursor: pointer;
-                margin: 20px;
-                width: 70px;
-            }
-        }
-        .link-list {
-            font-size: 14px;
-        }
-        .lists {
-            display: flex;
-            justify-content: center;
-            a {
-                img {
-                    height: 31px;
-                    filter: grayscale(100%);
-                    &:hover {
-                        filter: grayscale(0%);
-                    }
+                height: 31px;
+                filter: grayscale(100%);
+                &:hover {
+                    filter: grayscale(0%);
                 }
             }
-            .store-list {
-                img {
-                    height: 31px;
-                    object-fit: contain;
-                }
-            }
-            .social-list {
-                img {
-                    margin: 0px 10px;
-                }
-            }
-            .pay-list {}
         }
-        .copyrights {
-            p {
-                margin-bottom: 0px;
+        .store-list {
+            img {
+                height: 31px;
+                object-fit: contain;
             }
         }
-        ul {
-            display: flex;
-            list-style: none;
-            justify-content: center;
-            align-items: center;
-            padding-left: 0px;
-            .right-line {
-                border-right: 1px solid gray;
+        .social-list {
+            img {
                 margin: 0px 10px;
             }
-            a {
-                text-decoration: none;
-                color: $footer-text-color;
-                &:hover {
-                    color: $red-color;
-                }
+        }
+        .pay-list {}
+    }
+    .copyrights {
+        p {
+            margin-bottom: 0px;
+        }
+    }
+    ul {
+        display: flex;
+        list-style: none;
+        justify-content: center;
+        align-items: center;
+        padding-left: 0px;
+        .right-line {
+            border-right: 1px solid gray;
+            margin: 0px 10px;
+        }
+        a {
+            text-decoration: none;
+            color: $footer-text-color;
+            &:hover {
+                color: $red-color;
             }
         }
     }
