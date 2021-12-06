@@ -1,24 +1,89 @@
-#navhead {
-    .navbar-item {
-        align-items: center;
-        justify-content: space-between;
-        margin: 0!important;
-        .nav-logo {
-            padding: 10px;
-        }
-        .side-icons {
-            display: flex;
-            font-size: $navbar-font-size;
-            a {
+header {
+    #navhead {
+        .navbar-item {
+            align-items: center;
+            justify-content: space-between;
+            margin: 0!important;
+            .nav-logo {
+                padding: 10px;
+            }
+            .side-icons {
+                display: flex;
+                font-size: $navbar-font-size;
+                justify-content: flex-end;
+                list-style: none;
+                display: flex;
+                .cart {
+                    &:hover .cart-dropdown {
+                        display: block;
+                    }
+                }
+            }
+            li {
                 padding: 10px;
                 margin: 0px 5px;
-                text-decoration: none;
-                img {
-                    max-width: 36px;
-                }
-                span {
+                a {
                     text-decoration: none;
-                    color: $navbar-text-color;
+                    img {
+                        max-width: 36px;
+                    }
+                    span {
+                        text-decoration: none;
+                        color: $navbar-text-color;
+                    }
+                }
+                .cart-dropdown {
+                    position: absolute;
+                    display: none;
+                    top: 65px;
+                    right: 1%;
+                    z-index: 1000;
+                    width: 400px;
+                    border: 1px solid rgba(0, 0, 0, 0.15);
+                    background-color: white;
+                    border-radius: 5px;
+                    text-transform: uppercase;
+                    .cart-inside {
+                        .empty-cart {
+                            margin: 50px;
+                            text-align: center;
+                            .empty-cart-img {
+                                width: 200px;
+                            }
+                            .empty-cart-text {
+                                font-weight: 700;
+                                font-size: 12px!important;
+                            }
+                        }
+                    }
+                    .cart-bottom {
+                        height: 65px;
+                        box-shadow: 0px 0px 10px 0.1px $footer-text-color;
+                        .bottom {
+                            padding: 15px;
+                            height: 100%;
+                        }
+                        .bottom-left {
+                            .btn {
+                                font-weight: 700;
+                                margin-left: 10px;
+                                width: 110px;
+                                height: 35px;
+                                font-size: 12px;
+                            }
+                        }
+                        .bottom-right {
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-end;
+                            font-size: 18px;
+                            font-weight: 700;
+                            img {
+                                width: 20px;
+                                height: 20px;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -28,7 +93,7 @@
 #slider {
     .bannerSlider {
         position: relative;
-        // overflow: hidden;
+        overflow: hidden;
         .slick-list {
             i {
                 font-size: 75px;
@@ -70,6 +135,66 @@
                 color: $navbar-text-color;
                 img {
                     max-width: 45px;
+                }
+            }
+            .cart-dropdown {
+                position: absolute;
+                display: none;
+                top: 65px;
+                right: 1%;
+                z-index: 1000;
+                width: 400px;
+                border: 1px solid rgba(0, 0, 0, 0.15);
+                background-color: white;
+                border-radius: 5px;
+                text-transform: uppercase;
+                .cart-inside {
+                    .empty-cart {
+                        margin: 50px;
+                        text-align: center;
+                        .empty-cart-img {
+                            width: 200px;
+                        }
+                        .empty-cart-text {
+                            font-weight: 700;
+                            font-size: 12px!important;
+                        }
+                    }
+                }
+                .cart-bottom {
+                    height: 65px;
+                    box-shadow: 0px 0px 10px 0.1px $footer-text-color;
+                    .bottom {
+                        padding: 15px;
+                        height: 100%;
+                    }
+                    .bottom-left {
+                        .btn {
+                            font-weight: 700;
+                            margin-left: 10px;
+                            width: 110px;
+                            height: 35px;
+                            font-size: 12px;
+                        }
+                    }
+                    .bottom-right {
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                        font-size: 18px;
+                        font-weight: 700;
+                        img {
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+                }
+            }
+        }
+        .cart {
+            &:hover {
+                .cart-dropdown {
+                    display: block;
                 }
             }
         }

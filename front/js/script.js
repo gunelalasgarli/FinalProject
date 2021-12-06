@@ -25,7 +25,7 @@ $(document).ready(function() {
             document.getElementById("navmenu").classList.remove("stickynavbar");
         }
         if (position > 100) {
-            document.getElementById("cart").innerHTML = ' <a href=""><img src="img/icons/cart.png" alt=""> <p> Səbət </p> </a> ';
+            document.getElementById("cart").innerHTML = ' <a href=""><img src="img/icons/cart.png" alt=""> <p> Səbət </p> </a>';
         } else {
             document.getElementById("cart").innerHTML = '';
         }
