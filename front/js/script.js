@@ -24,12 +24,12 @@ $(document).ready(function() {
         } else {
             document.getElementById("navmenu").classList.remove("stickynavbar");
         }
-        if (position > 100) {
+        if (position > 50) {
             document.getElementById("cart").innerHTML = ' <a href=""><img src="img/icons/cart.png" alt=""> <p> Səbət </p> </a>';
         } else {
             document.getElementById("cart").innerHTML = '';
         }
-        if (position > 100) {
+        if (position > 50) {
             document.getElementById("domino").innerHTML = ' <a href=""><img class="domino" src="img/icons/single_domino.png" alt=""></a>';
         } else {
             document.getElementById("domino").innerHTML = '';
