@@ -199,6 +199,22 @@ header {
             }
         }
     }
+    .navspy {
+        .nav-pills {
+            .nav-item {
+                .nav-link {
+                    font-family: $home-font-family;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    opacity: 0.5;
+                    color: $red-color;
+                    &:active {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
     #domino {
         align-self: baseline;
         .domino {

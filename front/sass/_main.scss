@@ -7,6 +7,7 @@ main {
         margin-bottom: 90px;
     }
     .section-text {
+        margin: 0px 15px;
         text-align: left;
         letter-spacing: 2px;
         .text-blue {
@@ -65,11 +66,5 @@ main {
                 top: 75%;
             }
         }
-    }
-    .pagehead-img {
-        margin-left: 4%;
-        height: 35px;
-        object-fit: contain;
-        margin-top: 16px;
     }
 }

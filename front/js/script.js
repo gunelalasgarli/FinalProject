@@ -21,9 +21,11 @@ $(document).ready(function() {
         let position = $(this).scrollTop();
         if (position > 400) {
             document.getElementById("navmenu").classList.add("stickynavbar");
+
         } else {
             document.getElementById("navmenu").classList.remove("stickynavbar");
         }
+
         if (position > 50) {
             document.getElementById("cart").innerHTML = ' <a href=""><img src="img/icons/cart.png" alt=""> <p> Səbət </p> </a>';
         } else {

@@ -1,0 +1,38 @@
+.pizza-item {
+    margin: 10px;
+    overflow: hidden;
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    position: relative;
+    text-decoration: none;
+    box-shadow: 0px 0px 6px $gray-color;
+    background: #fff;
+    &:hover {
+        transition: 1s;
+        transform: scale(1.05);
+    }
+    .item-img {
+        img {
+            width: 100%;
+        }
+    }
+    .item-text {
+        padding: 10px;
+        .text-head {
+            color: $item-head-text-color;
+            h6 {}
+        }
+        .text-description {
+            p {}
+        }
+        .price {
+            h6 {
+                font-weight: bold;
+                color: $blue-color;
+            }
+            span {}
+        }
+    }
+}
