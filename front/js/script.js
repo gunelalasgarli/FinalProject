@@ -1,6 +1,4 @@
 $(document).ready(function() {
-
-
     $('.slick-list').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -51,4 +49,10 @@ $(document).ready(function() {
 
     // Strongly recommended: Hide loader after 20 seconds, even if the page hasn't finished loading
     setTimeout(hideLoader, 20 * 1000);
+
+
+    // document.addEventListener("scroll", () => {
+    //     const element = Array.from(document.querySelectorAll(":hover"))[4];
+    //     console.log(element.id);
+    // })
 });

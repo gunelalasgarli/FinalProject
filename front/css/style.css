@@ -345,6 +345,7 @@ main #createpizza .innersection button {
 }
 
 footer {
+  margin-top: 50px;
   background-color: #f2f2f2;
   color: #a4a4a4;
 }
@@ -454,49 +455,110 @@ footer ul a:hover {
      object-fit: contain;
 }
 
-.pizza-item {
+a {
+  text-decoration: none;
+}
+
+a .pizza-item {
   margin: 10px;
   overflow: hidden;
   border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   position: relative;
   text-decoration: none;
-  -webkit-box-shadow: 0px 0px 6px #a4a4a4;
-          box-shadow: 0px 0px 6px #a4a4a4;
-  background: #fff;
+  -webkit-box-shadow: 0px 1px 2px #a4a4a4;
+          box-shadow: 0px 1px 2px #a4a4a4;
+  background: white;
 }
 
-.pizza-item:hover {
+a .pizza-item:hover {
   -webkit-transition: 1s;
   transition: 1s;
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
 }
 
-.pizza-item .item-img img {
+a .pizza-item-img img {
   width: 100%;
 }
 
-.pizza-item .item-text {
+a .pizza-item-text {
   padding: 10px;
+  color: #616161;
+  font-weight: lighter;
 }
 
-.pizza-item .item-text .text-head {
+a .pizza-item-text .text-head {
   color: #003752;
 }
 
-.pizza-item .item-text .price h6 {
+a .pizza-item-text .text-head h4 {
+  font-weight: bold;
+  font-size: 26px;
+}
+
+a .pizza-item-text .price h6 {
   font-weight: bold;
   color: #007eb0;
+  font-size: 24px;
+}
+
+a {
+  text-decoration: none;
+  color: #333333;
+  margin: 20px 0px;
+}
+
+a .menu-item {
+  height: 95%;
+  margin: 10px;
+  overflow: hidden;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  text-decoration: none;
+  -webkit-box-shadow: 0px 1px 2px #a4a4a4;
+          box-shadow: 0px 1px 2px #a4a4a4;
+  background: white;
+}
+
+a .menu-item:hover {
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+a .menu-item-img img {
+  width: 100%;
+  height: 160px !important;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+a .menu-item-text {
+  padding: 10px;
+}
+
+a .menu-item-text h4 {
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
+  font-size: 22px;
+  font-weight: bold;
 }
 
 * {
