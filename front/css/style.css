@@ -238,7 +238,12 @@ header #navhead .navbar-item li .cart-dropdown .cart-bottom .bottom-right img {
   display: block;
 }
 
+#navmenu .navspy {
+  padding: 0;
+}
+
 #navmenu .navspy .nav-pills .nav-item .nav-link {
+  margin: 0;
   font-family: "Roboto Condensed", sans-serif;
   text-transform: uppercase;
   font-weight: bold;
@@ -475,6 +480,7 @@ a .pizza-item {
   -webkit-box-shadow: 0px 1px 2px #a4a4a4;
           box-shadow: 0px 1px 2px #a4a4a4;
   background: white;
+  min-height: 377px;
 }
 
 a .pizza-item:hover {
@@ -500,7 +506,7 @@ a .pizza-item-text .text-head {
 
 a .pizza-item-text .text-head h4 {
   font-weight: bold;
-  font-size: 26px;
+  font-size: 22px;
 }
 
 a .pizza-item-text .price {
@@ -519,7 +525,7 @@ a .pizza-item-text .price h6 {
   font-weight: bold;
   color: #007eb0;
   display: inline-block;
-  font-size: 24px;
+  font-size: 20px;
   margin: 0 0;
 }
 
@@ -562,7 +568,6 @@ a .menu-item:hover {
 
 a .menu-item-img img {
   width: 100%;
-  height: 160px !important;
   -o-object-fit: contain;
      object-fit: contain;
 }
