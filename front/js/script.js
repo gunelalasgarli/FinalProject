@@ -55,4 +55,10 @@ $(document).ready(function() {
     //     const element = Array.from(document.querySelectorAll(":hover"))[4];
     //     console.log(element.id);
     // })
+    // var firstScrollSpyEl = document.querySelector('[data-bs-spy="scroll"]')
+    // var item = document.getElementsByClassName("nav-link")
+    // firstScrollSpyEl.addEventListener('activate.bs.scrollspy', function() {
+    //     console.log(item);
+    // });
+
 });

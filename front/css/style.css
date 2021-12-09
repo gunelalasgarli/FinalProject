@@ -494,6 +494,23 @@ a .pizza-item-img img {
   width: 100%;
 }
 
+a .pizza-item .drink-size .nav-pills .nav-item {
+  border: 1px solid #a4a4a4;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+a .pizza-item .drink-size .nav-pills .nav-item .nav-link {
+  width: 75px;
+  color: #a4a4a4;
+  font-weight: bold;
+}
+
+a .pizza-item .drink-size .nav-pills .nav-item .active {
+  color: white;
+  background-color: #007eb0;
+}
+
 a .pizza-item-text {
   padding: 10px;
   color: #616161;
