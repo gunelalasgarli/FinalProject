@@ -34,12 +34,21 @@ a {
                 p {}
             }
             .price {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
                 h6 {
                     font-weight: bold;
                     color: $blue-color;
+                    display: inline-block;
                     font-size: 24px;
+                    margin: 0 0;
                 }
                 span {}
+                .btn {
+                    font-weight: bold;
+                    font-size: 14px;
+                }
             }
         }
     }

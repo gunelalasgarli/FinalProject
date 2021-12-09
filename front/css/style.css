@@ -503,10 +503,29 @@ a .pizza-item-text .text-head h4 {
   font-size: 26px;
 }
 
+a .pizza-item-text .price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 a .pizza-item-text .price h6 {
   font-weight: bold;
   color: #007eb0;
+  display: inline-block;
   font-size: 24px;
+  margin: 0 0;
+}
+
+a .pizza-item-text .price .btn {
+  font-weight: bold;
+  font-size: 14px;
 }
 
 a {
