@@ -5,6 +5,7 @@
 @import'about-us';
 @import'pizza';
 @import'offers';
+@import'contact-us';
 * {
     box-sizing: border-box;
     margin: 0;
@@ -46,7 +47,6 @@
 
 .btn {
     text-transform: uppercase;
-    margin: 0 10px;
     background-color: $button-red-color;
     color: white;
     box-shadow: 0px 0px 3px 0px gray;

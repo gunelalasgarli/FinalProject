@@ -602,6 +602,18 @@ a .menu-item-text h4 {
   font-weight: bold;
 }
 
+#contact-us .form-section .contact-item {
+  margin-top: 15px;
+}
+
+#contact-us .form-section .contact-item .form-control {
+  width: 95%;
+}
+
+#contact-us .form-section .contact-btn {
+  margin: 15px 0px;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -655,7 +667,6 @@ a .menu-item-text h4 {
 
 .btn {
   text-transform: uppercase;
-  margin: 0 10px;
   background-color: #d2112c;
   color: white;
   -webkit-box-shadow: 0px 0px 3px 0px gray;
