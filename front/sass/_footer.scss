@@ -65,3 +65,9 @@ footer {
         }
     }
 }
+
+@media screen and (max-width:1000px) {
+    footer {
+        display: none;
+    }
+}
