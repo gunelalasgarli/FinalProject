@@ -272,9 +272,12 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   #navhead .navbar-item .side-icons {
     display: none;
+  }
+  #slider .bannerSlider .slick-list i {
+    font-size: 40px;
   }
 }
 
@@ -353,6 +356,18 @@ main #createpizza .innersection button {
   position: absolute;
   right: 4.5%;
   top: 75%;
+}
+
+@media screen and (max-width: 700px) {
+  main section .section-text .text-blue {
+    font-size: 20px;
+  }
+  main section .section-text .text-red {
+    font-size: 30px;
+  }
+  main section .section-text .inner-text {
+    font-size: 12px;
+  }
 }
 
 footer {
