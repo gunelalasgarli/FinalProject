@@ -13,6 +13,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   font-size: 12px;
   list-style: none;
   display: flex;
@@ -148,6 +151,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -176,75 +181,6 @@
   max-width: 45px;
 }
 
-#navmenu .nav-list .nav-item .cart-dropdown {
-  position: absolute;
-  display: none;
-  top: 65px;
-  right: 1%;
-  z-index: 1000;
-  width: 400px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  background-color: white;
-  border-radius: 5px;
-  text-transform: uppercase;
-}
-
-#navmenu .nav-list .nav-item .cart-dropdown .cart-inside .empty-cart {
-  margin: 50px;
-  text-align: center;
-}
-
-#navmenu .nav-list .nav-item .cart-dropdown .cart-inside .empty-cart .empty-cart-img {
-  width: 200px;
-}
-
-#navmenu .nav-list .nav-item .cart-dropdown .cart-inside .empty-cart .empty-cart-text {
-  font-weight: 700;
-  font-size: 12px !important;
-}
-
-#navmenu .nav-list .nav-item .cart-dropdown .cart-bottom {
-  height: 65px;
-  -webkit-box-shadow: 0px 0px 10px 0.1px #a4a4a4;
-          box-shadow: 0px 0px 10px 0.1px #a4a4a4;
-}
-
-#navmenu .nav-list .nav-item .cart-dropdown .cart-bottom .bottom {
-  padding: 15px;
-  height: 100%;
-}
-
-#navmenu .nav-list .nav-item .cart-dropdown .cart-bottom .bottom-left .btn {
-  font-weight: 700;
-  margin-left: 10px;
-  width: 110px;
-  height: 35px;
-  font-size: 12px;
-}
-
-#navmenu .nav-list .nav-item .cart-dropdown .cart-bottom .bottom-right {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  font-size: 18px;
-  font-weight: 700;
-}
-
-#navmenu .nav-list .nav-item .cart-dropdown .cart-bottom .bottom-right img {
-  width: 20px;
-  height: 20px;
-}
-
-#navmenu .nav-list .cart:hover .cart-dropdown {
-  display: block;
-}
-
 #navmenu .navspy {
   padding: 0;
 }
@@ -262,15 +198,6 @@
   opacity: 1;
 }
 
-#navmenu #domino {
-  -ms-flex-item-align: baseline;
-      align-self: baseline;
-}
-
-#navmenu #domino .domino {
-  max-width: 60px !important;
-}
-
 .stickynavbar {
   position: fixed;
   top: 0;
@@ -279,107 +206,24 @@
   z-index: 999;
 }
 
-@media screen and (max-width: 1000px) {
-  #navmenu {
+@media screen and (min-width: 700px) {
+  .custom-responsive-nav {
     display: none;
   }
 }
 
 @media screen and (max-width: 700px) {
-  #navhead .navbar-item .side-icons {
+  .stickynavbar {
     display: none;
+  }
+  #navhead .navbar-item .side-icons li {
+    display: none;
+  }
+  #navhead .navbar-item .side-icons .cart {
+    display: block;
   }
   #slider .bannerSlider .slick-list i {
     font-size: 40px;
-  }
-}
-
-main {
-  text-transform: uppercase;
-  font-family: "Roboto Condensed", sans-serif;
-  font-weight: bold !important;
-}
-
-main section {
-  margin-top: 30px;
-  margin-bottom: 90px;
-}
-
-main .section-text {
-  margin: 0px 15px;
-  text-align: left;
-  letter-spacing: 2px;
-}
-
-main .section-text .text-blue {
-  font-size: 30px;
-  color: #007eb0;
-}
-
-main .section-text .text-red {
-  font-size: 46px;
-  color: #dd2237;
-}
-
-main .section-text .inner-text {
-  font-size: 22px;
-  color: #a4a4a4;
-}
-
-main .section-text .stores a img {
-  -o-object-fit: contain;
-     object-fit: contain;
-  -webkit-filter: grayscale(100%);
-          filter: grayscale(100%);
-}
-
-main .section-text .stores a img:hover {
-  -webkit-filter: grayscale(0%);
-          filter: grayscale(0%);
-}
-
-main .section-text .stores a .googleplay {
-  height: 71px;
-}
-
-main .section-text .stores a .appstore {
-  height: 48px;
-}
-
-main .section-image img {
-  width: 100%;
-}
-
-main #createpizza .innersection {
-  position: relative;
-}
-
-main #createpizza .innersection .bgimg {
-  max-width: 100%;
-}
-
-main #createpizza .innersection .rightimg {
-  position: absolute;
-  right: 0;
-  height: 59%;
-  top: 20%;
-}
-
-main #createpizza .innersection button {
-  position: absolute;
-  right: 4.5%;
-  top: 75%;
-}
-
-@media screen and (max-width: 700px) {
-  main section .section-text .text-blue {
-    font-size: 20px;
-  }
-  main section .section-text .text-red {
-    font-size: 30px;
-  }
-  main section .section-text .inner-text {
-    font-size: 12px;
   }
 }
 
@@ -475,6 +319,95 @@ footer ul a:hover {
 @media screen and (max-width: 1000px) {
   footer {
     display: none;
+  }
+}
+
+main {
+  text-transform: uppercase;
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: bold !important;
+}
+
+main section {
+  margin-top: 30px;
+  margin-bottom: 90px;
+}
+
+main .section-text {
+  margin: 0px 15px;
+  text-align: left;
+  letter-spacing: 2px;
+}
+
+main .section-text .text-blue {
+  font-size: 30px;
+  color: #007eb0;
+}
+
+main .section-text .text-red {
+  font-size: 46px;
+  color: #dd2237;
+}
+
+main .section-text .inner-text {
+  font-size: 22px;
+  color: #a4a4a4;
+}
+
+main .section-text .stores a img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+
+main .section-text .stores a img:hover {
+  -webkit-filter: grayscale(0%);
+          filter: grayscale(0%);
+}
+
+main .section-text .stores a .googleplay {
+  height: 71px;
+}
+
+main .section-text .stores a .appstore {
+  height: 48px;
+}
+
+main .section-image img {
+  width: 100%;
+}
+
+main #createpizza .innersection {
+  position: relative;
+}
+
+main #createpizza .innersection .bgimg {
+  max-width: 100%;
+}
+
+main #createpizza .innersection .rightimg {
+  position: absolute;
+  right: 0;
+  height: 59%;
+  top: 20%;
+}
+
+main #createpizza .innersection button {
+  position: absolute;
+  right: 4.5%;
+  top: 75%;
+}
+
+@media screen and (max-width: 700px) {
+  main section .section-text .text-blue {
+    font-size: 20px;
+  }
+  main section .section-text .text-red {
+    font-size: 30px;
+  }
+  main section .section-text .inner-text {
+    font-size: 12px;
   }
 }
 

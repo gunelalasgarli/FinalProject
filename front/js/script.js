@@ -37,11 +37,9 @@ $(document).ready(function() {
 
 
             }
-            if (position > 50) {
-                document.getElementById("domino").innerHTML = ' <a href="index.html"><img class="domino" src="img/icons/single_domino.png" alt=""></a>';
-            } else {
-                document.getElementById("domino").innerHTML = '';
-            }
+
+
+
             /* Cart */
             let updateCartBadge = (count) => {
                 let cart = document.querySelector("header .navbar-item .side-icons .cart .basket");
@@ -108,6 +106,6 @@ $(document).ready(function() {
 
 
 
-    // sidebar
+
 
 });
