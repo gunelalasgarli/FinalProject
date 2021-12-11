@@ -17,24 +17,31 @@ $(document).ready(function() {
 
     $(window).scroll(function(e) {
         let position = $(this).scrollTop();
-        if (position > 400) {
-            document.getElementById("navmenu").classList.add("stickynavbar");
+        if (!$('body').is('.Account')) {
 
-        } else {
-            document.getElementById("navmenu").classList.remove("stickynavbar");
-        }
 
-        if (position > 50) {
-            document.getElementById("cart").innerHTML = ' <a href=""><img src="img/icons/cart.png" alt=""> <p> Səbət </p> </a>';
-        } else {
-            document.getElementById("cart").innerHTML = '';
-        }
-        if (position > 50) {
-            document.getElementById("domino").innerHTML = ' <a href=""><img class="domino" src="img/icons/single_domino.png" alt=""></a>';
-        } else {
-            document.getElementById("domino").innerHTML = '';
+            if (position > 400) {
+                document.getElementById("navmenu").classList.add("stickynavbar");
+
+            } else {
+                document.getElementById("navmenu").classList.remove("stickynavbar");
+            }
+
+            if (position > 50) {
+                document.getElementById("cart").innerHTML = ' <a href=""><img src="img/icons/cart.png" alt=""> <p> Səbət </p> </a>';
+            } else {
+                document.getElementById("cart").innerHTML = '';
+            }
+            if (position > 50) {
+                document.getElementById("domino").innerHTML = ' <a href=""><img class="domino" src="img/icons/single_domino.png" alt=""></a>';
+            } else {
+                document.getElementById("domino").innerHTML = '';
+            }
         }
     });
+
+
+
     // let loader = document.getElementById("loader");
     // window.addEventListener("load", function() {
 
@@ -60,5 +67,7 @@ $(document).ready(function() {
     // firstScrollSpyEl.addEventListener('activate.bs.scrollspy', function() {
     //     console.log(item);
     // });
+
+
 
 });
