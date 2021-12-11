@@ -75,3 +75,61 @@ a {
         }
     }
 }
+
+.modal {
+    .modal-dialog {
+        .modal-content {
+            .modal-header {
+                button {}
+            }
+            .modal-body {
+                .img-modal {
+                    overflow: hidden;
+                    img {
+                        height: 400px;
+                        object-fit: contain;
+                    }
+                }
+                .info-modal {
+                    .pizza-name {}
+                    .ingridients {}
+                    .count {
+                        margin: 10px 0px;
+                        .input-group {
+                            button {}
+                        }
+                    }
+                    .total-price {
+                        h6 {
+                            font-weight: bold;
+                            color: $blue-color;
+                            display: inline-block;
+                            font-size: 20px;
+                            margin: 0 0;
+                        }
+                    }
+                    .scrollable {
+                        height: 300px;
+                        overflow-y: scroll;
+                        .btn-group {
+                            .btn-check {}
+                            .btn {
+                                background-color: $footer-text-color;
+                                img {
+                                    width: 35px;
+                                }
+                                &:checked {
+                                    color: $blue-color;
+                                }
+                            }
+                        }
+                        .title {}
+                        .form-check {
+                            display: inline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
