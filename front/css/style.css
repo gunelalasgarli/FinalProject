@@ -18,6 +18,19 @@
   display: flex;
 }
 
+#navhead .navbar-item .side-icons .cart {
+  position: relative;
+}
+
+#navhead .navbar-item .side-icons .cart .badge {
+  color: white;
+  padding: 3px;
+  font-size: 8px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
 #navhead .navbar-item .side-icons .cart:hover .cart-dropdown {
   display: block;
 }

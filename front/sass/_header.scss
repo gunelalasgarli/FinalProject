@@ -11,6 +11,15 @@
                 list-style: none;
                 display: flex;
                 .cart {
+                    position: relative;
+                    .badge {
+                        color: white;
+                        padding: 3px;
+                        font-size: 8px;
+                        position: absolute;
+                        top: 5px;
+                        right: 5px;
+                    }
                     &:hover .cart-dropdown {
                         display: block;
                     }
