@@ -178,9 +178,10 @@
                     font-weight: bold;
                     opacity: 0.5;
                     color: $red-color;
-                    &:active {
-                        opacity: 1;
-                    }
+                }
+                .active {
+                    opacity: 1;
+                    background-color: unset;
                 }
             }
         }

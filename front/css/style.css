@@ -290,8 +290,9 @@
   color: #dd2237;
 }
 
-#navmenu .navspy .nav-pills .nav-item .nav-link:active {
+#navmenu .navspy .nav-pills .nav-item .active {
   opacity: 1;
+  background-color: unset;
 }
 
 .stickynavbar {
