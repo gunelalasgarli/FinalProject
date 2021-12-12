@@ -91,6 +91,7 @@ a {
                     }
                 }
                 .info-modal {
+                    margin: 0px 30px;
                     .pizza-name {}
                     .ingridients {}
                     .count {
@@ -114,7 +115,8 @@ a {
                         .btn-group {
                             .btn-check {}
                             .btn {
-                                background-color: $footer-text-color;
+                                color: $item-text-color;
+                                background-color: $footer-bg-color;
                                 img {
                                     width: 35px;
                                 }

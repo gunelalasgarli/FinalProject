@@ -95,10 +95,12 @@
         }
     }
     .custom-responsive-nav {
+        background-color: $footer-bg-color;
         .navbar {
             .navbar-nav {
                 .nav-item {
                     font-family: $home-font-family;
+                    font-size: 20px;
                     .inside-item {
                         list-style: none;
                         display: flex;
@@ -197,6 +199,14 @@
     #navhead {
         .custom-responsive-nav {
             display: none;
+        }
+    }
+}
+
+@media screen and (max-width:550px) {
+    #navmenu {
+        .nav-list {
+            justify-content: flex-start;
         }
     }
 }

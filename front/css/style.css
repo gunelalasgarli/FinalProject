@@ -197,8 +197,13 @@
   height: 20px;
 }
 
+#navhead .custom-responsive-nav {
+  background-color: #f2f2f2;
+}
+
 #navhead .custom-responsive-nav .navbar .navbar-nav .nav-item {
   font-family: "Roboto Condensed", sans-serif;
+  font-size: 20px;
 }
 
 #navhead .custom-responsive-nav .navbar .navbar-nav .nav-item .inside-item {
@@ -300,6 +305,14 @@
 @media screen and (min-width: 700px) {
   #navhead .custom-responsive-nav {
     display: none;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  #navmenu .nav-list {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
   }
 }
 
@@ -510,7 +523,7 @@ main #createpizza .innersection button {
   margin-top: 16px;
 }
 
-.about-us-content {
+.about-us {
   background-image: url(../img/headpics/about-us-bg.jpg);
   text-align: center;
   background-repeat: no-repeat;
@@ -518,7 +531,7 @@ main #createpizza .innersection button {
   min-height: 2070px;
 }
 
-.about-us-content .about-img {
+.about-us-img {
   max-width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
@@ -625,6 +638,10 @@ a .pizza-item-text .price .btn {
      object-fit: contain;
 }
 
+.modal .modal-dialog .modal-content .modal-body .info-modal {
+  margin: 0px 30px;
+}
+
 .modal .modal-dialog .modal-content .modal-body .info-modal .count {
   margin: 10px 0px;
 }
@@ -643,7 +660,8 @@ a .pizza-item-text .price .btn {
 }
 
 .modal .modal-dialog .modal-content .modal-body .info-modal .scrollable .btn-group .btn {
-  background-color: #a4a4a4;
+  color: #616161;
+  background-color: #f2f2f2;
 }
 
 .modal .modal-dialog .modal-content .modal-body .info-modal .scrollable .btn-group .btn img {
