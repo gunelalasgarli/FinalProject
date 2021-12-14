@@ -1,0 +1,18 @@
+.pagehead-img {
+    margin-left: 4%;
+    height: 35px;
+    object-fit: contain;
+    margin-top: 16px;
+}
+
+.about-us {
+    background-image: url(../img/headpics/about-us-bg.jpg);
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 2070px;
+    &-img {
+        max-width: 100%;
+        object-fit: contain;
+    }
+}

@@ -1,0 +1,108 @@
+main {
+    text-transform: uppercase;
+    font-family: $home-font-family;
+    font-weight: bold!important;
+    section {
+        margin-top: 30px;
+        margin-bottom: 90px;
+    }
+    .section-text {
+        margin: 0px 15px;
+        text-align: left;
+        letter-spacing: 2px;
+        .text-blue {
+            font-size: 30px;
+            color: $blue-color;
+        }
+        .text-red {
+            font-size: 46px;
+            color: $red-color;
+        }
+        .signimg {
+            img {}
+        }
+        .inner-text {
+            font-size: 22px;
+            color: $gray-color;
+        }
+        .stores {
+            a {
+                img {
+                    object-fit: contain;
+                    filter: grayscale(100%);
+                    &:hover {
+                        filter: grayscale(0%);
+                    }
+                }
+                .googleplay {
+                    height: 71px;
+                }
+                .appstore {
+                    height: 48px;
+                }
+            }
+        }
+    }
+    .section-image {
+        img {
+            width: 100%;
+        }
+    }
+    #createpizza {
+        .innersection {
+            position: relative;
+            .bgimg {
+                max-width: 100%;
+            }
+            .rightimg {
+                position: absolute;
+                right: 0;
+                height: 59%;
+                top: 20%;
+            }
+            button {
+                position: absolute;
+                right: 4.5%;
+                top: 75%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:700px) {
+    main {
+        section {
+            .section-text {
+                .text-blue {
+                    font-size: 20px;
+                }
+                .text-red {
+                    font-size: 30px;
+                }
+                .signimg {
+                    img {}
+                }
+                .inner-text {
+                    font-size: 12px;
+                }
+                .stores {
+                    a {
+                        img {}
+                        .googleplay {}
+                        .appstore {}
+                    }
+                }
+            }
+            .section-image {
+                img {}
+            }
+            #createpizza {
+                .innersection {
+                    .bgimg {}
+                    .rightimg {}
+                    button {}
+                }
+            }
+        }
+    }
+}
