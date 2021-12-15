@@ -19,7 +19,7 @@
     <title>Domino's Pizza</title>
 </head>
 
-<body>
+<body data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
     <div id="loader">
         <img src="~/img/homepageslider/loader.cfb26387.gif" alt="">
     </div>
@@ -29,9 +29,7 @@
         </a>
     </div>
     <header>
-
         <section id="navhead">
-
             <div class="container-fluid">
                 <div class="">
                     <div class="custom-responsive-nav">
@@ -179,6 +177,34 @@
                     </div>
                 </div>
             </div>
+            @if (ViewContext.RouteData.Values["controller"].ToString()=="Pizza") {
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav id="navbar-example2" class="navbar px-3 justify-content-center navspy">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#scrollspyHeading1">Premium</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#scrollspyHeading2">Special</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#scrollspyHeading3">Favorit</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#scrollspyHeading4">Yarı-yarıya</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#scrollspyHeading5">Öz Pizzanı Yarat</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+        </div>}
+            
         </section>
 
     </header>

@@ -18,7 +18,7 @@ $(document).ready(function () {
         let position = $(this).scrollTop();
         if (!$('body').is('.Account')) {
             if ($('body').is('.Home')) {
-                if (position > 50) {
+                if (position > 400) {
                     document.getElementById("navmenu").classList.add("stickynavbar");
 
                 } else {
