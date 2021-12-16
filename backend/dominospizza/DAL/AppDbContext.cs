@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using dominospizza.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,7 @@ namespace dominospizza.DAL
         {
 
         }
+        public virtual DbSet<Slider> Sliders { get; set; }
+        public virtual DbSet<Settings> Settings { get; set; }
     }
 }
