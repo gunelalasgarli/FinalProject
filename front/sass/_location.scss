@@ -1,0 +1,32 @@
+.map {}
+
+.loc {
+    overflow-y: scroll;
+    height: 400px;
+    &-list {
+        padding-left: 0;
+        list-style: none;
+        &-item {
+            font-weight: normal;
+            .item-title {
+                font-weight: bold;
+                color: $red-color;
+            }
+            .item-address {
+                color: $item-text-color;
+            }
+            .item-whour {
+                i {
+                    color: $red-color;
+                }
+            }
+            .btn-primary {
+                background-color: $blue-color;
+            }
+            .btn {
+                border-radius: 20px;
+                margin: 2px 1px;
+            }
+        }
+    }
+}
