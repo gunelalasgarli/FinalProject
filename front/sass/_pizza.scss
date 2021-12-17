@@ -2,7 +2,6 @@ a {
     text-decoration: none;
     .pizza-item {
         margin: 10px;
-        overflow: hidden;
         border-radius: 10px;
         display: flex;
         flex-direction: column;
@@ -45,6 +44,11 @@ a {
             padding: 10px;
             color: $item-text-color;
             font-weight: lighter;
+            overflow: hidden;
+            white-space: nowrap;
+            &:hover {
+                white-space: unset;
+            }
             .text-head {
                 color: $item-head-text-color;
                 h4 {

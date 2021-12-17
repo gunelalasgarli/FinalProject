@@ -1,5 +1,6 @@
 a {
     text-decoration: none;
+
     .pizza-item {
         margin: 10px;
         overflow: hidden;
@@ -11,29 +12,36 @@ a {
         box-shadow: 0px 1px 2px $gray-color;
         background: white;
         min-height: 377px;
+
         &:hover {
             transition: 1s;
             transform: scale(1.05);
         }
+
         &-img {
             .tab-content {
-                .tab-pane {}
+                .tab-pane {
+                }
             }
+
             img {
                 width: 100%;
             }
         }
+
         .drink-size {
             .nav-pills {
                 .nav-item {
                     border: 1px solid $footer-text-color;
                     border-radius: 5px;
                     font-size: 12px;
+
                     .nav-link {
                         width: 75px;
                         color: $footer-text-color;
                         font-weight: bold;
                     }
+
                     .active {
                         color: white;
                         background-color: $blue-color;
@@ -41,24 +49,37 @@ a {
                 }
             }
         }
+
         &-text {
             padding: 10px;
             color: $item-text-color;
             font-weight: lighter;
+            overflow: hidden;
+            white-space: nowrap;
+
+            &:hover {
+                white-space: unset;
+            }
+
             .text-head {
                 color: $item-head-text-color;
+
                 h4 {
                     font-weight: bold;
                     font-size: 22px;
                 }
             }
+
             .text-description {
-                p {}
+                p {
+                }
             }
+
             .price {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+
                 h6 {
                     font-weight: bold;
                     color: $blue-color;
@@ -66,7 +87,10 @@ a {
                     font-size: 20px;
                     margin: 0 0;
                 }
-                span {}
+
+                span {
+                }
+
                 .btn {
                     font-weight: bold;
                     font-size: 14px;

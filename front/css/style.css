@@ -544,7 +544,6 @@ a {
 
 a .pizza-item {
   margin: 10px;
-  overflow: hidden;
   border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -593,6 +592,12 @@ a .pizza-item-text {
   padding: 10px;
   color: #616161;
   font-weight: lighter;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+a .pizza-item-text:hover {
+  white-space: unset;
 }
 
 a .pizza-item-text .text-head {
