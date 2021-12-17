@@ -544,7 +544,6 @@ a {
 
 a .pizza-item {
   margin: 10px;
-  overflow: hidden;
   border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -558,7 +557,7 @@ a .pizza-item {
   -webkit-box-shadow: 0px 1px 2px #a4a4a4;
           box-shadow: 0px 1px 2px #a4a4a4;
   background: white;
-  min-height: 377px;
+  min-height: 330px;
 }
 
 a .pizza-item:hover {
@@ -593,12 +592,6 @@ a .pizza-item-text {
   padding: 10px;
   color: #616161;
   font-weight: lighter;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-a .pizza-item-text:hover {
-  white-space: unset;
 }
 
 a .pizza-item-text .text-head {
@@ -608,6 +601,16 @@ a .pizza-item-text .text-head {
 a .pizza-item-text .text-head h4 {
   font-weight: bold;
   font-size: 22px;
+}
+
+a .pizza-item-text .text-description {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+a .pizza-item-text .text-description:hover {
+  white-space: unset;
 }
 
 a .pizza-item-text .price {

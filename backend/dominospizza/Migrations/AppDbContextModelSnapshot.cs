@@ -37,13 +37,25 @@ namespace dominospizza.Migrations
                     b.Property<string>("Link")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Phone")
+                    b.Property<string>("LinkImg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneImg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PhoneNum")
                         .HasColumnType("int");
+
+                    b.Property<string>("SectionImg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SignImg")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Subtitle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Text")
+                    b.Property<string>("TextImg")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
