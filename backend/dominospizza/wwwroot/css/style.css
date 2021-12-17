@@ -749,6 +749,44 @@ a .menu-item-text h4 {
   margin: 15px 0px;
 }
 
+.loc {
+  overflow-y: scroll;
+  height: 400px;
+  padding: 10px;
+}
+
+.loc-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.loc-list-item {
+  padding: 5px;
+  font-weight: normal;
+}
+
+.loc-list-item .item-title {
+  font-weight: bold;
+  color: #dd2237;
+}
+
+.loc-list-item .item-address {
+  color: #616161;
+}
+
+.loc-list-item .item-whour i {
+  color: #dd2237;
+}
+
+.loc-list-item .btn-primary {
+  background-color: #007eb0;
+}
+
+.loc-list-item .btn {
+  border-radius: 20px;
+  margin: 2px 1px;
+}
+
 .Account {
   background-image: url(../img/Login-BG-Image.90f9cf90.png);
 }
