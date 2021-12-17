@@ -592,12 +592,6 @@ a .pizza-item-text {
   padding: 10px;
   color: #616161;
   font-weight: lighter;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-a .pizza-item-text:hover {
-  white-space: unset;
 }
 
 a .pizza-item-text .text-head {
@@ -607,6 +601,16 @@ a .pizza-item-text .text-head {
 a .pizza-item-text .text-head h4 {
   font-weight: bold;
   font-size: 22px;
+}
+
+a .pizza-item-text .text-description {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+a .pizza-item-text .text-description:hover {
+  white-space: unset;
 }
 
 a .pizza-item-text .price {

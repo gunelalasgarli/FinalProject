@@ -54,12 +54,6 @@ a {
             padding: 10px;
             color: $item-text-color;
             font-weight: lighter;
-            overflow: hidden;
-            white-space: nowrap;
-
-            &:hover {
-                white-space: unset;
-            }
 
             .text-head {
                 color: $item-head-text-color;
@@ -71,7 +65,13 @@ a {
             }
 
             .text-description {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
                 p {
+                }
+                &:hover {
+                    white-space: unset;
                 }
             }
 
