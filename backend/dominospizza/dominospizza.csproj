@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20211222114504_AddedSizesTable.cs" />
+    <Compile Remove="Migrations\20211222114504_AddedSizesTable.Designer.cs" />
+    <Compile Remove="Migrations\20211222114728_AddedSizesTable.cs" />
+    <Compile Remove="Migrations\20211222114728_AddedSizesTable.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.21" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.21" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.21" />

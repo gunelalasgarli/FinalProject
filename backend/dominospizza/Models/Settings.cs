@@ -15,7 +15,6 @@ namespace dominospizza.Models
         public string FooterLogo { get; set; }
         public string SectionImg { get; set; }
         public string SignImg { get; set; }
-
         public string TextImg { get; set; }
         public string Title { get; set; }
         public string Subtitle { get; set; }
@@ -24,6 +23,8 @@ namespace dominospizza.Models
         public string LinkImg { get; set; }
         public string PhoneImg { get; set; }
         public int PhoneNum { get; set; }
+        public bool IsDeleted { get; set; }
+
         [NotMapped]
         public IFormFile HeaderImage { get; set; }
         [NotMapped]
