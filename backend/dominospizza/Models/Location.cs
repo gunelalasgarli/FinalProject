@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace dominospizza.Models
 {
-    public class Ingridients
+    public class Location
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public double Price { get; set; }
-        public bool isChecked { get; set; }
-        public List<ProductIngridients> ProductIngridients { get; set; }
-
+        public string Address { get; set; }
+        public string Phone { get; set; }
+        public string OpeningTime { get; set; }
+        public string ClosingTime { get; set; }
     }
 }

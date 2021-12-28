@@ -1,0 +1,64 @@
+﻿@model Settings
+
+<section id="navhead">
+    <div class="container-fluid">
+        <div class="custom-responsive-nav">
+            <nav class="navbar navbar-expand-lg navbar-light ">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Account" asp-action="Login">Daxil Ol</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="About">Domino's Haqqında</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Contact">Əlaqə</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="row navbar-item">
+            <div class="nav-logo col-6">
+                <a asp-controller="Home"><img src="~/img/icons/@Model.HeaderLogo" alt="That's an image"></a>
+            </div>
+            <ul class="side-icons col-6">
+                <li>
+                    <a asp-controller="Location" asp-action="Index">
+                        <img src="~/img/icons/shobeler.png" alt="That's an image">
+                        <br>
+                        <span>
+                            Şöbələr
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Account" asp-action="Login">
+                        <img src="~/img/icons/account before.png" alt="That's an image">
+                        <br>
+                        <span>
+                            Daxil Ol
+                        </span>
+                    </a>
+                </li>
+                <li class="cart">
+                    <a asp-controller="Cart" asp-action="Index">
+                        <img src="~/img/icons/cart.png" alt="That's an image">
+                        <br>
+                        <span>
+                            Səbət
+                        </span><span class="badge bg-danger basket"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</section>

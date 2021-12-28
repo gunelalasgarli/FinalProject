@@ -9,6 +9,18 @@
     <Compile Remove="Migrations\20211222114504_AddedSizesTable.Designer.cs" />
     <Compile Remove="Migrations\20211222114728_AddedSizesTable.cs" />
     <Compile Remove="Migrations\20211222114728_AddedSizesTable.Designer.cs" />
+    <Compile Remove="Migrations\20211224232403_newfix.cs" />
+    <Compile Remove="Migrations\20211224232403_newfix.Designer.cs" />
+    <Compile Remove="Migrations\20211227131908_AddednewcolstoHomePageTable3.cs" />
+    <Compile Remove="Migrations\20211227131908_AddednewcolstoHomePageTable3.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\Manage\Views\Slider\Create.cshtml" />
+    <None Include="Areas\Manage\Views\Slider\Delete.cshtml" />
+    <None Include="Areas\Manage\Views\Slider\Detail.cshtml" />
+    <None Include="Areas\Manage\Views\Slider\Index.cshtml" />
+    <None Include="Areas\Manage\Views\Slider\Update.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,10 +33,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Components\" />
   </ItemGroup>
 
 </Project>

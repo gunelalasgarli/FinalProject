@@ -1,4 +1,5 @@
-﻿@{
+﻿@model HomeVM
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -7,13 +8,12 @@
             <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="section-text">
-                        <h5 class="text-blue fw-bolder">Domino's Mobil Tətbiqi</h5>
-                        <h1 class="text-red fw-bolder">YENİ TƏTBİQLƏ TEZ VƏ PULSUZ ÇATDIRILMA</h1>
-                        <div class="signimg"><img src="~/img/homepageslider/sign.png" alt="That's an image "></div>
+                        <h5 class="text-blue fw-bolder">@Model.HomePages.Title1</h5>
+                        <h1 class="text-red fw-bolder">@Model.HomePages.Subtitle1</h1>
+                        <div class="signimg"><img src="~/img/homepageslider/@Model.HomePages.SignImg" alt="That's an image "></div>
                         <div class="inner-text">
                             <p>
-                                Sevimli pizzanızı seçin, online sifariş edin. Bu indi Domino’s tətbiqi ilə mümkündür! Siz online olaraq öz pizzanızın inqridientlərini, xəmir tipini, çörəkləri, qəlyanaltıları, sousları və içkiləri mobil tətbiqdən seçib
-                                sifariş edə bilərsiniz. Zəngin pizza çeşidləri və ən yaxşı dad Azərbaycanda!
+                                @Model.HomePages.Description1
                             </p>
                         </div>
                         <div class="col-12 stores">
@@ -22,64 +22,36 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-lg-6">
+                <div class="col-lg-6 col-md-12">
                     <div class="section-image">
-                        <img src="~/img/homepageslider/home1.png" alt="That's an image ">
+                        <img src="~/img/homepageslider/@Model.HomePages.SectionImg1" alt="That's an image ">
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section id="tracking">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 col-md-12">
-                    <div class="section-text">
-                        <h5 class="text-blue fw-bolder">İzləmə</h5>
-                        <h1 class="text-red fw-bolder">SİFARİŞİN İZLƏNMƏSİ BARMAĞINIZIN UCUNDADIR</h1>
-                        <div class="inner-text">
-                            <p>
-                                bütün qeyri-müəyyənliklərdən qurtulun. indi sifarişinizin əvvəldən axıra qədər izləyin. domino's pizzanın yeni mobil tətbiqini endirin və izləmə xidmətini əldə edin.
-                            </p>
-                        </div>
-                        <div class="col-12">
-                            <a href="login.html">
-                                <button class="btn btn-lg btn-outline-danger">
-                                    <i class="fas fa-map-marker-alt "></i>
-                                    Indi izləyin
-                                </button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <div class="section-image">
-                        <img src="~/img/homepageslider/home2.png" alt="That's an image ">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
+
     <section id="prizes">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="section-image">
-                        <img src="~/img/homepageslider/home3.png" alt="That's an image ">
+                        <img src="~/img/homepageslider/@Model.HomePages.SectionImg2" alt="That's an image ">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12">
                     <div class="section-text " style="text-align: right;">
-                        <h5 class="text-blue fw-bolder">HƏDİYYƏLƏR</h5>
-                        <h1 class="text-red fw-bolder">Hər online sifarişdə xallar qazanın</h1>
+                        <h5 class="text-blue fw-bolder">@Model.HomePages.Title2</h5>
+                        <h1 class="text-red fw-bolder">@Model.HomePages.Subtitle2</h1>
                         <div class="inner-text">
-                            <p>pizza alıcısı üçün əla təklif . domino’s pizza ilə “hədiyyə xallar” qazanın və onları inanılmaz təklif və endirimlərlə əvəzləyin. tələsin və “hədiyyə xallarını” dərhal əldə edin. </p>
+                            <p>@Model.HomePages.Description2 </p>
                         </div>
                         <div class="col-12">
                             <a href="login.html">
                                 <button class="btn btn-lg btn-outline-danger">
                                     <i class="fas fa-map-marker-alt "></i>
-                                    Indi sifariş verin
+                                    İndi tanış ol
                                 </button>
                             </a>
                         </div>
@@ -94,7 +66,7 @@
                 <div class="col-lg-12 col-md-12 ">
                     <div class="innersection ">
                         <img class="bgimg" src="~/img/homepageslider/home4.jpg " alt="That's an image ">
-                        <img class="rightimg" src="~/img/homepageslider/Own-Pizza-az.90c35db8.png" alt="">
+                        <img class="rightimg" src="~/img/homepageslider/@Model.HomePages.SectionImg3" alt="">
                         <a href="login.html">
                             <button class="btn btn-lg btn-outline-danger">
                                 <i class="fas fa-shopping-cart"></i> INDI

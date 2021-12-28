@@ -1,0 +1,34 @@
+﻿@model Slider
+@{ ViewData["Title"] = "Update"; }
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="row justify-content-center">
+            <div class="col-md-5 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <form class="forms-sample" id="form" method="post" enctype="multipart/form-data">
+                            
+                            <div class="form-group">
+                                <div class="image">
+                                    <img src="~/img/homepageslider/@Model.Image" alt="Image" width="300" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group col-xs-12">
+                                    <input asp-for="@Model.Photo" class="form-control file-upload-info" id="upload" accept="image/*" placeholder="Upload Image">
+                                    <span class="input-group-append">
+                                        <button class="file-upload-browse btn btn-info" id="btn-upload" type="button">Upload</button>
+                                    </span>
+                                </div>
+                                <span asp-validation-for="@Model.Photo" class="text-danger"></span>
+                            </div>
+                            <input type="submit" Asp-action="Update" class="btn btn-primary mr-2" value="Update">
+                            <button class="btn btn-light" asp-action="Index">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

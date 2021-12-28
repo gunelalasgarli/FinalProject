@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,147 +23,17 @@
 
 <body data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
     <header>
-        <section id="navhead">
-            <div class="container-fluid">
-                    <div class="custom-responsive-nav">
-                        <nav class="navbar navbar-expand-lg navbar-light ">
-                            <div class="container-fluid">
-                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"></span>
-                                </button>
+        
+        @await Component.InvokeAsync("Navhead")
 
-                                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="login.html">Daxil Ol</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="about-us.html">Domino's Haqqında</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="contact-us.html">Əlaqə</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </nav>
-                    </div>
-                <div class="row navbar-item">
-                    <div class="nav-logo col-6">
-                        <a href="index.html"><img src="~/img/icons/logo_nav-domino.png" alt="That's an image"></a>
-                    </div>
-                    <ul class="side-icons col-6">
-                        <li>
-                            <a href="location.html">
-                                <img src="~/img/icons/shobeler.png" alt="That's an image">
-                                <br>
-                                <span>
-                                    Şöbələr
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="~login.html">
-                                <img src="~/img/icons/account before.png" alt="That's an image">
-                                <br>
-                                <span>
-                                    Daxil Ol
-                                </span>
-                            </a>
-                        </li>
-                        <li class="cart">
-                            <a href="~cart.html">
-                                <img src="~/img/icons/cart.png" alt="That's an image">
-                                <br>
-                                <span>
-                                    Səbət
-                                </span><span class="badge bg-danger basket"></span>
-                            </a>
-                            <div class="cart-dropdown">
-                                <div class="cart-inside">
-                                    <div class="empty-cart">
-                                        <img src="~/img/homepageslider/empty-cart.844437f4.png" alt="That's an image" class="empty-cart-img">
-                                        <h1 class="empty-cart-text">sizin səbətiniz boşdur</h1>
-                                    </div>
-                                </div>
-                                <div class="cart-bottom">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="bottom bottom-left col-6">
-                                                <button class="btn btn-lg btn-outline-danger addToCart">
-                                                    Səbəti
-                                                    gör
-                                                </button>
-                                            </div>
-                                            <div class="bottom bottom-right col-6">
-                                                ÜMUMİ 0.00 <img src="~/img/headpics/manat sign.png" alt="That's an image">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-        </section>
-
+        @if (ViewContext.RouteData.Values["controller"].ToString() == "Home")
+        {
+            @await Component.InvokeAsync("Slider")
+        }
         <section id="navmenu">
             <div class="container-fluid">
                 <div class="row">
-                        <ul class="nav-list">
-                            <li class="nav-item">
-                                <a href="offers.html" class="animate__animated animate__flash animate__slower animate__infinite infinite red ">
-                                    <img src="~/img/icons/percent.png" alt="That's an image ">
-                                    <p class="animate__animated animate__flash animate__slower animate__infinite infinite red ">
-                                        Kampaniyalar
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pizza.html">
-                                    <img src="~/img/icons/pizza.png" alt="That's an image ">
-                                    <p>Pizza</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="bread.html">
-                                    <img src="~/img/icons/bread.png" alt="That's an image ">
-                                    <p>Çörək</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="chicken.html">
-                                    <img src="~/img/icons/chicken.png" alt="That's an image ">
-                                    <p>Toyuq</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="salad.html">
-                                    <img src="~/img/icons/salad.png" alt="That's an image ">
-                                    <p>Salat</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="~drink.html">
-                                    <img src="~/img/icons/drink.png" alt="That's an image ">
-                                    <p>İçki</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="dessert.html">
-                                    <img src="~/img/icons/sweet.png" alt="That's an image ">
-                                    <p>Şirniyyat</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="souce.html">
-                                    <img src="~/img/icons/souce.png" alt="That's an image ">
-                                    <p>Sous</p>
-                                </a>
-                            </li>
-                        </ul>
+                        @await Component.InvokeAsync("Navmenu")
                 </div>
             </div>
             @if (ViewContext.RouteData.Values["controller"].ToString() == "Pizza")
@@ -181,10 +53,7 @@
                                         <a class="nav-link" href="#scrollspyHeading3">Favorit</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#scrollspyHeading4">Yarı-yarıya</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#scrollspyHeading5">Öz Pizzanı Yarat</a>
+                                        <a class="nav-link" href="#scrollspyHeading4">Öz Pizzanı Yarat</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -200,110 +69,15 @@
     <main role="main">
         @RenderBody()
     </main>
-    <footer>
-        <div class="container ">
-            <div class="row ">
-                <div class="col-lg-12 col-md-12 ">
-                    <ul class="img-list ">
-                        <li>
-                            <img src="~/img/footer/halal.png" alt="That's an image ">
-                        </li>
-                        <li>
-                            <img src="~/img/footer/30deq-catdirilma.png" alt="That's an image ">
-                        </li>
-                        <li>
-                            <img src="~/img/footer/sobadan.png" alt="That's an image ">
-                        </li>
-                        <li>
-                            <img src="~/img/footer/happycustomer.png" alt="That's an image ">
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row ">
-                <div class="col-lg-12 col-md-12 ">
-                    <ul class="link-list ">
-                        <li>
-                            <a href="about-us.html">Domino's Haqqında</a>
-                            <span class="right-line "></span>
-                        </li>
-
-                        <li>
-                            <a href="contact-us.html">Əlaqə</a>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-            <div class="row ">
-                <div class="lists ">
-                    <ul class="store-list ">
-                        <li>
-                            <a href="https://play.google.com/store/apps/details?id=com.dominospizza.az "><img src="~/img/footer/google-play.png" style="height: 47px; " alt="That's an image "></a>
-                        </li>
-                        <li>
-                            <a href="https://apps.apple.com/us/app/dominos-pizza-azerbaijan/id1535012493 "> <img src="~/img/footer/App-store.png" alt="That's an image "></a>
-                        </li>
-                        <li> <span class="right-line "></span></li>
-                    </ul>
-
-                    <ul class="social-list ">
-                        <li>
-                            <a href="https://www.facebook.com/Dominos.Azerbaijan/ "> <img src="~/img/footer/facebook.png" alt="That's an image "></a>
-
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/dominos_az/ "><img src="~/img/footer/instagram.png" alt="That's an image "></a>
-                        </li>
-                        <li>
-                            <a href="https://www.youtube.com/channel/UCZByvwhybrwYHLZUaf3L2hw "> <img src="~/img/footer/youtube.png" alt="That's an image "></a>
-                        </li>
-                        <li>
-                            <span class="right-line "></span>
-
-                        </li>
-                    </ul>
-
-                    <ul class="pay-list ">
-                        <li>
-                            <a href="~ "><img src="~/img/footer/visa.png" alt="That's an image "></a>
-                        </li>
-                        <li>
-                            <a href="~ "><img src="~/img/footer/mastercard.png" alt="That's an image "></a>
-                        </li>
-                        <li>
-                            <a href="~ "><img src="~/img/footer/nagd.png" alt="That's an image "></a>
-                        </li>
-                        <li>
-                            <a href="~ "><img src="~/img/footer/cardpay.png" alt="That's an image "></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row ">
-                <div class="col-lg-12 ">
-                    <ul class="copyrights ">
-                        <li>
-                            <p>Copyright © 2021 Domino’s Pizza Azerbaijan </p>
-
-                        </li>
-                        <li><span class="right-line "></span></li>
-                        <li>
-                            <p>Developed by <a href="~ ">Gunel Alasgarli</a> </p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-    </footer>
+  
+    @await Component.InvokeAsync("Footer")
     <div id="loader">
         <img src="~/img/homepageslider/loader.cfb26387.gif" alt="That's an image">
     </div>
     <div class="telfixed">
-        <a href="tel:*6600">
-            <img src="~/img/headpics/telefon.png" alt="That's an image">
-        </a>
+       
+           @await Component.InvokeAsync("Telephone")
+        
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js " integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin=" anonymous " referrerpolicy="no-referrer "></script>
     <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.9.2/dist/umd/popper.min.js " integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p " crossorigin="anonymous "></script>

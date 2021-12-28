@@ -1,0 +1,77 @@
+﻿@model List<Slider>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Categories</h4>
+            @if (ViewBag.SlideCount < 5)
+            {
+                <a asp-controller="Slider" asp-action="Create" class="btn btn-outline-success">
+                    Create
+                </a>
+            }
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                Slide Image
+                            </th>
+                            <th>
+                                Settings
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.SlideCount > 1)
+                        {
+                            foreach (Slider slide in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="~/img/homepageslider/@slide.Image" style="width:200px!important" />
+                                    </td>
+                                    <td>
+                                        <a asp-controller="Slider" asp-action="Detail" asp-route-id="@slide.Id" class="btn btn-secondary">
+                                            <i class="mdi mdi-information"></i>Detail
+                                        </a>
+                                        <a asp-controller="Slider" asp-action="Update" asp-route-id="@slide.Id" class="btn btn-warning">
+                                            <i class="mdi mdi-table-edit"></i>Update
+                                        </a>
+                                        <a asp-controller="Slider" asp-action="Delete" asp-route-id="@slide.Id" class="btn btn-danger">
+                                            <i class="mdi mdi-delete"></i>Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td>
+                                    <img src="~/img/slider/@Model.ElementAt(0).Image" style="width:200px!important" />
+                                </td>
+                                <td>
+                                    <a asp-controller="Slider" asp-action="Detail" asp-route-id="@Model.ElementAt(0).Id" class="btn btn-secondary">
+                                        <i class="mdi mdi-information"></i>Detail
+                                    </a>
+                                    <a asp-controller="Slider" asp-action="Update" asp-route-id="@Model.ElementAt(0).Id" class="btn btn-warning">
+                                        <i class="mdi mdi-table-edit"></i>Update
+                                    </a>
+                                    <a asp-controller="Slider" asp-action="Delete" asp-route-id="@Model.ElementAt(0).Id" class="btn btn-danger d-none">
+                                        <i class="mdi mdi-delete"></i>Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

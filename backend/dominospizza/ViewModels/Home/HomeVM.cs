@@ -9,8 +9,10 @@ namespace dominospizza.ViewModels.Home
     public class HomeVM
     {
         public List<Slider> Sliders { get; set; }
-        public List<Settings> Settings { get; set; }
-
+        public Settings Settings { get; set; }
+        public HomePage HomePages { get; set; }
+        public List<Contact> Contacts { get; set; }
+      
 
     }
 }

@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using dominospizza.DAL;
+using dominospizza.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +12,17 @@ namespace dominospizza.Controllers
 {
     public class LocationController : Controller
     {
-        public IActionResult Index()
+        private readonly AppDbContext _context;
+
+        public LocationController( AppDbContext context)
         {
-            return View();
+            _context = context;
+        }
+        public async Task<IActionResult> Index()
+        {
+            List<Location> location = await _context.Locations.ToListAsync();
+            
+            return View(location);
         }
     }
 }

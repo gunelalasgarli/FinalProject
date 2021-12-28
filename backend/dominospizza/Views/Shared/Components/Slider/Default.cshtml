@@ -1,0 +1,20 @@
+﻿@model HomeVM
+
+    <section id="slider">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bannerSlider">
+                        <div class="slick-list">
+
+                            @foreach (Slider item in Model.Sliders)
+                            {
+                                <div class="sliderimage"><img src="img/homepageslider/@item.Image" alt="That's an image "></div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+

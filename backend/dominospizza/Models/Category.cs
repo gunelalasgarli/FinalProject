@@ -12,11 +12,12 @@ namespace dominospizza.Models
         public int Id{ get; set; }
         public string Name { get; set; }
         public string Image { get; set; }
+        public string ControllerName{ get; set; }
         public bool IsDeleted { get; set; }
-
         [NotMapped]
         public IFormFile CategoryImage { get; set; }
         public List<Product> Products { get; set; }
+
 
     }
 }

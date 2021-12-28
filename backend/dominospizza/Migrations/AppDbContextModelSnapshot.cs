@@ -25,6 +25,9 @@ namespace dominospizza.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("ControllerName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
@@ -37,6 +40,33 @@ namespace dominospizza.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("dominospizza.Models.Contact", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FooterLogo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("PayImg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SocialImg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SocialLink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Contacts");
                 });
 
             modelBuilder.Entity("dominospizza.Models.DrinkSize", b =>
@@ -79,25 +109,73 @@ namespace dominospizza.Migrations
                     b.ToTable("Drinks");
                 });
 
-            modelBuilder.Entity("dominospizza.Models.Ingridients", b =>
+            modelBuilder.Entity("dominospizza.Models.HomePage", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Description1")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
+                    b.Property<string>("Description2")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("isChecked")
-                        .HasColumnType("bit");
+                    b.Property<string>("SectionImg1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SectionImg2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SectionImg3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SignImg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subtitle1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subtitle2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title2")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Ingridients");
+                    b.ToTable("HomePages");
+                });
+
+            modelBuilder.Entity("dominospizza.Models.Location", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClosingTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OpeningTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Locations");
                 });
 
             modelBuilder.Entity("dominospizza.Models.Product", b =>
@@ -132,28 +210,6 @@ namespace dominospizza.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("dominospizza.Models.ProductIngridients", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("IngridientsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IngridientsId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductIngridients");
-                });
-
             modelBuilder.Entity("dominospizza.Models.ProductSize", b =>
                 {
                     b.Property<int>("Id")
@@ -183,44 +239,17 @@ namespace dominospizza.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FooterLogo")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("HeaderLogo")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Link")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LinkImg")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("PhoneImg")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PhoneNum")
                         .HasColumnType("int");
-
-                    b.Property<string>("SectionImg")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SignImg")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Subtitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TextImg")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -286,21 +315,6 @@ namespace dominospizza.Migrations
                     b.HasOne("dominospizza.Models.Category", null)
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("dominospizza.Models.ProductIngridients", b =>
-                {
-                    b.HasOne("dominospizza.Models.Ingridients", "Ingridients")
-                        .WithMany("ProductIngridients")
-                        .HasForeignKey("IngridientsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("dominospizza.Models.Product", "Product")
-                        .WithMany("ProductIngridients")
-                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

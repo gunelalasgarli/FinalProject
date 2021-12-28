@@ -1,0 +1,15 @@
+﻿@model Slider
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="bg-white p-5" style="width: 400px; margin-left: 35%">
+    <div class="col-md-6 grid-margin stretch-card " style="margin-left: 25%">
+        <img class="text-center" src="~/img/homepageslider/@Model.Image" width="200" />
+    </div>
+    <h3 class="text-warning text-center mb-3">Slider Image</h3>
+    <div class="row justify-content-center">
+        <a asp-action="Index" class="btn btn-outline-primary">Go Back</a>
+    </div>
+
+</div>
