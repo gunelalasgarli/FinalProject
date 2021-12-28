@@ -70,7 +70,7 @@ namespace dominospizza.Areas.Manage.Controllers
                 }
                 Slider newSlider = new Slider();
 
-                string path = Path.Combine("img", "slider");
+                string path = Path.Combine("img", "homepageslider");
                 newSlider.Image = await photo.SaveImageAsync(_env.WebRootPath, path);
                 await _context.Sliders.AddAsync(newSlider);
 

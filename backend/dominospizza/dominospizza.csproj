@@ -13,6 +13,10 @@
     <Compile Remove="Migrations\20211224232403_newfix.Designer.cs" />
     <Compile Remove="Migrations\20211227131908_AddednewcolstoHomePageTable3.cs" />
     <Compile Remove="Migrations\20211227131908_AddednewcolstoHomePageTable3.Designer.cs" />
+    <Compile Remove="Migrations\20211228135754_AddedPizzaTypesTable.cs" />
+    <Compile Remove="Migrations\20211228135754_AddedPizzaTypesTable.Designer.cs" />
+    <Compile Remove="Migrations\20211228140147_AddedProductTypeTable.cs" />
+    <Compile Remove="Migrations\20211228140147_AddedProductTypeTable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +25,19 @@
     <None Include="Areas\Manage\Views\Slider\Detail.cshtml" />
     <None Include="Areas\Manage\Views\Slider\Index.cshtml" />
     <None Include="Areas\Manage\Views\Slider\Update.cshtml" />
+    <None Include="wwwroot\css\style.css.map" />
+    <None Include="wwwroot\sass\style.scss" />
+    <None Include="wwwroot\sass\_about-us.scss" />
+    <None Include="wwwroot\sass\_body.scss" />
+    <None Include="wwwroot\sass\_contact-us.scss" />
+    <None Include="wwwroot\sass\_footer.scss" />
+    <None Include="wwwroot\sass\_header.scss" />
+    <None Include="wwwroot\sass\_home.scss" />
+    <None Include="wwwroot\sass\_location.scss" />
+    <None Include="wwwroot\sass\_offers.scss" />
+    <None Include="wwwroot\sass\_pizza.scss" />
+    <None Include="wwwroot\sass\_register.scss" />
+    <None Include="wwwroot\sass\_variables.scss" />
   </ItemGroup>
 
   <ItemGroup>

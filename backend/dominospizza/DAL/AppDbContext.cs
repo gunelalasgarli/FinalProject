@@ -24,6 +24,8 @@ namespace dominospizza.DAL
         public virtual DbSet<DrinkSize> DrinkSizes { get; set; }
         public virtual DbSet<ProductSize> ProductSizes { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
+        public virtual DbSet<ProductType> ProductTypes { get; set; }
+
 
     }
 }

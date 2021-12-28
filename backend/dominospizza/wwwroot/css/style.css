@@ -260,7 +260,7 @@
 }
 
 #navmenu .nav-list .nav-item {
-  padding: 15px 25px;
+  padding: 15px 5px;
   text-align: center;
 }
 
@@ -665,8 +665,7 @@ a .pizza-item-text .price .btn {
 }
 
 .modal .modal-dialog .modal-content .modal-body .info-modal .scrollable {
-  height: 300px;
-  overflow-y: scroll;
+  height: 100px;
 }
 
 .modal .modal-dialog .modal-content .modal-body .info-modal .scrollable .btn-group .btn {

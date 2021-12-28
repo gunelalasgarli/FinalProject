@@ -665,8 +665,7 @@ a .pizza-item-text .price .btn {
 }
 
 .modal .modal-dialog .modal-content .modal-body .info-modal .scrollable {
-  height: 300px;
-  overflow-y: scroll;
+  height: 100px;
 }
 
 .modal .modal-dialog .modal-content .modal-body .info-modal .scrollable .btn-group .btn {

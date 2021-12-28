@@ -20,7 +20,7 @@ namespace dominospizza.Extensions
         }
         public static bool IsImage(this IFormFile photo)
         {
-            return photo.ContentType.Contains("img/");
+            return photo.ContentType.Contains("image/");
         }
         public async static Task<string> SaveImageAsync(this IFormFile photo, string root, string folder)
         {
