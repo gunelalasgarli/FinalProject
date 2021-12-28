@@ -143,7 +143,7 @@ namespace dominospizza.Areas.Manage.Controllers
             int count = _context.Sliders.Count();
             if (count == 1)
             {
-                return Content("You cannot delete!!!");
+                return Content("You can't delete last image of slider!!!");
             }
             return View(slider);
         }
