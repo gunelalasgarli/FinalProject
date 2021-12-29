@@ -1,0 +1,50 @@
+﻿@model Settings
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Create Slider</h4>
+            <form class="forms-sample" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="HeaderImage"></label>
+                    <input asp-for="HeaderImage" class="form-control">
+                    <span class="text-danger" asp-validation-for="HeaderImage"></span>
+                    @if (Model.HeaderLogo != null)
+                    {
+                        <div class="my-2">
+                            <img width="200" src="~/img/headpics/@Model.HeaderLogo" />
+                        </div>
+                    }
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneImage"></label>
+                    <input asp-for="PhoneImage" class="form-control">
+                    <span class="text-danger" asp-validation-for="PhoneImage"></span>
+                    @if (Model.PhoneImg != null)
+                    {
+                        <div class="my-2">
+                            <img width="200" src="~/img/headpics/@Model.PhoneImg" />
+                        </div>
+                    }
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneNum">Phone Number</label>
+                    <input class="form-control" asp-for="PhoneNum" />
+                    <span class="text-danger" asp-validation-for="PhoneNum" value="@(Model.PhoneNum!=null?Model.PhoneNum:"")"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Copyright">Copyright</label>
+                    <input class="form-control" asp-for="Copyright" />
+                    <span class="text-danger" asp-validation-for="Copyright" value="@(Model.Copyright!=null?Model.Copyright:"")"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary mr-2">Save</button>
+                <a class="btn btn-light" asp-action="Index">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+

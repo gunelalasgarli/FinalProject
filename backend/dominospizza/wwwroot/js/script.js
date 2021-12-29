@@ -90,12 +90,18 @@ $(document).ready(function() {
                     addToCart(PrdId);
                 });
             }
-
-
         }
 
     });
 
+    $('.pizza-item').on('click', function () {
+        let url = $(this).parent().attr('href');
+        fetch(url)
+            .then(resp => resp.text())
+            .then(data => {
+                $('.container').append(data)
+            })
+    });
 
 
 

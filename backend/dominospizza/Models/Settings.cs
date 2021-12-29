@@ -11,14 +11,20 @@ namespace dominospizza.Models
     public class Settings
     {
         public int Id { get; set; }
+        [StringLength(100)]
         public string HeaderLogo { get; set; }
+        [StringLength(100)]
         public string PhoneImg { get; set; }
-        public int PhoneNum { get; set; }
-       
+        [StringLength(15)]
+        public string PhoneNum { get; set; }
+        [Required,StringLength(200)]
+        public string Copyright { get; set; }
         public bool IsDeleted { get; set; }
 
         [NotMapped]
         public IFormFile HeaderImage { get; set; }
-      
+        [NotMapped]
+        public IFormFile PhoneImage { get; set; }
+
     }
 }

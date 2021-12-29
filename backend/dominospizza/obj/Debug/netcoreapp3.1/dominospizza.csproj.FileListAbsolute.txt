@@ -182,3 +182,7 @@ C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\n
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\dominospizza.pdb
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\dominospizza.genruntimeconfig.cache
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\dominospizza.csproj.AssemblyReference.cache
+C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Setting\Index.cshtml.g.cs
+C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Drinks\Index.cshtml.g.cs
+C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Category\Index.cshtml.g.cs
+C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ModalPartial.cshtml.g.cs
