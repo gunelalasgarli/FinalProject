@@ -1,103 +1,33 @@
-﻿
+﻿@model List<Product>
 @{
     ViewData["Title"] = "Index";
 }
 
 <div class="container">
     <div class="row">
+        @foreach (Product item in Model)
+        {<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="img/chicken/@item.Image" alt="">
+                </div>
+                <div class="menu-item-text">
+                    <div class="text-head">
+                        <h4>@item.Name</h4>
+                    </div>
+                    <div class="text-description">
+                        <p>@item.Description</p>
+                    </div>
+                    <div class="price">
+                        <h6>@item.Price.ToString("F2")$</h6>
+                        <div data-id="@item.Id" class="btn btn-lg btn-outline-danger addToCart">
+                            SƏBƏTƏ ƏLAVƏ ET
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
 
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <a href="">
-                <div class="pizza-item">
-                    <div class="pizza-item-img">
-                        <img src="img/chicken/1.png" alt="">
-                    </div>
-                    <div class="pizza-item-text">
-                        <div class="text-head">
-                            <h4>Chicken kickers</h4>
-                        </div>
-                        <div class="text-description">
-                            <p>Sobada hazırlanmış 200 qr Xırçıltılı örtükdə Toyuq Döşü + 100 qr Kartof dilimləri + Domino's-un Yoqurt sousu</p>
-                        </div>
-                        <div class="price">
-                            <h6>7.90$</h6>
-                            <div class="btn btn-lg btn-outline-danger">
-                                SƏBƏTƏ ƏLAVƏ ET
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
+            </div>
         </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <a href="">
-                <div class="pizza-item">
-                    <div class="pizza-item-img">
-                        <img src="img/chicken/2.png" alt="">
-                    </div>
-                    <div class="pizza-item-text">
-                        <div class="text-head">
-                            <h4>Toyuq qanadları</h4>
-                        </div>
-                        <div class="text-description">
-                            <p>Sobada hazırlanmış 6 ədəd Marinə olunmuş Toyuq Qanadları + 100 qr Kartof dilimləri + Domino's-un Meksika sousu</p>
-                        </div>
-                        <div class="price">
-                            <h6>8.90$</h6>
-                            <div class="btn btn-lg btn-outline-danger">
-                                SƏBƏTƏ ƏLAVƏ ET
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <a href="">
-                <div class="pizza-item">
-                    <div class="pizza-item-img">
-                        <img src="img/chicken/3.gif" alt="">
-                    </div>
-                    <div class="pizza-item-text">
-                        <div class="text-head">
-                            <h4>Xırçıltılı toyuq pops</h4>
-                        </div>
-                        <div class="text-description">
-                            <p>Sobada hazırlanmış 100 qr ədviyyatlı Toyuq topları</p>
-                        </div>
-                        <div class="price">
-                            <h6>3.90$</h6>
-                            <div class="btn btn-lg btn-outline-danger">
-                                SƏBƏTƏ ƏLAVƏ ET
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <a href="">
-                <div class="pizza-item">
-                    <div class="pizza-item-img">
-                        <img src="img/chicken/4.gif" alt="">
-                    </div>
-                    <div class="pizza-item-text">
-                        <div class="text-head">
-                            <h4>Kartof Dilimləri</h4>
-                        </div>
-                        <div class="text-description">
-                            <p>Sobada hazırlanmış Kartof Dilimləri + ketçup</p>
-                        </div>
-                        <div class="price">
-                            <h6>3.90$</h6>
-                            <div class="btn btn-lg btn-outline-danger">
-                                SƏBƏTƏ ƏLAVƏ ET
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-   
-    </div>
-</div>

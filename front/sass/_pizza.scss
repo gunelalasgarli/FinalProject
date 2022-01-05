@@ -22,24 +22,6 @@ a {
                 width: 100%;
             }
         }
-        .drink-size {
-            .nav-pills {
-                .nav-item {
-                    border: 1px solid $footer-text-color;
-                    border-radius: 5px;
-                    font-size: 12px;
-                    .nav-link {
-                        width: 75px;
-                        color: $footer-text-color;
-                        font-weight: bold;
-                    }
-                    .active {
-                        color: white;
-                        background-color: $blue-color;
-                    }
-                }
-            }
-        }
         &-text {
             padding: 10px;
             color: $item-text-color;

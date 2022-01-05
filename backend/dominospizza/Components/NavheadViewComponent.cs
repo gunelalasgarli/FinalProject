@@ -21,7 +21,7 @@ namespace dominospizza.Components
         {
             Settings setting  = await _context.Settings.FirstOrDefaultAsync();
 
-
+            
             return View(setting);
         }
     }

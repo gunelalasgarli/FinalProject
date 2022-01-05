@@ -1,22 +1,28 @@
 ﻿@model List<Category>
 
 <ul class="nav-list">
-    <li class="nav-item">
-        <a asp-controller="Offers" class="animate__animated animate__flash animate__slower animate__infinite infinite red ">
-            <img src="~/img/icons/percent.png" alt="That's an image ">
-            <p class="animate__animated animate__flash animate__slower animate__infinite infinite red ">
-                Kampaniyalar
-            </p>
-        </a>
-    </li>
+    
     @foreach (Category item in Model)
     {
+
+
+        @if (item.ControllerName == "Offers") { <li class="nav-item">
+            <a asp-controller="Offers" class="animate__animated animate__flash animate__slower animate__infinite infinite red ">
+                <img src="~/img/icons/percent.png" alt="That's an image ">
+                <p class="animate__animated animate__flash animate__slower animate__infinite infinite red ">
+                    Kampaniyalar
+                </p>
+            </a>
+        </li>}
+        else {
+
         <li class="nav-item">
             <a asp-controller="@item.ControllerName">
                 <img src="~/img/icons/@item.Image" alt="That's an image ">
                 <p>@item.Name</p>
             </a>
         </li>
+        } 
     }
 
 </ul>

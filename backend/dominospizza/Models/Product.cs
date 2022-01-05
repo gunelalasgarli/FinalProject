@@ -23,6 +23,8 @@ namespace dominospizza.Models
         [NotMapped]
         public IFormFile ProductImage { get; set; }
         public List<ProductSize> ProductSizes { get; set; }
+        [NotMapped]
+        public int Count { get; set; }
 
 
 

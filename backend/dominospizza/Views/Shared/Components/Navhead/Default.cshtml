@@ -1,4 +1,8 @@
 ﻿@model Settings
+@inject UserManager<AppUser> usermanager;
+@{ 
+    AppUser user = User.Identity.IsAuthenticated ? await usermanager.FindByNameAsync(User.Identity.Name) : null;
+}
 
 <section id="navhead">
     <div class="container-fluid">
@@ -11,9 +15,15 @@
 
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Account" asp-action="Login">Daxil Ol</a>
-                            </li>
+                            @if (!User.Identity.IsAuthenticated) {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Account" asp-action="Login">Daxil Ol</a>
+                                </li>
+                                }else{<li class="nav-item">
+                                <a class="nav-link">@user.UserName</a>
+                                </li>
+                                }
+                                
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="About">Domino's Haqqında</a>
                             </li>
@@ -43,20 +53,22 @@
                     <a asp-controller="Account" asp-action="Login">
                         <img src="~/img/icons/account before.png" alt="That's an image">
                         <br>
-                        <span>
-                            Daxil Ol
-                        </span>
-                    </a>
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <span>
+                                Daxil Ol
+                            </span>
+                        }
+                        else
+                        {
+                            <span>
+                                @user.UserName
+                                </span>
+                                    }
+
+                        </a>
                 </li>
-                <li class="cart">
-                    <a asp-controller="Cart" asp-action="Index">
-                        <img src="~/img/icons/cart.png" alt="That's an image">
-                        <br>
-                        <span>
-                            Səbət
-                        </span><span class="badge bg-danger basket"></span>
-                    </a>
-                </li>
+              @await Component.InvokeAsync("Basket")
             </ul>
 
         </div>

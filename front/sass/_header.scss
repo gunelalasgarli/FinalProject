@@ -62,6 +62,65 @@
                             font-size: 12px!important;
                         }
                     }
+                    .cart-list {
+                        margin: 23px 20px;
+                        padding: 0;
+                        list-style-position: inside;
+                        &-item {
+                            position: relative;
+                            display: table;
+                            table-layout: fixed;
+                            height: 100%;
+                            width: 100%;
+                            padding: 0 0 15px;
+                            box-sizing: border-box;
+                            .item-image-holder {
+                                padding-top: 0;
+                                position: relative;
+                                display: table-cell;
+                                height: 100%;
+                                width: 50px;
+                                vertical-align: top;
+                                overflow: hidden;
+                                img {
+                                    display: block;
+                                    max-width: 100%;
+                                }
+                            }
+                            .item-editor {
+                                a {
+                                    top: 0px;
+                                    position: absolute;
+                                    padding: 0;
+                                    margin: 0;
+                                    cursor: pointer;
+                                    text-decoration: none;
+                                    i {}
+                                }
+                                .item-remove {
+                                    right: 0;
+                                }
+                            }
+                            .info-holder {
+                                font-family: Montserrat, sans-serif;
+                                font-size: 12px;
+                                margin-left: 10px;
+                                .product-title {
+                                    text-transform: uppercase;
+                                    font-weight: 900;
+                                }
+                                .quantity {
+                                    color: $item-text-color;
+                                }
+                                .amount {
+                                    position: absolute;
+                                    right: 0;
+                                    bottom: 0;
+                                    color: $blue-color;
+                                }
+                            }
+                        }
+                    }
                 }
                 .cart-bottom {
                     height: 65px;
@@ -224,6 +283,11 @@
                 }
                 .cart {
                     display: block;
+                    &:hover {
+                        .cart-dropdown {
+                            display: none;
+                        }
+                    }
                 }
             }
         }

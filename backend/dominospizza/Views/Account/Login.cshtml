@@ -1,4 +1,5 @@
-﻿@{
+﻿@model LoginVM
+@{
     Layout = null;
 }
 
@@ -27,32 +28,35 @@
 
 <body class="Account">
     <div class="registration-form">
-        <form>
+
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <form method="post">
             <div class="form-icon">
                 <span><i class="icon icon-user"></i></span>
             </div>
             <div class="form-group">
-                <input type="email" class="form-control item" id="email" placeholder="Email">
+                <input asp-for="Email" type="email" class="form-control item" id="email" placeholder="Email">
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="password" class="form-control item" id="password" placeholder="Şifrə">
+                <input asp-for="Password" type="password" class="form-control item" id="password" placeholder="Şifrə">
+                <span asp-validation-for="Password" class="text-danger"></span>
+
             </div>
             <div class="form-group text-center">
-                <a href="">Şifrəmi unutmuşam</a>
+                <a asp-action="ChangePassword">Şifrəmi unutmuşam</a>
             </div>
             <div class="form-group text-center">
-                <a href="register.html">Qeydiyyat üçün klikləyin</a>
+                <a asp-action="SignUp">Qeydiyyat üçün klikləyin</a>
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-block create-account">Daxil Ol</button>
+                <button type="submit" class="btn btn-block create-account" asp-action="Login">Daxil Ol</button>
             </div>
         </form>
     </div>
 
-    <div id="loader">
-        <img src="~/img/homepageslider/loader.cfb26387.gif" alt="">
-    </div>
+
 
     <div class="telfixed">
         <a href="tel:*6600">

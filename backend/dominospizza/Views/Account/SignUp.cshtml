@@ -1,4 +1,5 @@
-﻿@{
+﻿@model RegisterVM
+@{
     Layout = null;
 }
 
@@ -28,25 +29,34 @@
 <body class="Account">
     <div class="pagebody">
         <div class="registration-form">
-            <form>
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <form method="post">
                 <div class="form-icon">
                     <span><i class="icon icon-user"></i></span>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control item" id="username" placeholder="İstifadəçi adı">
+                    <input asp-for="UserName" type="text" class="form-control item" id="username" placeholder="İstifadəçi adı">
+                    <span asp-validation-for="UserName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control item" id="password" placeholder="Şifrə">
+                    <input asp-for="Password" type="password" class="form-control item" id="password" placeholder="Şifrə">
+                    <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control item" id="email" placeholder="Email">
+                    <input asp-for="ConfirmPassword" type="password" class="form-control item" id="password" placeholder="Şifrəni təkrarla">
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="tel" class="form-control item" id="phone-number" placeholder="Mobil nömrə">
-                </div>
+                    <input asp-for="Email" type="email" class="form-control item" id="email" placeholder="Email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
 
+                </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-block create-account">Hesab yaradın</button>
+                    <input asp-for="Phone" type="tel" class="form-control item" id="phone-number" placeholder="Mobil nömrə">
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block create-account" asp-action="SignUp">Hesab yaradın</button>
                 </div>
             </form>
         </div>

@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Product>
 @{
     ViewData["Title"] = "Index";
 }
@@ -6,30 +6,34 @@
 
 <div class="container">
     <div class="row">
-        
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <a href="">
-                <div class="pizza-item">
-                    <div class="pizza-item-img">
-                        <img src="img/bread/1.png" alt="">
-                    </div>
-                    <div class="pizza-item-text">
-                        <div class="text-head">
-                            <h4>Pendirli sarımsaqlı çörək</h4>
+        @foreach (Product item in Model)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <a href="">
+                    <div class="pizza-item">
+                        <div class="pizza-item-img">
+                            <img src="img/bread/@item.Image" alt="">
                         </div>
-                        <div class="text-description">
-                            <p>Sobada hazırlanmış Pendirli Sarımsaq souslu çörək</p>
-                        </div>
-                        <div class="price">
-                            <h6>5.90$</h6>
-                            <div class="btn btn-lg btn-outline-danger">
-                                SƏBƏTƏ ƏLAVƏ ET
+                        <div class="pizza-item-text">
+                            <div class="text-head">
+                                <h4>@item.Name</h4>
+                            </div>
+                            <div class="text-description">
+                                <p>@item.Description</p>
+                            </div>
+                            <div class="price">
+                                <h6>@item.Price.ToString("F2")$</h6>
+                                <div data-id="@item.Id" class="btn btn-lg btn-outline-danger addToCart">
+                                    SƏBƏTƏ ƏLAVƏ ET
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
+
+        }
+
 
     </div>
 </div>

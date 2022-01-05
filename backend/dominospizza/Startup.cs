@@ -1,6 +1,9 @@
 using dominospizza.DAL;
+using dominospizza.Helpers;
+using dominospizza.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,6 +33,25 @@ namespace dominospizza
                 options.UseSqlServer(Configuration.GetConnectionString("Default"));
 
             });
+            services.AddIdentity<AppUser, IdentityRole>(identityOptions =>
+            {
+                identityOptions.Password.RequireDigit = true;
+                identityOptions.Password.RequiredLength = 8;
+                identityOptions.Password.RequireLowercase = true;
+                identityOptions.Password.RequireNonAlphanumeric = true;
+                identityOptions.Password.RequireUppercase = true;
+                identityOptions.Password.RequiredUniqueChars = 1;
+
+                identityOptions.User.RequireUniqueEmail = true;
+
+                identityOptions.Lockout.MaxFailedAccessAttempts = 3;
+                identityOptions.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+                identityOptions.Lockout.AllowedForNewUsers = true;
+            }).AddDefaultTokenProviders()
+           .AddEntityFrameworkStores<AppDbContext>()
+           .AddErrorDescriber<IdentityErrorDescriberAz>();
+
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,8 +69,8 @@ namespace dominospizza
 
             app.UseRouting();
 
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

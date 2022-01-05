@@ -115,14 +115,14 @@ namespace dominospizza.Areas.Manage.Controllers
                 ModelState.AddModelError("Photo", $"{slider.Photo.FileName} - not image type");
                 return View(slide);
             }
-            if (!slider.Photo.CheckLength(200))
+            if (slider.Photo.CheckLength(200))
             {
                 ModelState.AddModelError("Photo", $"{slider.Photo.FileName} - Max image length must be less than 200kb");
                 return View(slide);
             }
 
 
-            string folder = Path.Combine("img", "slider");
+            string folder = Path.Combine("img", "homepageslider");
             string fileName = await slider.Photo.SaveImageAsync(_env.WebRootPath, folder);
             if (fileName == null)
             {
@@ -157,7 +157,7 @@ namespace dominospizza.Areas.Manage.Controllers
             Slider slider = _context.Sliders.FirstOrDefault(c => c.Id == id);
             if (slider == null) return NotFound();
 
-            string path = Path.Combine("img", "slider");
+            string path = Path.Combine("img", "homepageslider");
             Helper.DeleteImage(_env.WebRootPath, path, slider.Image);
             _context.Sliders.Remove(slider);
             await _context.SaveChangesAsync();

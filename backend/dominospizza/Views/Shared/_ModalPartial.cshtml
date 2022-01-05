@@ -1,67 +1,104 @@
 ﻿@model Product
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="container">
-                    <div class="row">
-                        <div class="img-modal col-xs-12 col-sm-4 col-md-4 col-lg-5">
-                            <img src="img/pizza/@Model.Image" alt="">
-                        </div>
-                        <div class="info-modal col-xs-12 col-sm-7 col-md-7 col-lg-6">
-                            <h4 class="pizza-name">@Model.Name</h4>
-                            <p class="ingridients">@Model.Description</p>
-                            <hr>
-                            <div class="row">
-                                <div class="count">
 
-                                    <div class="input-group">
-                                        <span class="input-group-btn">
-                                            <button type="button" class="quantity-left-minus btn btn-danger btn-number" data-type="minus" data-field="">
-                                                <span><i class="fa fa-minus" aria-hidden="true"></i></span>
-                                            </button>
-                                        </span>
-                                        <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
-                                        <span class="input-group-btn">
-                                            <button type="button" class="quantity-right-plus btn btn-danger btn-number" data-type="plus" data-field="">
-                                                <span><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                            </button>
-                                        </span>
-                                    </div>
-
-                                </div>
-                                <div class="total-price text-center">
-                                    <h6 id="total-price">10.90$</h6>
-                                </div>
-                                <div data-id="@Model.Id" class="btn btn-lg btn-outline-danger addToCart">
-                                    SƏBƏTƏ ƏLAVƏ ET
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="scrollable row">
-                                <h6 class="title">Ölçü seçin</h6>
-                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                                    <label class="btn btn-outline-primary" for="btnradio1"><img src="img/pizza/small.png" alt=""><br>Kiçik<br> <span>10.90$</span></label>
-
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                                    <label class="btn btn-outline-primary" for="btnradio2"><img src="img/pizza/medium.png" alt=""><br>Orta<br> <span>17.90$</span></label>
-
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                                    <label class="btn btn-outline-primary" for="btnradio3"><img src="img/pizza/extra.png" alt=""><br>Böyük<br> <span>23.90$</span></label>
-                                </div>
-                                <hr>
-                            </div>
-                        </div>
-
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <div class="row">
+                    <div class="img-modal col-xs-12 col-sm-4 col-md-4 col-lg-5">
+                        <img src="img/pizza/@Model.Image" alt="">
                     </div>
+                    <div class="info-modal col-xs-12 col-sm-7 col-md-7 col-lg-6">
+                        <h4 class="pizza-name">@Model.Name</h4>
+                        <p class="ingridients">@Model.Description</p>
+                        <hr>
+                        <div class="row">
+                            <div class="count">
+
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="quantity-left-minus btn btn-danger btn-number" data-type="minus" data-field="">
+                                            <span><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                        </button>
+                                    </span>
+                                    <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="quantity-right-plus btn btn-danger btn-number" data-type="plus" data-field="">
+                                            <span><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                        </button>
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="total-price text-center">
+                                <h6 id="total-price">@Model.Price.ToString("F2")$</h6>
+                            </div>
+                            <a asp-controller="Cart" asp-action="addtocart" asp-route-Id="@Model.Id" asp-route-count="1"
+                               data-id="@Model.Id" class="btn btn-lg btn-outline-danger addToCart">
+                                SƏBƏTƏ ƏLAVƏ ET
+                            </a>
+                        </div>
+                        <hr>
+                        <div class="scrollable row">
+                            <h6 class="title">Ölçü seçin</h6>
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                                <label class="btn btn-outline-primary" for="btnradio1"><img src="img/pizza/small.png" alt=""><br>Kiçik<br> <span class="price-size">@Model.Price.ToString("F2")$</span></label>
+
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="btnradio2"><img src="img/pizza/medium.png" alt=""><br>Orta<br> <span class="price-size">@((Model.Price*1.6).ToString("F2"))$</span></label>
+
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="btnradio3"><img src="img/pizza/extra.png" alt=""><br>Böyük<br> <span class="price-size">@((Model.Price*2).ToString("F2"))$</span></label>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
         </div>
+
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js " integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin=" anonymous " referrerpolicy="no-referrer "></script>
+<script>
+    var price = $('#total-price').text().slice(0, -1);
+    var quantitiy = 1;
+    $('.quantity-right-plus').click(function (e) {
+        e.preventDefault();
+        quantitiy++;
+        $('#quantity').val(quantitiy);
+        $('#total-price').text(`${+quantitiy * +price}$`);
+        let url = document.querySelectorAll('.addToCart')[1].getAttribute('href');
+        let urlPart = url.slice(url.indexOf('count'), url.indexOf('count') + 7);
+        url = url.replace(urlPart, `count=${quantitiy}`);
+        document.querySelectorAll('.addToCart')[1].setAttribute('href', url);
+    });
+
+
+    $('.quantity-left-minus').click(function (e) {
+        e.preventDefault();
+        if (quantitiy > 1) {
+            quantitiy--;
+            $('#quantity').val(quantitiy);
+            $('#total-price').text(`${+quantitiy * +price}$`);
+            let url = document.querySelectorAll('.addToCart')[1].getAttribute('href');
+            let urlPart = url.slice(url.indexOf('count'), url.indexOf('count') + 7);
+            url = url.replace(urlPart, `count=${quantitiy}`);
+            document.querySelectorAll('.addToCart')[1].setAttribute('href', url);
+
+        }
+    });
+
+    $('.scrollable label').on('click', function () {
+        $('#total-price').text($(this).find('.price-size').text());
+        price = $(this).find('.price-size').text().slice(0, -1);
+
+    });
+
+</script>

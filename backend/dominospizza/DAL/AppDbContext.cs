@@ -1,4 +1,5 @@
 ﻿using dominospizza.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace dominospizza.DAL
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<AppUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -25,6 +26,7 @@ namespace dominospizza.DAL
         public virtual DbSet<ProductSize> ProductSizes { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<ProductType> ProductTypes { get; set; }
+        public virtual DbSet<OrderItem> OrderItems { get; set; }
 
 
     }

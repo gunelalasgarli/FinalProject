@@ -19,7 +19,7 @@ namespace dominospizza.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            List<Product> product = await _context.Products.Where(p => p.CategoryId == 7).Where(p=>p.IsDeleted ==false).ToListAsync();
+            List<Product> product = await _context.Products.Where(p => p.CategoryId == 9).Where(p=>p.IsDeleted ==false).ToListAsync();
              
             return View(product);
         }

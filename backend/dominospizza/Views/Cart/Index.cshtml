@@ -1,7 +1,55 @@
-﻿
+﻿@model List<BasketViewModel>
 @{
     ViewData["Title"] = "Index";
+    double total = 0;
 }
+<section id="cart">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-6">
+                @foreach (var item in Model)
+                {
+                    total += (double)item.Price * item.Count;
+                    <div class="cart-inside">
+                        <div class="empty-cart">
+                            <img src="img/homepageslider/empty-cart.844437f4.png" alt="" class="empty-cart-img">
+                            <h1 class="empty-cart-text">sizin səbətiniz boşdur</h1>
+                        </div>
+                        <ul class="cart-list">
+                            <li class="cart-list-item">
+                                <div class="item-image-holder">
+                                    <img src="~/img/pizza/@item.Image">
+                                </div>
+                                <div class="info-holder">
+                                    <h4 class="product-title">
+                                       @item.Name
+                                    </h4>
+                                    <span class="quantity">@item.Count x</span>
+                                    <span class="amount">@item.Price$</span>
+                                </div>
+                                <div class="item-editor">
+                                    <a class="item-remove" asp-action="removefromcart" asp-route-id="@item.ProductId">
+                                        <i class="fal fa-times"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                }
+                <hr>
+                <div class="cart-bottom">
+                    <div class="container">
+                        <div class="row">
+                            <div class="total-amount bottom bottom-right">
+                                ÜMUMİ @total.ToString("F2")$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
 
-<h1>Index</h1>
-
+            </div>
+        </div>
+    </div>
+</section>

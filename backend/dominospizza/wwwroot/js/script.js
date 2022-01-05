@@ -99,7 +99,7 @@ $(document).ready(function() {
         fetch(url)
             .then(resp => resp.text())
             .then(data => {
-                $('.container').append(data)
+                $('.modalHeader').html(data);
             })
     });
 
@@ -116,20 +116,29 @@ $(document).ready(function() {
     //     console.log(item);
     // });
 
-
-    var quantitiy = 0;
-    $('.quantity-right-plus').click(function(e) {
+    var url = document.querySelectorAll('.addToCart')[1].getAttribute('href');
+    var urlPart = url.slice(url.indexOf('count'), url.indexOf('count') + 7);
+    var quantitiy = 1;
+    $('.quantity-right-plus').click(function (e) {
         e.preventDefault();
-        var quantity = parseInt($('#quantity').val());
-        $('#quantity').val(quantity + 1);
+        quantitiy++;
+        $('#quantity').val(quantitiy);
+        $('#total-price').text(`${+quantitiy * +price}$`);
+        url = url.replace(urlPart, `count=${quantitiy}`);
+        console.log(url);
+        document.querySelectorAll('.addToCart')[1].setAttribute('href', url);
     });
 
 
-    $('.quantity-left-minus').click(function(e) {
+    $('.quantity-left-minus').click(function (e) {
         e.preventDefault();
-        var quantity = parseInt($('#quantity').val());
-        if (quantity > 0) {
-            $('#quantity').val(quantity - 1);
+        if (quantitiy > 1) {
+            quantitiy--;
+            $('#quantity').val(quantitiy);
+            $('#total-price').text(`${+quantitiy * +price}$`);
+            url = url.replace(urlPart, `count=${quantitiy}`);
+            document.querySelectorAll('.addToCart')[1].setAttribute('href', url);
+
         }
     });
 

@@ -1,0 +1,107 @@
+.menu-item {
+    margin: 20px 0px;
+    color: $menu-item-text-color;
+    height: 95%;
+    margin: 10px;
+    overflow: hidden;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-decoration: none;
+    box-shadow: 0px 1px 2px $gray-color;
+    background: white;
+    cursor: pointer;
+    &:hover {
+        transition: 1s;
+        transform: scale(1.05);
+    }
+    .drink-size {
+        .nav-pills {
+            .nav-item {
+                border: 1px solid $footer-text-color;
+                border-radius: 5px;
+                font-size: 12px;
+                .nav-link {
+                    width: 75px;
+                    color: $footer-text-color;
+                    font-weight: bold;
+                }
+                .active {
+                    color: white;
+                    background-color: $blue-color;
+                }
+            }
+        }
+    }
+    &-img {
+        img {
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+    &-text {
+        padding: 10px;
+        // width: 90%;
+        h4 {
+            margin-block-start: 0;
+            margin-block-end: 0;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        color: $item-text-color;
+        font-weight: lighter;
+        .text-head {
+            color: $item-head-text-color;
+        }
+        .text-description {
+            p {}
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            &:hover {
+                white-space: unset;
+            }
+        }
+        .price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            h6 {
+                font-weight: bold;
+                color: $blue-color;
+                display: inline-block;
+                font-size: 20px;
+                margin: 0 0;
+            }
+            span {}
+            .btn {
+                font-weight: bold;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+// %button {
+//     padding: 10px;
+//     background-color: red;
+//     white-space: pre;
+// }
+// button.btn-add {
+//     @extend %button;
+// }
+// @mixin btn($bgColor: red) {
+//     background-color: $bgColor;
+//     padding: 10px;
+//     white-space: pre;
+// }
+// .btn-success {
+//     @include btn($bgColor: green);
+// }
+// .btn-primary {
+//     @include btn($bgColor: rgb(88, 88, 88));
+// }
+// .btn-danger {
+//     @include btn();
+// }

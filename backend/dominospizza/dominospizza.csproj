@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -29,12 +29,13 @@
     <None Include="wwwroot\sass\style.scss" />
     <None Include="wwwroot\sass\_about-us.scss" />
     <None Include="wwwroot\sass\_body.scss" />
+    <None Include="wwwroot\sass\_cart.scss" />
     <None Include="wwwroot\sass\_contact-us.scss" />
     <None Include="wwwroot\sass\_footer.scss" />
     <None Include="wwwroot\sass\_header.scss" />
     <None Include="wwwroot\sass\_home.scss" />
     <None Include="wwwroot\sass\_location.scss" />
-    <None Include="wwwroot\sass\_offers.scss" />
+    <None Include="wwwroot\sass\_menu.scss" />
     <None Include="wwwroot\sass\_pizza.scss" />
     <None Include="wwwroot\sass\_register.scss" />
     <None Include="wwwroot\sass\_variables.scss" />
