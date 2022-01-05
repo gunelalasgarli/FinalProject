@@ -15,15 +15,12 @@ $(document).ready(function() {
         respondTo: 'window'
     });
 
-
-
     function hideLoader() {
         $('#loader').hide();
     }
 
     $(window).ready(hideLoader);
     setTimeout(hideLoader, 20 * 1000);
-
 
     $(window).scroll(function(e) {
         let position = $(this).scrollTop();
@@ -46,7 +43,6 @@ $(document).ready(function() {
                 }
 
             }
-
 
             /* Cart */
             let updateCartBadge = (count) => {
@@ -91,7 +87,6 @@ $(document).ready(function() {
                 });
             }
         }
-
     });
 
     $('.pizza-item').on('click', function () {
@@ -102,9 +97,6 @@ $(document).ready(function() {
                 $('.modalHeader').html(data);
             })
     });
-
-
-
 
     // document.addEventListener("scroll", () => {
     //     const element = Array.from(document.querySelectorAll(":hover"))[4];
@@ -128,7 +120,6 @@ $(document).ready(function() {
         console.log(url);
         document.querySelectorAll('.addToCart')[1].setAttribute('href', url);
     });
-
 
     $('.quantity-left-minus').click(function (e) {
         e.preventDefault();

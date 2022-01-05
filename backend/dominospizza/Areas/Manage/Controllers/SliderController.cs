@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace dominospizza.Areas.Manage.Controllers
 {
@@ -90,12 +91,12 @@ namespace dominospizza.Areas.Manage.Controllers
             await _context.SaveChangesAsync();
             return View(slider);
         }
-
+        [HttpGet]
         public async Task<IActionResult> Update(int? id)
         {
-            if (id == null) return NotFound();
-            Slider slider = _context.Sliders
-                .FirstOrDefault(c => c.Id == id);
+            if (id == null) 
+                return NotFound();
+            Slider slider = await _context.Sliders.FirstOrDefaultAsync(c => c.Id == id);
             if (slider == null) return NotFound();
             await _context.SaveChangesAsync();
             return View(slider);
@@ -121,15 +122,15 @@ namespace dominospizza.Areas.Manage.Controllers
                 return View(slide);
             }
 
-
-            string folder = Path.Combine("img", "homepageslider");
-            string fileName = await slider.Photo.SaveImageAsync(_env.WebRootPath, folder);
+            string path = Path.Combine("img", "homepageslider");
+            string fileName = await slider.Photo.SaveImageAsync(_env.WebRootPath, path);
             if (fileName == null)
             {
                 return Content("Error");
             }
-            Helper.DeleteImage(_env.WebRootPath, folder, slider.Image);
+            bool testing = Helper.DeleteImage(_env.WebRootPath, path, slide.Image);
             slide.Image = fileName;
+            _context.Update(slide);
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
