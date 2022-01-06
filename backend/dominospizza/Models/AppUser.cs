@@ -10,8 +10,7 @@ namespace dominospizza.Models
     {
         public string Name { get; set; }
         public string SurName { get; set; }
-        public string FatherName { get; set; }
-        public byte Age { get; set; }
+       
         public bool IsDeleted { get; set; }
 
     }

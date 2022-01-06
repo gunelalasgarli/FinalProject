@@ -25,6 +25,39 @@
                     display: block;
                 }
             }
+            .user {
+                &:hover {
+                    .user-dropdown {
+                        display: block;
+                    }
+                }
+                .user-dropdown {
+                    position: absolute;
+                    display: none;
+                    z-index: 1000;
+                    border: 1px solid rgba(0, 0, 0, 0.15);
+                    background-color: white;
+                    border-radius: 5px;
+                    right: 5%;
+                    text-transform: uppercase;
+                    &-list {
+                        padding: 5px;
+                        list-style: none;
+                        &-item {
+                            a {
+                                text-decoration: none;
+                                color: $navbar-text-color;
+                                &:hover {
+                                    color: $blue-color;
+                                }
+                                i {
+                                    padding: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         li {
             padding: 10px;

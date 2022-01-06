@@ -10,7 +10,7 @@ namespace dominospizza.ViewModels.AccountViewModel
     public class RegisterVM
     {
         [Required]
-        public int Phone { get; set; }
+        public int PhoneNumber { get; set; }
         public string UserName { get; set; }
         [EmailAddress,DataType(DataType.EmailAddress)]
         public string Email { get; set; }

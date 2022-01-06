@@ -44,14 +44,14 @@
 
             </div>
             <div class="form-group text-center">
-                <a asp-action="ChangePassword">Şifrəmi unutmuşam</a>
+                <a asp-controller="Account" asp-action="ChangePassword">Şifrəmi unutmuşam</a>
             </div>
             <div class="form-group text-center">
-                <a asp-action="SignUp">Qeydiyyat üçün klikləyin</a>
+                <a asp-controller="Account" asp-action="SignUp">Qeydiyyat üçün klikləyin</a>
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-block create-account" asp-action="Login">Daxil Ol</button>
+                <button type="submit" class="btn btn-block create-account" asp-controller="Account" asp-action="Login">Daxil Ol</button>
             </div>
         </form>
     </div>

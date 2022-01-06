@@ -49,24 +49,35 @@
                         </span>
                     </a>
                 </li>
-                <li>
-                    <a asp-controller="Account" asp-action="Login">
-                        <img src="~/img/icons/account before.png" alt="That's an image">
-                        <br>
-                        @if (!User.Identity.IsAuthenticated)
-                        {
+                <li class="user text-center">
+
+                    @if (!User.Identity.IsAuthenticated)
+                    {<a asp-controller="Account" asp-action="Login">
+                            <img src="~/img/icons/account before.png" alt="That's an image">
+                            <br>
                             <span>
                                 Daxil Ol
                             </span>
-                        }
-                        else
-                        {
+                        </a>
+                    }
+                    else
+                    { <a asp-controller="Account" asp-action="Index">
+                            <img src="~/img/icons/account before.png" alt="That's an image">
+                            <br>
                             <span>
                                 @user.UserName
-                                </span>
-                                    }
+                            </span>
+                        </a> 
+                        <div class="user-dropdown">
+                            <ul class="user-dropdown-list">
+                                <li class="user-dropdown-list-item"><a asp-controller="Account" asp-action="Index"><i class="fas fa-user"></i>Profil</a></li>
+                                <li class="user-dropdown-list-item"><a asp-controller="Account" asp-action="Logout"><i class="fas fa-sign-out-alt"></i>Çıxış et</a></li>
+                            </ul>
+                        </div>
 
-                        </a>
+                    }
+
+
                 </li>
               @await Component.InvokeAsync("Basket")
             </ul>

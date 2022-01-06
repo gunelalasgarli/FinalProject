@@ -114,6 +114,39 @@
   display: block;
 }
 
+#navhead .navbar-item .side-icons .user:hover .user-dropdown {
+  display: block;
+}
+
+#navhead .navbar-item .side-icons .user .user-dropdown {
+  position: absolute;
+  display: none;
+  z-index: 1000;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: white;
+  border-radius: 5px;
+  right: 5%;
+  text-transform: uppercase;
+}
+
+#navhead .navbar-item .side-icons .user .user-dropdown-list {
+  padding: 5px;
+  list-style: none;
+}
+
+#navhead .navbar-item .side-icons .user .user-dropdown-list-item a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+#navhead .navbar-item .side-icons .user .user-dropdown-list-item a:hover {
+  color: #007eb0;
+}
+
+#navhead .navbar-item .side-icons .user .user-dropdown-list-item a i {
+  padding: 5px;
+}
+
 #navhead .navbar-item li {
   padding: 10px;
   margin: 0px 5px;
@@ -952,6 +985,18 @@ a .pizza-item-text .price .btn {
     font-size: 30px;
     line-height: 70px;
   }
+}
+
+#profile .form-section .profile-item {
+  margin-top: 15px;
+}
+
+#profile .form-section .profile-item .form-control {
+  width: 95%;
+}
+
+#profile .form-section .profile-btn {
+  margin: 15px 0px;
 }
 
 #cart .cart-inside {
