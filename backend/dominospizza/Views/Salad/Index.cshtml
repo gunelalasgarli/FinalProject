@@ -9,7 +9,8 @@
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <div class="menu-item">
                     <div class="menu-item-img">
-                        <img src="img/salad/@item.Image" alt="">
+                        <img src="~/img/Product/@item.Image" alt="That's an image">
+
                     </div>
                     <div class="menu-item-text">
                         <div class="text-head">
@@ -29,43 +30,3 @@
         }
     </div>
 </div>
-
-@section scripts {
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js " integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin=" anonymous " referrerpolicy="no-referrer "></script>
-    <script>
-        var price = $('#total-price').text().slice(0, -1);
-        var quantitiy = 1;
-        $('.quantity-right-plus').click(function (e) {
-            e.preventDefault();
-            quantitiy++;
-            $('#quantity').val(quantitiy);
-            $('#total-price').text(`${+quantitiy * +price}$`);
-            let url = document.querySelectorAll('.addToCart')[1].getAttribute('href');
-            let urlPart = url.slice(url.indexOf('count'), url.indexOf('count') + 7);
-            url = url.replace(urlPart, `count=${quantitiy}`);
-            document.querySelectorAll('.addToCart')[1].setAttribute('href', url);
-        });
-
-
-        $('.quantity-left-minus').click(function (e) {
-            e.preventDefault();
-            if (quantitiy > 1) {
-                quantitiy--;
-                $('#quantity').val(quantitiy);
-                $('#total-price').text(`${+quantitiy * +price}$`);
-                let url = document.querySelectorAll('.addToCart')[1].getAttribute('href');
-                let urlPart = url.slice(url.indexOf('count'), url.indexOf('count') + 7);
-                url = url.replace(urlPart, `count=${quantitiy}`);
-                document.querySelectorAll('.addToCart')[1].setAttribute('href', url);
-
-            }
-        });
-
-        $('.scrollable label').on('click', function () {
-            $('#total-price').text($(this).find('.price-size').text());
-            price = $(this).find('.price-size').text().slice(0, -1);
-
-        });
-
-    </script>
-}

@@ -11279,3 +11279,6 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+.Account {
+    background-image: url(../img/Login-BG-Image.90f9cf90.png);
+}

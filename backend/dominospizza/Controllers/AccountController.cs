@@ -227,7 +227,7 @@ namespace dominospizza.Controllers
             return RedirectToAction("Login");
         }
 
-        //#region Add Role
+        #region Add Role
         //public async Task<IActionResult> AddRole()
         //{
         //    if (!await _roleManager.RoleExistsAsync("Admin"))
@@ -245,7 +245,7 @@ namespace dominospizza.Controllers
 
         //    return Content("Role Yarandi");
         //}
-        //#endregion
+        #endregion
 
     }
 }

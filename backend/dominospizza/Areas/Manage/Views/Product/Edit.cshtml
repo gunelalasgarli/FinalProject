@@ -1,0 +1,39 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Edit";
+    
+    List<Category> catagories = (List<Category>)ViewBag.Categories;
+}
+<div class="container-fluid">
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="@Model.Name">Name</label>
+            <input type="text" asp-for="@Model.Name" class="form-control" id="Name" placeholder="Name">
+            <span asp-validation-for="@Model.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Price">Price</label>
+            <input type="text" asp-for="@Model.Price" class="form-control" id="Price" placeholder="Price">
+            <span asp-validation-for="@Model.Price" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.CategoryId">Category</label>
+            <select class="form-control" asp-for="@Model.CategoryId" asp-items="@(new SelectList(catagories,"Id","Name"))">
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="@Model.ProductImage">Image</label>
+            <input asp-for="@Model.ProductImage" accept="image/*" class="form-control col-md-2" rows="3">
+            <span asp-validation-for="@Model.ProductImage" class="text-danger"></span>
+        </div>
+        <div class="img-box" style="position:relative;max-width:200px;background-color:black;width:200px;height:200px;max-height:200px;">
+            <img class="d-block" src="~/img/Product/@Model.Image" style="max-width:180px;width:180px;height:180px;max-height:180px;margin-left:10px;padding-top:20px" />
+
+            <input type="hidden" name="Image" value="@Model.Image" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>

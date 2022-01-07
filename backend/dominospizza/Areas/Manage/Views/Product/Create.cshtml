@@ -1,0 +1,36 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Create";
+    List<Category> catagories = (List<Category>)ViewBag.Categories;
+    List<ProductType> productTypes = (List<ProductType>)ViewBag.ProductTypes;
+}
+<div class="container-fluid">
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="@Model.Price">Price</label>
+            <input type="text" asp-for="@Model.Price" class="form-control" id="Price" placeholder="Price">
+            <span asp-validation-for="@Model.Price" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Name">Name</label>
+            <textarea asp-for="@Model.Name" class="form-control" id="Name" rows="3"></textarea>
+            <span asp-validation-for="@Model.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.CategoryId">Category</label>
+            <select class="form-control" asp-for="@Model.CategoryId" asp-items="@(new SelectList(catagories,"Id","Name"))">
+            </select>
+        </div> <div class="form-group col-md-3">
+                   <label asp-for="@Model.ProductTypeId">ProductType</label>
+            <select class="form-control" asp-for="@Model.ProductTypeId" asp-items="@(new SelectList(productTypes,"Id","Name"))">
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.ProductImage">Image</label>
+            <input asp-for="@Model.ProductImage" accept="image/*" class="form-control col-md-2" rows="3">
+            <span asp-validation-for="@Model.ProductImage" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
