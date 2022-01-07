@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dominospizza.Areas.Manage.Controllers
 {
-    public class DrinksController : Controller
+    public class DrinkController : Controller
     {
         public IActionResult Index()
         {

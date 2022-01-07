@@ -10,7 +10,6 @@ namespace dominospizza.Models
         public int Id { get; set; }
         public int DrinksId { get; set; }
         public int SizesId { get; set; }
-        public Drinks Drinks { get; set; }
         public Sizes Sizes { get; set; }
     }
 }

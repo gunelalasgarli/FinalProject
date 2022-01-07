@@ -15,6 +15,6 @@ namespace dominospizza.ViewModels.AccountViewModel
         public string Password { get; set; }
 
         [Required, DataType(DataType.Password),Compare(nameof(Password))]
-        public string ConfirmPasswod { get; set; }
+        public string ConfirmPassword { get; set; }
     }
 }

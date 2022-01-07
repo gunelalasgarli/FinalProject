@@ -29,23 +29,23 @@ $(document).ready(function() {
         let position = $(this).scrollTop();
         if (!$('body').is('.Account')) {
 
-            if ($('body').is('.Home')) {
-                if (position > 415) {
-                    document.getElementById("navmenu").classList.add("stickynavbar");
+            // if ($('body').is('.Home')) {
+            //     if (position > 415) {
+            //         document.getElementById("navmenu").classList.add("stickynavbar");
 
-                } else {
-                    document.getElementById("navmenu").classList.remove("stickynavbar");
-                }
-            } else {
+            //     } else {
+            //         document.getElementById("navmenu").classList.remove("stickynavbar");
+            //     }
+            // } else {
 
-                if (position > 100) {
-                    document.getElementById("navmenu").classList.add("stickynavbar");
+            //     if (position > 100) {
+            //         document.getElementById("navmenu").classList.add("stickynavbar");
 
-                } else {
-                    document.getElementById("navmenu").classList.remove("stickynavbar");
-                }
+            //     } else {
+            //         document.getElementById("navmenu").classList.remove("stickynavbar");
+            //     }
 
-            }
+            // }
 
 
             /* Cart */

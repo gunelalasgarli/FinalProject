@@ -20,11 +20,7 @@ namespace dominospizza.Helpers
             return false;
         }
 
-        public enum Roles
-        {
-            Admin,
-            Member
-        }
+        
        
     }
 }

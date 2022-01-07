@@ -16,7 +16,6 @@ namespace dominospizza.Models
 
         [NotMapped]
         public IFormFile SizeImage { get; set; }
-        public List<DrinkSize> DrinkSizes { get; set; }
         public List<ProductSize> ProductSizes { get; set; }
     }
 }

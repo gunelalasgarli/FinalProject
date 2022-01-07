@@ -8,10 +8,9 @@ namespace dominospizza.Models
 {
     public class AppUser : IdentityUser
     {
-        public string Name { get; set; }
-        public string SurName { get; set; }
-       
-        public bool IsDeleted { get; set; }
+        public string FullName { get; set; }
+        public bool isDelete { get; set; }
+        public bool isActive { get; set; }
 
     }
 }

@@ -48,12 +48,24 @@
                             <p>@Model.HomePages.Description2 </p>
                         </div>
                         <div class="col-12">
-                            <a href="login.html">
+                            @if (!User.Identity.IsAuthenticated)
+                            {<a asp-controller="Account" asp-action="Login">
                                 <button class="btn btn-lg btn-outline-danger">
                                     <i class="fas fa-map-marker-alt "></i>
                                     İndi tanış ol
                                 </button>
                             </a>
+                            }
+                            else
+                            {
+                            <a asp-controller="Offers" asp-action="Index">
+                                <button class="btn btn-lg btn-outline-danger">
+                                    <i class="fas fa-map-marker-alt "></i>
+                                    İndi tanış ol
+                                </button>
+                            </a>
+                            }
+
                         </div>
                     </div>
                 </div>

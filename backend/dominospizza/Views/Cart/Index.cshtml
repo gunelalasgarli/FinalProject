@@ -25,7 +25,7 @@
                                        @item.Name
                                     </h4>
                                     <span class="quantity">@item.Count x</span>
-                                    <span class="amount">@item.Price$</span>
+                                    <span class="amount">@item.Price AZN</span>
                                 </div>
                                 <div class="item-editor">
                                     <a class="item-remove" asp-action="removefromcart" asp-route-id="@item.ProductId">
@@ -41,7 +41,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="total-amount bottom bottom-right">
-                                ÜMUMİ @total.ToString("F2")$
+                                ÜMUMİ @total.ToString("F2")AZN
                             </div>
                         </div>
                     </div>

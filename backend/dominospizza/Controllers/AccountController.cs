@@ -2,11 +2,16 @@
 using dominospizza.Helpers;
 using dominospizza.Models;
 using dominospizza.ViewModels.AccountViewModel;
+using MailKit.Net.Smtp;
+using MailKit.Security;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MimeKit;
+using MimeKit.Text;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -77,6 +82,7 @@ namespace dominospizza.Controllers
             if (!ModelState.IsValid) return View();
             AppUser newUser = new AppUser()
             {
+                FullName = signup.FullName,
                 UserName = signup.UserName,
                 Email = signup.Email
             };
@@ -108,8 +114,7 @@ namespace dominospizza.Controllers
                 }
             }
 
-            //await _userManager.AddToRoleAsync(newUser, "Admin");
-
+            await _userManager.AddToRoleAsync(newUser, "Member");
             await _signInManager.SignInAsync(newUser, true);
 
             return RedirectToAction("Index", "Home");
@@ -119,19 +124,128 @@ namespace dominospizza.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
-        //public async Task CreateRole()
+
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ForgotPassword(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                return NotFound();
+            }
+            AppUser appUser = await _userManager.FindByEmailAsync(email);
+
+            if (appUser == null)
+                return NotFound();
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("Blueoceanel", "blueoceanelexample@gmail.com"));
+
+            message.To.Add(new MailboxAddress(appUser.FullName, appUser.Email));
+            message.Subject = "Reset Password";
+
+            string emailbody = string.Empty;
+
+            using (StreamReader streamReader = new StreamReader(Path.Combine(_env.WebRootPath, "templates", "forgotpassword.html")))
+            {
+                emailbody = streamReader.ReadToEnd();
+            }
+
+            string forgotpasswordtoken = await _userManager.GeneratePasswordResetTokenAsync(appUser);
+            string url = Url.Action("changepassword", "account", new { Id = appUser.Id, token = forgotpasswordtoken }, Request.Scheme);
+
+            emailbody = emailbody.Replace("{{fullname}}", $"{appUser.FullName}").Replace("{{url}}", $"{url}");
+
+            message.Body = new TextPart(TextFormat.Html) { Text = emailbody };
+
+            using var smtp = new SmtpClient();
+            smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
+            smtp.Authenticate("blueoceanelexample@gmail.com", "Blue@123");
+            smtp.Send(message);
+            smtp.Disconnect(true);
+
+            return View();
+        }
+
+        public async Task<IActionResult> ChangePassword(string Id, string token)
+        {
+            if (string.IsNullOrWhiteSpace(Id) || string.IsNullOrWhiteSpace(token))
+            {
+                return NotFound();
+            }
+
+            AppUser appuser = await _userManager.FindByIdAsync(Id);
+            var resetToken = await _userManager.GeneratePasswordResetTokenAsync(appuser);
+            if (appuser == null)
+            {
+                return NotFound();
+            }
+
+            ResetPasswordVM resetPasswordVM = new ResetPasswordVM
+            {
+                Id = Id,
+                Token = resetToken
+            };
+
+            return View(resetPasswordVM);
+
+
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangePassword(ResetPasswordVM resetPasswordVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            if (string.IsNullOrWhiteSpace(resetPasswordVM.Id) || string.IsNullOrWhiteSpace(resetPasswordVM.Token))
+            {
+                return NotFound();
+            }
+
+            AppUser appuser = await _userManager.FindByIdAsync(resetPasswordVM.Id);
+            if (appuser == null)
+            {
+                return NotFound();
+            }
+
+            IdentityResult identityResult = await _userManager.ResetPasswordAsync(appuser, resetPasswordVM.Token, resetPasswordVM.Password);
+            if (!identityResult.Succeeded)
+            {
+                foreach (IdentityError error in identityResult.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View(resetPasswordVM);
+            }
+            return RedirectToAction("Login");
+        }
+
+        //#region Add Role
+        //public async Task<IActionResult> AddRole()
         //{
-        //    if ((!await _roleManager.RoleExistsAsync(Helper.Roles.Admin.ToString())))
+        //    if (!await _roleManager.RoleExistsAsync("Admin"))
         //    {
-        //        await _roleManager.CreateAsync(new IdentityRole(Helper.Roles.Admin.ToString()));
+        //        await _roleManager.CreateAsync(new IdentityRole { Name = "Admin" });
+        //    }
+        //    if (!await _roleManager.RoleExistsAsync("Member"))
+        //    {
+        //        await _roleManager.CreateAsync(new IdentityRole { Name = "Member" });
+        //    }
+        //    if (!await _roleManager.RoleExistsAsync("User"))
+        //    {
+        //        await _roleManager.CreateAsync(new IdentityRole { Name = "User" });
         //    }
 
-        //    if ((!await _roleManager.RoleExistsAsync(Helper.Roles.Member.ToString())))
-        //    {
-        //        await _roleManager.CreateAsync(new IdentityRole(Helper.Roles.Member.ToString()));
-        //    }
-
+        //    return Content("Role Yarandi");
         //}
+        //#endregion
 
     }
 }

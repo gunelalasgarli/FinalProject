@@ -35,6 +35,10 @@
                     <span><i class="icon icon-user"></i></span>
                 </div>
                 <div class="form-group">
+                    <input asp-for="FullName" type="text" class="form-control item" id="username" placeholder="Ad Soyad">
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
                     <input asp-for="UserName" type="text" class="form-control item" id="username" placeholder="İstifadəçi adı">
                     <span asp-validation-for="UserName" class="text-danger"></span>
                 </div>
@@ -50,10 +54,6 @@
                     <input asp-for="Email" type="email" class="form-control item" id="email" placeholder="Email">
                     <span asp-validation-for="Email" class="text-danger"></span>
 
-                </div>
-                <div class="form-group">
-                    <input asp-for="PhoneNumber" type="tel" class="form-control item" id="phone-number" placeholder="Mobil nömrə">
-                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-block create-account" asp-controller="Account" asp-action="SignUp">Hesab yaradın</button>

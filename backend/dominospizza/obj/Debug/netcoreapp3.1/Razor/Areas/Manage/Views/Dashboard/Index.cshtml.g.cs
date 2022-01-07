@@ -33,8 +33,15 @@ using dominospizza.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\Areas\Manage\Views\_ViewImports.cshtml"
+using dominospizza.ViewModels.AccountViewModel;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e2f2470cdb80622da97b3eb4f56cc34681e32f8f", @"/Areas/Manage/Views/Dashboard/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4f35d1e9c804415a5d2142c9ce27524218700946", @"/Areas/Manage/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7b8941258ec3a15250a161d4826b6ef8655fae45", @"/Areas/Manage/Views/_ViewImports.cshtml")]
     public class Areas_Manage_Views_Dashboard_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("href", new global::Microsoft.AspNetCore.Html.HtmlString("~/manage/#"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -86,7 +93,7 @@ using dominospizza.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("\n    <!-- Page Heading -->\n    <div class=\"d-sm-flex align-items-center justify-content-between mb-4\">\n        <h1 class=\"h3 mb-0 text-gray-800\">Dashboard</h1>\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f9601", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f9838", async() => {
                 WriteLiteral("\n            <i class=\"fas fa-download fa-sm text-white-50\"></i> Generate Report\n        ");
             }
             );
@@ -211,7 +218,7 @@ using dominospizza.ViewModels;
                     <h6 class=""m-0 font-weight-bold text-primary"">Earnings Overview</h6>
                     <div class=""dropdown no-arrow"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f15785", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f16022", async() => {
                 WriteLiteral("\n                            <i class=\"fas fa-ellipsis-v fa-sm fa-fw text-gray-400\"></i>\n                        ");
             }
             );
@@ -236,7 +243,7 @@ using dominospizza.ViewModels;
                              aria-labelledby=""dropdownMenuLink"">
                             <div class=""dropdown-header"">Dropdown Header:</div>
                             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f17743", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f17980", async() => {
                 WriteLiteral("Action");
             }
             );
@@ -252,7 +259,7 @@ using dominospizza.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f18928", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f19165", async() => {
                 WriteLiteral("Another action");
             }
             );
@@ -268,7 +275,7 @@ using dominospizza.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\n                            <div class=\"dropdown-divider\"></div>\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f20189", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f20426", async() => {
                 WriteLiteral("Something else here");
             }
             );
@@ -304,7 +311,7 @@ using dominospizza.ViewModels;
                     <h6 class=""m-0 font-weight-bold text-primary"">Revenue Sources</h6>
                     <div class=""dropdown no-arrow"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f22147", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f22384", async() => {
                 WriteLiteral("\n                            <i class=\"fas fa-ellipsis-v fa-sm fa-fw text-gray-400\"></i>\n                        ");
             }
             );
@@ -329,7 +336,7 @@ using dominospizza.ViewModels;
                              aria-labelledby=""dropdownMenuLink"">
                             <div class=""dropdown-header"">Dropdown Header:</div>
                             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f24105", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f24342", async() => {
                 WriteLiteral("Action");
             }
             );
@@ -345,7 +352,7 @@ using dominospizza.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f25290", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f25527", async() => {
                 WriteLiteral("Another action");
             }
             );
@@ -361,7 +368,7 @@ using dominospizza.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\n                            <div class=\"dropdown-divider\"></div>\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f26551", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f26788", async() => {
                 WriteLiteral("Something else here");
             }
             );
@@ -537,7 +544,7 @@ using dominospizza.ViewModels;
                 <div class=""card-body"">
                     <div class=""text-center"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f34856", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f35093", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -554,7 +561,7 @@ using dominospizza.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\n                    </div>\n                    <p>\n                        Add some quality, svg illustrations to your project courtesy of ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f36279", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f36516", async() => {
                 WriteLiteral("unDraw");
             }
             );
@@ -571,7 +578,7 @@ using dominospizza.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral(", a\n                        constantly updated collection of beautiful svg images that you can use\n                        completely free and without attribution!\n                    </p>\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f37733", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f2470cdb80622da97b3eb4f56cc34681e32f8f37970", async() => {
                 WriteLiteral("\n                        Browse Illustrations on\n                        unDraw &rarr;\n                    ");
             }
             );
