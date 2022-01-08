@@ -14,6 +14,8 @@ namespace dominospizza.Models
         public string Description { get; set; }
         public int Count { get; set; }
         public decimal Total { get; set; }
+        public int OrderId { get; set; }
+        public Order Order { get; set; }
         public AppUser AppUser { get; set; }
         public string AppUserId { get; set; }
     }

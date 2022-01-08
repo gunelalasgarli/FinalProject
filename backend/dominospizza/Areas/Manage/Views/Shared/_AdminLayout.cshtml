@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@inject UserManager<AppUser> usermanager;
+@using Microsoft.AspNetCore.Mvc.Razor
+@{
+    AppUser user = User.Identity.IsAuthenticated ? await usermanager.FindByNameAsync(User.Identity.Name) : null;
+
+}
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -89,27 +96,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" asp-controller="Drinks" asp-action="Index">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Drinks</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-controller="Sizes" asp-action="Index">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Sizes</span>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" asp-controller="Orders" asp-action="Index">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Orders</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-controller="Offers" asp-action="Index">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Offers</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -122,6 +111,12 @@
                 <a class="nav-link" asp-controller="User" asp-action="Index">
                     <i class="fas fa-fw fa-table"></i>
                     <span>User</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Role" asp-action="Index">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Role</span>
                 </a>
             </li>
             <hr class="sidebar-divider d-none d-md-block">
@@ -147,19 +142,6 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-
-                    <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                   aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -195,31 +177,13 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="~/manage/#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> @if (User.Identity.IsAuthenticated)
+                                {@user.UserName}</span>
                                 <img class="img-profile rounded-circle"
-                                     src="~/manage/img/undraw_profile.svg">
+                                     src="~/img/icons/account before.png">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="~/manage/#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="~/manage/#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="~/manage/#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="~/manage/#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
+                           
                         </li>
 
                     </ul>
@@ -233,16 +197,16 @@
                     <!-- /.container-fluid -->
                 </div>
             </div>
-                <!-- End of Main Content -->
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2021</span>
-                        </div>
+            <!-- End of Main Content -->
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2021</span>
                     </div>
-                </footer>
-                <!-- End of Footer -->
+                </div>
+            </footer>
+            <!-- End of Footer -->
 
         </div>
         <!-- End of Content Wrapper -->
@@ -268,7 +232,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="~/manage/login.html">Logout</a>
+                    <a class="btn btn-primary" >Logout</a>
                 </div>
             </div>
         </div>

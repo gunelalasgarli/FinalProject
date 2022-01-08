@@ -4,6 +4,7 @@ using dominospizza.Models;
 using dominospizza.ViewModels.AccountViewModel;
 using MailKit.Net.Smtp;
 using MailKit.Security;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -39,10 +40,7 @@ namespace dominospizza.Controllers
             _env = env;
         }
 
-        public  IActionResult Index()
-        {
-            return View();
-        }
+       
         public IActionResult Login()
         {
             return View();
@@ -69,7 +67,11 @@ namespace dominospizza.Controllers
             }
             return RedirectToAction("index", "home");
         }
-
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
         public IActionResult SignUp()
         {
             return View();
@@ -114,16 +116,12 @@ namespace dominospizza.Controllers
                 }
             }
 
-            await _userManager.AddToRoleAsync(newUser, "Member");
+            await _userManager.AddToRoleAsync(newUser, "User");
             await _signInManager.SignInAsync(newUser, true);
 
             return RedirectToAction("Index", "Home");
         }
-        public async Task<IActionResult> Logout()
-        {
-            await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
-        }
+      
 
         public IActionResult ForgotPassword()
         {
@@ -227,6 +225,71 @@ namespace dominospizza.Controllers
             return RedirectToAction("Login");
         }
 
+        //[Authorize(Roles = "Member")]
+        public async Task<IActionResult> Profile()
+        {
+            AppUser member = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            ProfileViewModel profileVM = new ProfileViewModel
+            {
+                Email = member.Email,
+                FullName = member.FullName,
+                UserName = member.UserName
+            };
+
+            return View(profileVM);
+        }
+
+        [HttpPost]
+        //[Authorize(Roles = "Member")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Profile(ProfileViewModel profileVM)
+        {
+            TempData["Success"] = false;
+            if (!ModelState.IsValid) return View();
+
+            AppUser member = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            if (!string.IsNullOrWhiteSpace(profileVM.ConfirmNewPassword) && !string.IsNullOrWhiteSpace(profileVM.NewPassword))
+            {
+                var passwordChangeResult = await _userManager.ChangePasswordAsync(member, profileVM.CurrentPassword, profileVM.NewPassword);
+
+                if (!passwordChangeResult.Succeeded)
+                {
+                    foreach (var item in passwordChangeResult.Errors)
+                    {
+                        ModelState.AddModelError("", item.Description);
+                    }
+
+                    return View();
+                }
+
+            }
+
+            if (member.Email != profileVM.Email && _userManager.Users.Any(x => x.NormalizedEmail == profileVM.Email.ToUpper()))
+            {
+                ModelState.AddModelError("Email", "This email has already been taken!");
+                return View();
+            }
+
+            member.FullName = profileVM.FullName;
+            member.Email = profileVM.Email;
+
+            var result = await _userManager.UpdateAsync(member);
+
+            if (!result.Succeeded)
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError("", item.Description);
+                }
+
+                return View();
+            }
+
+            TempData["Success"] = true;
+            return RedirectToAction("profile");
+        }
         #region Add Role
         //public async Task<IActionResult> AddRole()
         //{

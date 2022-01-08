@@ -133,4 +133,15 @@ $(document).ready(function() {
         }
     });
 
+    $('#search-input').keyup(function () {
+        let search = $(this).val();
+        $.ajax({
+            url: 'https://localhost:5433/product/search?search=' + search,
+            method: 'get',
+            success: function (resp) {
+                $('.search-list').html(resp);
+            }
+        })
+    })
+
 });

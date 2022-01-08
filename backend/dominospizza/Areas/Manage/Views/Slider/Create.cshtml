@@ -1,22 +1,25 @@
 ﻿@model Slider
-@{
-    ViewData["Title"] = "Create";
-}
+@{ ViewData["Title"] = "Create"; }
 
-<div class="col-12 grid-margin stretch-card">
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">Create Slider</h4>
-            <form class="forms-sample" method="post" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label asp-for="@Model.Photos"></label>
-                    <input asp-for="@Model.Photos"  class="form-control">
-                    <span class="text-danger" asp-validation-for="@Model.Photos"></span>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h4 class="card-title">Create Slider</h4>
+                    <div class="card-body">
+                        <form class="forms-sample" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label asp-for="@Model.Photos"></label>
+                                <input asp-for="@Model.Photos" class="form-control">
+                                <span class="text-danger" asp-validation-for="@Model.Photos"></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                            <a class="btn btn-light" asp-action="Index">Cancel</a>
+                        </form>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                <a class="btn btn-light" asp-action="Index">Cancel</a>
-            </form>-
+            </div>
         </div>
     </div>
-</div>
-
+</section>

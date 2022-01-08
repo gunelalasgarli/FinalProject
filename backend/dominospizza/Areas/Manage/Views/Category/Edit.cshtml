@@ -1,0 +1,46 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Edit";
+}
+
+    <section class="content">
+
+        <form method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Update the Category</h3>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="Name">FullName</label>
+                                <input asp-for="Name" class="form-control" placeholder="FullName">
+                                <span class="text-danger" asp-validation-for="Name"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CategoryImage">CategoryImage</label>
+                                <input asp-for="CategoryImage" class="form-control" placeholder="CategoryImage">
+                                <span class="text-danger" asp-validation-for="CategoryImage"></span>
+                            </div>
+
+                            <div class="img-box" style=" display: flex; flex-direction: column; position: relative;">
+                                <input type="hidden" name="Image" value="@Model.Image" />
+                                <img style="max-width:200px" src="~/img/icons/@Model.Image" alt="Alternate Text" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <a asp-action="index" class="btn btn-secondary">Go Back</a>
+                    <input type="submit" value="Save Changes" class="btn btn-success float-right">
+                </div>
+            </div>
+        </form>
+
+    </section>
+

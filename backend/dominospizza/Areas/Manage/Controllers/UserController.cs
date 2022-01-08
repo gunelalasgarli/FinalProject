@@ -14,8 +14,9 @@ using static dominospizza.Helpers.Helper;
 
 namespace dominospizza.Areas.Manage.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Manage")]
-    //[Authorize(Roles = "Admin")]
+    
     public class UserController : Controller
     {
         private readonly AppDbContext _context;
@@ -38,6 +39,7 @@ namespace dominospizza.Areas.Manage.Controllers
             _signInManager = signInManager;
         }
         #region Index
+
         public async Task<IActionResult> Index()
         {
             List<AppUser> users = _userManager.Users.Where(u => u.isDelete == false)
@@ -63,6 +65,7 @@ namespace dominospizza.Areas.Manage.Controllers
         #endregion
 
         #region Activation
+        [Authorize(Roles = "Admin")]
 
         public async Task<IActionResult> Activation(string id)
         {
@@ -76,6 +79,9 @@ namespace dominospizza.Areas.Manage.Controllers
             return RedirectToAction(nameof(Index));
 
         }
+
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null) return NotFound();
@@ -88,6 +94,8 @@ namespace dominospizza.Areas.Manage.Controllers
             return RedirectToAction(nameof(Index));
 
         }
+        [Authorize(Roles = "Admin")]
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("Delete")]
@@ -108,6 +116,8 @@ namespace dominospizza.Areas.Manage.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("Activation")]
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> ActivationPost(string id)
         {
             if (id == null) return NotFound();
@@ -125,27 +135,44 @@ namespace dominospizza.Areas.Manage.Controllers
         #endregion
 
         #region Change Password
+
         public IActionResult ChangePassword(string id)
         {
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ChangePassword(string id, ResetPasswordVM changePass)
+        public async Task<IActionResult> ChangePassword(string Id, string Password)
         {
-            if (!ModelState.IsValid) return Content("Some Problem is occured");
+            if (Id == null) return NotFound();
 
-            AppUser appUser = await _userManager.FindByIdAsync(id);
-            if (appUser == null)
-            {
-                ModelState.AddModelError("Password", "User is undefined");
-                return View();
-            }
+            AppUser appUser = await _userManager.FindByIdAsync(Id);
 
-            String getPassToken = await _userManager.GeneratePasswordResetTokenAsync(appUser);
-            await _userManager.ResetPasswordAsync(appUser, getPassToken, changePass.Password);
-            return RedirectToAction(nameof(Index));
+            if (appUser == null) return NotFound();
+
+            string token = await _userManager.GeneratePasswordResetTokenAsync(appUser);
+
+            await _userManager.ResetPasswordAsync(appUser, token, Password);
+
+            return RedirectToAction("Index");
         }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> ChangePassword(string id, ResetPasswordVM changePass)
+        //{
+        //    if (!ModelState.IsValid) return Content("Some Problem is occured");
+
+        //    AppUser appUser = await _userManager.FindByIdAsync(id);
+        //    if (appUser == null)
+        //    {
+        //        ModelState.AddModelError("Password", "User is undefined");
+        //        return View();
+        //    }
+
+        //    String getPassToken = await _userManager.GeneratePasswordResetTokenAsync(appUser);
+        //    await _userManager.ResetPasswordAsync(appUser, getPassToken, changePass.Password);
+        //    return RedirectToAction(nameof(Index));
+        //}
         #endregion
 
         #region Update User
@@ -173,7 +200,7 @@ namespace dominospizza.Areas.Manage.Controllers
                 Role = (await _userManager.GetRolesAsync(user))[0],
                 UserName = user.UserName,
                 isDelete = user.isDelete,
-                Roles = new List<string> { "Admin", "Member" }
+                Roles = new List<string> { "Admin", "Member", "User" }
             };
 
             #region check username
@@ -272,6 +299,7 @@ namespace dominospizza.Areas.Manage.Controllers
         //}
         //#endregion
         //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ChangeRole(string Id)
         {
             if (Id == null) return NotFound();
@@ -289,7 +317,7 @@ namespace dominospizza.Areas.Manage.Controllers
                 Email = appUser.Email,
                 UserName = appUser.UserName,
                 isDelete = appUser.isDelete,
-                Roles = new List<string> { "Admin", "Member" },
+                Roles = new List<string> { "Admin", "Member","User" },
                 Role = userRoles.Count > 0 ? (await _userManager.GetRolesAsync(appUser))[0] : ""
             };
 
@@ -298,7 +326,9 @@ namespace dominospizza.Areas.Manage.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
+
+
         public async Task<IActionResult> ChangeRole(string Id, string Roles)
         {
             if (Id == null) return NotFound();
@@ -324,22 +354,7 @@ namespace dominospizza.Areas.Manage.Controllers
 
 
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ChangePassword(string Id, string Password)
-        {
-            if (Id == null) return NotFound();
-
-            AppUser appUser = await _userManager.FindByIdAsync(Id);
-
-            if (appUser == null) return NotFound();
-
-            string token = await _userManager.GeneratePasswordResetTokenAsync(appUser);
-
-            await _userManager.ResetPasswordAsync(appUser, token, Password);
-
-            return RedirectToAction("Index");
-        }
+        
 
         public async Task<IActionResult> Detail(string id)
         {

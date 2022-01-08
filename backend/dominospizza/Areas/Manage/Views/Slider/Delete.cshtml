@@ -3,14 +3,24 @@
     ViewData["Title"] = "Delete";
 }
 
-<div class="col-md-6 grid-margin stretch-card">
-    <img src="~/img/homepageslider/@Model.Image" width="250" />
-</div>
-<h3 class="text-danger">Are you sure?</h3>
-<form method="post">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <button type="submit" class="btn btn-danger">Delete</button>
-</form>
-<a asp-action="Index" class="btn btn-secondary mt-3">Go Back</a>
 
-
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h4 class="card-title">Delete Slider Image</h4>
+                    <div class="card-body">
+                        <img src="~/img/homepageslider/@Model.Image" style="max-width:200px" />
+                        <h3 class="text-danger">Are you sure?</h3>
+                        <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <button type="submit" class="btn btn-danger m-2">Delete</button>
+                            <button asp-action="Index" class="btn btn-secondary m-2">Go Back</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

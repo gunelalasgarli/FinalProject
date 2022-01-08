@@ -182,12 +182,10 @@ C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\n
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\dominospizza.pdb
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\dominospizza.genruntimeconfig.cache
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Setting\Index.cshtml.g.cs
-C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Drinks\Index.cshtml.g.cs
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Category\Index.cshtml.g.cs
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ModalPartial.cshtml.g.cs
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Basket\Default.cshtml.g.cs
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Copyright\Default.cshtml.g.cs
-C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Account\Index.cshtml.g.cs
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\User\ChangePassword.cshtml.g.cs
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\User\ChangeRole.cshtml.g.cs
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\User\Detail.cshtml.g.cs
@@ -201,3 +199,10 @@ C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\n
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\dominospizza.csproj.AssemblyReference.cache
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Product\Create.cshtml.g.cs
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Product\Edit.cshtml.g.cs
+C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_SearchPartial.cshtml.g.cs
+C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Role\Create.cshtml.g.cs
+C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Role\Index.cshtml.g.cs
+C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Role\Update.cshtml.g.cs
+C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Category\Create.cshtml.g.cs
+C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Category\Edit.cshtml.g.cs
+C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Account\Profile.cshtml.g.cs

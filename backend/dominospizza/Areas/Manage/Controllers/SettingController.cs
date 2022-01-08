@@ -9,9 +9,12 @@ using dominospizza.Helpers;
 using Microsoft.AspNetCore.Hosting;
 using dominospizza.Extensions;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace dominospizza.Areas.Manage.Controllers
 {
+    [Authorize(Roles = "Admin, Member")]
+
     [Area("manage")]
     public class SettingController : Controller
     {

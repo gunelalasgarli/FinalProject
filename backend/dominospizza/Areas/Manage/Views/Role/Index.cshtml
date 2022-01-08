@@ -1,0 +1,36 @@
+﻿@model List<IdentityRole>
+
+@{
+    ViewData["Title"] = "Index";
+    var count = 0;
+}
+
+
+
+<div class="card">
+    <div class="card-head">
+        <h4>Roles</h4>
+        <a asp-action="create" asp-controller="role" class="btn btn-outline-success">Create</a>
+    </div>
+
+    <table class="table table-striped projects">
+        <tbody>
+            <tr>
+                <th scope="row">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Setting</th>
+            </tr>
+            @foreach (var role in Model)
+                    {
+                        count++;
+            <tr>
+                <th scope="row">@count</th>
+                <td>@role.Name</td>
+                <td>
+                    <a asp-action="update" asp-controller="role" asp-route-name="@role.Name" class="btn btn-warning">Update</a>
+                    <a asp-action="delete" asp-controller="role" asp-route-name="@role.Name" class="btn btn-danger btn-role-delete">Delete</a>
+                </td>
+            </tr>
+                    }
+    </table>
+</div>

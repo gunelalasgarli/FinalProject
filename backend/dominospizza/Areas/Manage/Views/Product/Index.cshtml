@@ -19,8 +19,22 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Products</h6>
+        <h4 class="card-title">Products</h4>
+
+        <div class="col-md-8 offset-md-2">
+            <form method="get">
+                <div class="input-group">
+                    <input type="text" name="search" class="form-control form-control-lg" placeholder="Type your keywords here">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-lg btn-default">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
+
     <div class="card-body">
         <a asp-controller="Product" asp-action="Create" class="btn btn-outline-success">
             Create
@@ -47,8 +61,8 @@
             <td>@item.Name</td>
             <td>@item.Price</td>
             <td>@item.Description</td>
-            <td class="col-md-2">
-                <a class="btn btn-warning" asp-action="edit" asp-route-id="@item.Id">Edit</a>
+            <td class="col-md-3">
+                <a class="btn btn-warning" asp-action="edit" asp-route-id="@item.Id">Update</a>
                 <a class="btn btn-danger delete-btn" asp-action="delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>

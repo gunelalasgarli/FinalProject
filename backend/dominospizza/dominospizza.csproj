@@ -20,6 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Areas\Manage\Views\Category\Create.cshtml" />
+    <None Include="Areas\Manage\Views\Category\Edit.cshtml" />
+    <None Include="Areas\Manage\Views\Category\Index.cshtml" />
     <None Include="Areas\Manage\Views\Slider\Create.cshtml" />
     <None Include="Areas\Manage\Views\Slider\Delete.cshtml" />
     <None Include="Areas\Manage\Views\Slider\Detail.cshtml" />

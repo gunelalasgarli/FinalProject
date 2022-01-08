@@ -40,8 +40,15 @@ using dominospizza.ViewModels.AccountViewModel;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\Areas\Manage\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"39acf7a7fa4d4ba1ac98da6aa7c7ccf3d74fdf43", @"/Areas/Manage/Views/User/ChangeRole.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7b8941258ec3a15250a161d4826b6ef8655fae45", @"/Areas/Manage/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f6acf763023cb86cfb27db7fd8e2b1e4097ec32a", @"/Areas/Manage/Views/_ViewImports.cshtml")]
     public class Areas_Manage_Views_User_ChangeRole : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<AppUserVM>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("text-danger"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -86,7 +93,7 @@ using dominospizza.ViewModels.AccountViewModel;
 #line hidden
 #nullable disable
             WriteLiteral("\n<div class=\"container bg-white pb-5\">\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "39acf7a7fa4d4ba1ac98da6aa7c7ccf3d74fdf436321", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "39acf7a7fa4d4ba1ac98da6aa7c7ccf3d74fdf436547", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationSummaryTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ValidationSummaryTagHelper>();
@@ -153,10 +160,10 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationSummaryTagHelper.ValidationSumma
 #line hidden
 #nullable disable
             WriteLiteral("</td>\n                </tr>\n            </tbody>\n        </table>\n    </div>\n    <div class=\"row mt-3 px-5\">\n        <div class=\"col-lg-12\">\n            <h3>Roles</h3> <br />\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "39acf7a7fa4d4ba1ac98da6aa7c7ccf3d74fdf439687", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "39acf7a7fa4d4ba1ac98da6aa7c7ccf3d74fdf439913", async() => {
                 WriteLiteral("\n");
                 WriteLiteral("                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("select", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "39acf7a7fa4d4ba1ac98da6aa7c7ccf3d74fdf439994", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("select", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "39acf7a7fa4d4ba1ac98da6aa7c7ccf3d74fdf4310220", async() => {
                     WriteLiteral("\n");
 #nullable restore
 #line 42 "C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\Areas\Manage\Views\User\ChangeRole.cshtml"
@@ -167,7 +174,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationSummaryTagHelper.ValidationSumma
 #line hidden
 #nullable disable
                     WriteLiteral("                        ");
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "39acf7a7fa4d4ba1ac98da6aa7c7ccf3d74fdf4310593", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "39acf7a7fa4d4ba1ac98da6aa7c7ccf3d74fdf4310820", async() => {
 #nullable restore
 #line 44 "C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\Areas\Manage\Views\User\ChangeRole.cshtml"
                                          Write(role);
@@ -227,7 +234,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_SelectTagHelper.For = ModelExpressionProvi
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\n                <br /> <br />\n                <button type=\"submit\" class=\"btn btn-primary ml-2\">Change Role</button>\n                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "39acf7a7fa4d4ba1ac98da6aa7c7ccf3d74fdf4314371", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "39acf7a7fa4d4ba1ac98da6aa7c7ccf3d74fdf4314598", async() => {
                     WriteLiteral("Go back");
                 }
                 );

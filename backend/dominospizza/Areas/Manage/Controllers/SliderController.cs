@@ -11,12 +11,12 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace dominospizza.Areas.Manage.Controllers
 {
-
+    [Authorize(Roles = "Admin, Member")]
     [Area("Manage")]
-    //[Authorize(Roles = "Admin")]
     public class SliderController : Controller
     {
         private readonly AppDbContext _context;
@@ -152,6 +152,7 @@ namespace dominospizza.Areas.Manage.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("Delete")]
+
         public async Task<IActionResult> DeletePost(int? id)
         {
             if (id == null) return NotFound();

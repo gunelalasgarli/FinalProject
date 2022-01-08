@@ -17,15 +17,15 @@
             <span asp-validation-for="@Model.Price" class="text-danger"></span>
         </div>
 
-        <div class="form-group col-md-3">
+        <div class="form-group">
             <label asp-for="@Model.CategoryId">Category</label>
             <select class="form-control" asp-for="@Model.CategoryId" asp-items="@(new SelectList(catagories,"Id","Name"))">
             </select>
         </div>
-        
+
         <div class="form-group">
             <label asp-for="@Model.ProductImage">Image</label>
-            <input asp-for="@Model.ProductImage" accept="image/*" class="form-control col-md-2" rows="3">
+            <input asp-for="@Model.ProductImage" accept="image/*" class="form-control" rows="3">
             <span asp-validation-for="@Model.ProductImage" class="text-danger"></span>
         </div>
         <div class="img-box" style="position:relative;max-width:200px;background-color:black;width:200px;height:200px;max-height:200px;">
@@ -34,6 +34,9 @@
             <input type="hidden" name="Image" value="@Model.Image" />
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+        <button asp-action="Index" class="btn btn-secondary">Go Back</button>
+
+
     </form>
 
 </div>
