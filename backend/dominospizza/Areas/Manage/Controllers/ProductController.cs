@@ -1,4 +1,5 @@
 ﻿using dominospizza.DAL;
+using dominospizza.Extensions;
 using dominospizza.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -35,35 +36,38 @@ namespace dominospizza.Areas.Manage.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             ViewBag.Categories = await _context.Categories.ToListAsync();
-            Product list = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
-            if (list == null)
+            ViewBag.ProductTypes = await _context.ProductTypes.ToListAsync();
+            Product product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
+            if (product == null)
             {
                 return RedirectToAction("index");
             }
-            return View(list);
+            return View(product);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Product product)
         {
             ViewBag.Categories = await _context.Categories.ToListAsync();
+            ViewBag.ProductTypes = await _context.ProductTypes.ToListAsync();
 
             Product existproduct = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
             if (!await _context.Categories.AnyAsync(x => x.Id == product.CategoryId)) return RedirectToAction("index");
+            if (!await _context.ProductTypes.AnyAsync(x => x.Id == product.ProductTypeId)) return RedirectToAction("index");
             if (existproduct == null)
             {
                 return RedirectToAction("index");
             }
             if (product.ProductImage != null)
             {
-                if (product.ProductImage.ContentType != "image/png" && product.ProductImage.ContentType != "image/")
+                if (!product.ProductImage.IsImage())
                 {
-                    ModelState.AddModelError("Image", "Shekil formatinda file daxil edilmelidir");
+                    ModelState.AddModelError("ProductImage", "Shekil formatinda file daxil edilmelidir");
                     return View();
                 }
                 if (product.ProductImage.Length > (1024 * 1024) * 5)
                 {
-                    ModelState.AddModelError("Image", "File olcusu 5mb-dan cox olmaz!");
+                    ModelState.AddModelError("ProductImage", "File olcusu 5mb-dan cox olmaz!");
                     return View();
                 }
                 string rootPath = _env.WebRootPath;
@@ -91,6 +95,7 @@ namespace dominospizza.Areas.Manage.Controllers
             }
 
             existproduct.CategoryId = product.CategoryId;
+            existproduct.ProductTypeId = product.ProductTypeId;
             existproduct.Price = product.Price;
             existproduct.Name = product.Name;
 
@@ -101,6 +106,8 @@ namespace dominospizza.Areas.Manage.Controllers
         {
             Product product = await _context.Products.Include(p => p.Category).Include(t => t.ProductType).FirstOrDefaultAsync();
             ViewBag.Categories = await _context.Categories.ToListAsync();
+            ViewBag.ProductTypes = await _context.ProductTypes.ToListAsync();
+
             return View();
         }
         [HttpPost]
@@ -108,18 +115,16 @@ namespace dominospizza.Areas.Manage.Controllers
         public async Task<IActionResult> Create(Product product)
         {
            
+            ViewBag.ProductTypes = await _context.ProductTypes.ToListAsync();
             ViewBag.Categories = await _context.Categories.ToListAsync();
             if (!await _context.Categories.AnyAsync(x => x.Id == product.CategoryId))
             {
                 ModelState.AddModelError("CategoryId", "Xetaniz var!");
             }
-            ViewBag.ProductTypes = await _context.ProductTypes.ToListAsync();
-           
             if (!await _context.ProductTypes.AnyAsync(x => x.Id == product.ProductTypeId))
             {
                 ModelState.AddModelError("ProductTypeId", "Xetaniz var!");
             }
-
             if (!ModelState.IsValid)
             {
                 return View();
@@ -127,19 +132,20 @@ namespace dominospizza.Areas.Manage.Controllers
 
             if (product.ProductImage != null)
             {
-                if (product.ProductImage.ContentType != "image/png" && product.ProductImage.ContentType != "image/jpeg")
+                if (!product.ProductImage.IsImage())
                 {
-                    ModelState.AddModelError("ImageFile", "Jpeg ve ya png formatinda file daxil edilmelidir");
+                    ModelState.AddModelError("ProductImage", "Image formatinda file daxil edilmelidir");
                     return View();
                 }
                 if (product.ProductImage.Length > (1024 * 1024) * 5)
                 {
-                    ModelState.AddModelError("ImageFile", "File olcusu 5mb-dan cox olmaz!");
+                    ModelState.AddModelError("ProductImage", "File olcusu 5mb-dan cox olmaz!");
                     return View();
                 }
                 string rootPath = _env.WebRootPath;
                 var fileName = Guid.NewGuid().ToString() + product.ProductImage.FileName;
                 var path = Path.Combine(rootPath, "img/Product", fileName);
+
                 using (FileStream stream = new FileStream(path, FileMode.Create))
                 {
                     product.ProductImage.CopyTo(stream);
@@ -154,8 +160,8 @@ namespace dominospizza.Areas.Manage.Controllers
         }
         public async Task<IActionResult> Delete(int id)
         {
-            Product list = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
-            if (list == null)
+            Product product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
+            if (product == null)
             {
                 return RedirectToAction("index");
             }
@@ -166,10 +172,10 @@ namespace dominospizza.Areas.Manage.Controllers
             }
 
             string rootPath = _env.WebRootPath;
-            var path = Path.Combine(rootPath, "img/Product", list.Image);
+            var path = Path.Combine(rootPath, "img/Product", product.Image);
             System.IO.File.Delete(path);
 
-            _context.Products.Remove(list);
+            _context.Products.Remove(product);
             await _context.SaveChangesAsync();
             return RedirectToAction("index");
         }

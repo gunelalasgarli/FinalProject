@@ -63,6 +63,11 @@ namespace dominospizza.Areas.Manage.Controllers
             return View(appuserVM);
         }
         #endregion
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
 
         #region Activation
         [Authorize(Roles = "Admin")]

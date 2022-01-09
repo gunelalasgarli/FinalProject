@@ -29,6 +29,11 @@
                             }
                             else
                             {
+                                if (ViewBag.Role != "User")
+                                { <li class="nav-item">
+                                      <a class="nav-link" asp-area="Manage" asp-controller="Dashboard" asp-action="Index">Admin Panelə Keçid</a>
+                                </li>
+                                }
                                 <li class="nav-item">
                                     <a class="nav-link" asp-controller="Account" asp-action="Profile">Profil, @user.UserName</a>
                                 </li>
@@ -77,7 +82,12 @@
                         </a> 
                         <div class="user-dropdown">
                             <ul class="user-dropdown-list">
-                                <li class="user-dropdown-list-item"><a asp-controller="Account" asp-action="Profile"><i class="fas fa-user"></i>Profil</a></li>
+                                @if (ViewBag.Role == "User") { 
+                                    <li class="user-dropdown-list-item"><a asp-controller="Account" asp-action="Profile"><i class="fas fa-user"></i>Profil</a></li>
+                                }else
+                                {
+                                <li class="user-dropdown-list-item"><a asp-area="Manage" asp-controller="Dashboard" asp-action="Index"><i class="fas fa-unlock"></i> Admin Panel</a></li>
+                                }
                                 <li class="user-dropdown-list-item"><a asp-controller="Account" asp-action="Logout"><i class="fas fa-sign-out-alt"></i>Çıxış et</a></li>
                             </ul>
                         </div>
