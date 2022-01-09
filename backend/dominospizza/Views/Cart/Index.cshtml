@@ -2,6 +2,11 @@
 @{
     ViewData["Title"] = "Index";
     double total = 0;
+    foreach (var item in Model)
+        {
+            total += (double)item.Price * item.Count;
+        }
+        }
 }
 <section id="cart">
     <div class="container">
@@ -23,7 +28,7 @@
                                 </div>
                                 <div class="info-holder">
                                     <h4 class="product-title">
-                                       @item.Name
+                                        @item.Name
                                     </h4>
                                     <span class="quantity">@item.Count x</span>
                                     <span class="amount">@item.Price AZN</span>

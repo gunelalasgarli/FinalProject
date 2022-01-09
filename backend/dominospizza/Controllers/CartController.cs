@@ -17,7 +17,7 @@ namespace dominospizza.Controllers
         private readonly AppDbContext _context;
         private readonly UserManager<AppUser> _usermanager;
 
-        public CartController(AppDbContext context,UserManager<AppUser> usermanager)
+        public CartController(AppDbContext context, UserManager<AppUser> usermanager)
         {
             _context = context;
             _usermanager = usermanager;
@@ -41,8 +41,8 @@ namespace dominospizza.Controllers
                     Image = x.Image,
                     ProductId = x.ProductId,
                     Name = x.Name,
-                    Description=x.Description,
-                    Price=x.Total
+                    Description = x.Description,
+                    Price = x.Total
                 }).ToList();
             }
 
@@ -59,7 +59,7 @@ namespace dominospizza.Controllers
             {
                 #region AddCookie
                 string basket = HttpContext.Request.Cookies["Basket"];
-                if(basket == null)
+                if (basket == null)
                 {
                     productBaskets.Add(new BasketViewModel
                     {
@@ -82,7 +82,7 @@ namespace dominospizza.Controllers
                             ProductId = product.Id,
                             Count = count,
                             Description = product.Description,
-                            Image= product.Image,
+                            Image = product.Image,
                             Name = product.Name,
                             Price = (decimal)product.Price
                         });
@@ -93,7 +93,7 @@ namespace dominospizza.Controllers
                     }
 
                 }
-                HttpContext.Response.Cookies.Append("Basket",JsonConvert.SerializeObject(productBaskets));
+                HttpContext.Response.Cookies.Append("Basket", JsonConvert.SerializeObject(productBaskets));
                 #endregion
             }
             else
@@ -109,8 +109,8 @@ namespace dominospizza.Controllers
                         Description = product.Description,
                         Name = product.Name,
                         Image = product.Image,
-                        Total = (decimal)product.Price*count,
-                        AppUserId=user.Id
+                        Total = (decimal)product.Price * count,
+                        AppUserId = user.Id
                     });
                 }
                 else
@@ -153,7 +153,7 @@ namespace dominospizza.Controllers
             }
             else
             {
-                OrderItem product = _context.OrderItems.Where(x=>x.AppUserId==user.Id).FirstOrDefault(x => x.ProductId == Id);
+                OrderItem product = _context.OrderItems.Where(x => x.AppUserId == user.Id).FirstOrDefault(x => x.ProductId == Id);
                 if (product.Count == 1)
                 {
                     _context.OrderItems.Remove(product);

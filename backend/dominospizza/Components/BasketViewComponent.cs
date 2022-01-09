@@ -1,5 +1,6 @@
 ﻿using dominospizza.DAL;
 using dominospizza.Models;
+using dominospizza.ViewModels.Basket;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -19,8 +20,9 @@ namespace dominospizza.Components
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            List<Product> product = await _context.Products.ToListAsync();
-            return View(product);
+            List<BasketViewModel> products = new List<BasketViewModel>();
+
+            return View(products);
         }
     }
 }

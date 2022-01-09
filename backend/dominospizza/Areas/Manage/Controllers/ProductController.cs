@@ -26,12 +26,31 @@ namespace dominospizza.Areas.Manage.Controllers
             _context = context;
             _env = env;
         }
-        public async Task<IActionResult> Index(int page = 1)
+        
+        public async Task<IActionResult> Index(int page = 1,string search = null)
         {
+            var query = _context.Products.AsQueryable();
+
+            ViewBag.CurrentSearch = search;
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                query = query.Where(x => x.Name.Contains(search));
+            }
             ViewBag.SelectedPage = page;
             ViewBag.TotalPageCount = Math.Ceiling(_context.Products.Count() / 4m);
             List<Product> lists =await _context.Products.Include(a => a.Category).Skip((page - 1) * 4).Take(4).ToListAsync();
             return View(lists);
+        }
+        public IActionResult Search(string search)
+        {
+            var query = _context.Products.Include(x => x.Name)
+                                         .Include(x => x.Category).ThenInclude(x => x.Name)
+                                         .Include(x => x.ProductType).ThenInclude(x => x.Name)
+                                         .AsQueryable().Where(x => x.Name.Contains(search));
+            List<Product> products = query.OrderByDescending(x => x.Id).Take(10).ToList();
+
+            return PartialView("_SearchPartial", products);
         }
         public async Task<IActionResult> Edit(int id)
         {

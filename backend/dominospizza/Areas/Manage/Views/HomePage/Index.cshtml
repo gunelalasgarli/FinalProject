@@ -1,0 +1,94 @@
+﻿
+    @model HomePage
+    @{
+        ViewData["Title"] = "Index";
+    }
+
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Home Page CRUD</h4>
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="SectionImage1"></label>
+                        <input asp-for="SectionImage1" class="form-control">
+                        <span class="text-danger" asp-validation-for="SectionImage1"></span>
+                        @if (Model.SectionImg1 != null)
+                        {
+                            <div class="my-2">
+                                <img width="200" src="~/img/homepageslider/@Model.SectionImg1" />
+                            </div>
+                        }
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="SectionImage2"></label>
+                        <input asp-for="SectionImage2" class="form-control">
+                        <span class="text-danger" asp-validation-for="SectionImage2"></span>
+                        @if (Model.SectionImg2 != null)
+                        {
+                            <div class="my-2">
+                                <img width="200" src="~/img/homepageslider/@Model.SectionImg2" />
+                            </div>
+                        }
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SectionImage3"></label>
+                        <input asp-for="SectionImage3" class="form-control">
+                        <span class="text-danger" asp-validation-for="SectionImage3"></span>
+                        @if (Model.SectionImg3 != null)
+                        {
+                            <div class="my-2">
+                                <img width="200" src="~/img/homepageslider/@Model.SectionImg3" />
+                            </div>
+                        }
+                    </div><div class="form-group">
+                        <label asp-for="SignImage1"></label>
+                        <input asp-for="SignImage1" class="form-control">
+                        <span class="text-danger" asp-validation-for="SignImage1"></span>
+                        @if (Model.SignImg != null)
+                        {
+                            <div class="my-2">
+                                <img width="200" src="~/img/homepageslider/@Model.SignImg" />
+                            </div>
+                        }
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Title1">Title 1</label>
+                        <input class="form-control" asp-for="Title1" />
+                        <span class="text-danger" asp-validation-for="Title1" value="@(Model.Title1!=null?Model.Title1:"")"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Subtitle1">Subtitle 1</label>
+                        <input class="form-control" asp-for="Subtitle1" />
+                        <span class="text-danger" asp-validation-for="Subtitle1" value="@(Model.Subtitle1!=null?Model.Subtitle1:"")"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Title2">Title 2</label>
+                        <input class="form-control" asp-for="Title2" />
+                        <span class="text-danger" asp-validation-for="Title2" value="@(Model.Title2!=null?Model.Title2:"")"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Subtitle2">Subtitle 2</label>
+                        <input class="form-control" asp-for="Subtitle2" />
+                        <span class="text-danger" asp-validation-for="Subtitle2" value="@(Model.Subtitle2!=null?Model.Subtitle2:"")"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description1">Description 1</label>
+                        <input class="form-control" asp-for="Description1" />
+                        <span class="text-danger" asp-validation-for="Description1" value="@(Model.Description1!=null?Model.Description1:"")"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description2">Description 2</label>
+                        <input class="form-control" asp-for="Description2" />
+                        <span class="text-danger" asp-validation-for="Description2" value="@(Model.Description2!=null?Model.Description2:"")"></span>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary mr-2">Save</button>
+                    <a class="btn btn-light" asp-action="Index">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+

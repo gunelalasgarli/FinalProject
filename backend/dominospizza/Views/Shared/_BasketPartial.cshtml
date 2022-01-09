@@ -1,12 +1,11 @@
-﻿@model List<BasketViewModel>
+﻿@*@model List<BasketViewModel>
 @{ Layout = null;
-    double total = 0;
+    double totalCount = 0;
     foreach (var item in Model)
     {
-        total += (double)item.Price * item.Count;
+        totalCount += (double)item.Price * item.Count;
     } 
-    }
-
+}
 <li class="cart">
     <a asp-controller="Cart" asp-action="Index">
         <img src="~/img/icons/cart.png" alt="That's an image">
@@ -14,10 +13,12 @@
         <span>
             Səbət
         </span>
-        <span class="badge bg-danger basket">@Model.Count</span>
+        <span class="badge bg-danger basket"></span>
     </a>
+
     <div class="cart-dropdown">
-        <div class="cart-inside">
+        <div class="cart-inside"
+
             <div class="empty-cart">
                 <img src="img/homepageslider/empty-cart.844437f4.png" alt="" class="empty-cart-img">
                 <h1 class="empty-cart-text">sizin səbətiniz boşdur</h1>
@@ -51,15 +52,16 @@
             <div class="container">
                 <div class="row">
                     <div class="bottom bottom-left col-6">
-                        <button asp-controller="Cart" asp-action="Index" type="submit" class="btn btn-lg btn-outline-danger">
-                            Səbəti gör
+                        <button class="btn btn-lg btn-outline-danger addToCart">
+                            Səbəti
+                            gör
                         </button>
                     </div>
                     <div class="bottom bottom-right col-6">
-                        ÜMUMİ @total.ToString("F2") AZN
+                        ÜMUMİ @totalCount.ToString("F2") AZN alt="">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</li>
+</li>*@

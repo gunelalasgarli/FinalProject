@@ -1,0 +1,40 @@
+﻿@model Location
+@{
+    ViewData["Title"] = "Edit";
+
+}
+<div class="container-fluid">
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="@Model.Name">Name</label>
+            <input type="text" asp-for="@Model.Name" class="form-control" id="Name" placeholder="Name">
+            <span asp-validation-for="@Model.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Address">Address</label>
+            <input type="text" asp-for="@Model.Address" class="form-control" id="Address" placeholder="Address">
+            <span asp-validation-for="@Model.Address" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Phone">Phone</label>
+            <input type="text" asp-for="@Model.Phone" class="form-control" id="Phone" placeholder="Phone">
+            <span asp-validation-for="@Model.Phone" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.OpeningTime">Opening Time</label>
+            <input type="text" asp-for="@Model.OpeningTime" class="form-control" id="OpeningTime" placeholder="Opening Time">
+            <span asp-validation-for="@Model.OpeningTime" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.ClosingTime">Closeing Time</label>
+            <input type="text" asp-for="@Model.ClosingTime" class="form-control" id="ClosingTime" placeholder="Closing Time">
+            <span asp-validation-for="@Model.ClosingTime" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+        <button asp-action="Index" class="btn btn-secondary">Go Back</button>
+
+
+    </form>
+
+</div>
