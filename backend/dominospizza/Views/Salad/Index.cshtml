@@ -19,9 +19,9 @@
                         <br>
                         <div class="price">
                             <h6>@item.Price.ToString("F2") AZN</h6>
-                            <div data-id="@item.Id" class="btn btn-lg btn-outline-danger addToCart">
+                            <a  asp-controller="Cart" asp-action="addtocart" asp-route-Id="@item.Id" asp-route-count="1"  class="btn btn-lg btn-outline-danger addToCart">
                                 SƏBƏTƏ ƏLAVƏ ET
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>

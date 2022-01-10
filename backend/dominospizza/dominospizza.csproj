@@ -17,6 +17,8 @@
     <Compile Remove="Migrations\20211228135754_AddedPizzaTypesTable.Designer.cs" />
     <Compile Remove="Migrations\20211228140147_AddedProductTypeTable.cs" />
     <Compile Remove="Migrations\20211228140147_AddedProductTypeTable.Designer.cs" />
+    <Compile Remove="Migrations\20220108184306_AddedOrderTable.cs" />
+    <Compile Remove="Migrations\20220108184306_AddedOrderTable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
