@@ -19,6 +19,8 @@ namespace dominospizza.Components
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
+            ViewBag.Roles = _context.Roles.ToList();
+
             Settings setting  = await _context.Settings.FirstOrDefaultAsync();
 
             

@@ -245,7 +245,7 @@
 
 #navhead .navbar-item li .cart-dropdown .cart-inside .cart-list-item .info-holder .product-title {
   text-transform: uppercase;
-  font-weight: 900;
+  font-weight: 400;
 }
 
 #navhead .navbar-item li .cart-dropdown .cart-inside .cart-list-item .info-holder .quantity {
@@ -1000,22 +1000,23 @@ a .pizza-item-text .price .btn {
 }
 
 #cart .cart-inside {
-  font-family: "Roboto Condensed", sans-serif;
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 400;
 }
 
 #cart .cart-inside .empty-cart {
-  display: none;
+  
   margin: 50px;
   text-align: center;
 }
 
 #cart .cart-inside .empty-cart .empty-cart-img {
-  width: 400px;
+  width: 200px;
 }
 
 #cart .cart-inside .empty-cart .empty-cart-text {
   font-weight: 700;
-  font-size: 35px !important;
+  font-size: 25px !important;
 }
 
 #cart .cart-inside .cart-list {
@@ -1070,7 +1071,7 @@ a .pizza-item-text .price .btn {
 
 #cart .cart-inside .cart-list-item .info-holder .product-title {
   text-transform: uppercase;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 #cart .cart-inside .cart-list-item .info-holder .quantity {

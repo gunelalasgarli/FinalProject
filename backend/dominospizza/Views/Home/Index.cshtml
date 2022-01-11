@@ -79,12 +79,21 @@
                     <div class="innersection ">
                         <img class="bgimg" src="~/img/homepageslider/home4.jpg " alt="That's an image ">
                         <img class="rightimg" src="~/img/homepageslider/@Model.HomePages.SectionImg3" alt="">
-                        <a href="login.html">
-                            <button class="btn btn-lg btn-outline-danger">
-                                <i class="fas fa-shopping-cart"></i> INDI
-                                YARAT
-                            </button>
-                        </a>
+                        @if (!User.Identity.IsAuthenticated)
+                        {<a asp-controller="Account" asp-action="Login">
+                                <button class="btn btn-lg btn-outline-danger">
+                                    <i class="fas fa-shopping-cart"></i> İNDİ SİFARİŞ ET
+                                </button>
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Pizza" asp-action="Index">
+                                <button class="btn btn-lg btn-outline-danger">
+                                    <i class="fas fa-shopping-cart"></i> İNDİ SİFARİŞ ET
+                                </button>
+                            </a>
+                        }
                     </div>
                 </div>
             </div>

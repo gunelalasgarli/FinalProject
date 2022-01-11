@@ -198,10 +198,9 @@ namespace dominospizza.Controllers
             {
                 List<BasketItem> memberBasketItem =await _context.BasketItems.Where(x => x.AppUserId == user.Id).ToListAsync();
 
-                foreach (var item in memberBasketItem)
-                {
-                    _context.BasketItems.Remove(item);
-                }
+                
+                    _context.BasketItems.RemoveRange(memberBasketItem);
+                
 
                 _context.SaveChanges();
 

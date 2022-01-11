@@ -1,4 +1,19 @@
-$(document).ready(function() {
+
+$(document).ready(function () {
+    $('#search-input').keyup(function () {
+
+        
+        let search = $(this).val().trim();
+        if (search.length === 0) {
+        }
+        $.ajax({
+            url: `Product/Search?search=${search}`,
+            method: 'GET',
+            success: function (resp) {
+                $('#dataTable').append(resp);
+            }
+        })
+    })
     $('.slick-list').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -133,16 +148,7 @@ $(document).ready(function() {
         }
     });
 
-    $('#search-input').keyup(function () {
-        let search = $(this).val();
-        $.ajax({
-            url: 'https://localhost:5433/manage/product/search?search=' + search,
-            method: 'get',
-            success: function (resp) {
-                $('.search-list').html(resp);
-            }
-        })
-    })
+   
     //$(document).on("click", ".add-basket", function (e) {
     //    e.preventDefault();
 
@@ -179,16 +185,7 @@ $(document).ready(function() {
 
 
 
-    //$('#search-input').keyup(function () {
-    //    let search = $(this).val();
-    //    $.ajax({
-    //        url: 'https://localhost:5433/product/search?search=' + search,
-    //        method: 'get',
-    //        success: function (resp) {
-    //            $('.search-list').html(resp);
-    //        }
-    //    })
-    //})
+    
 
 
 });

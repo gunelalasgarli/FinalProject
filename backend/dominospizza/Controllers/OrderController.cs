@@ -24,38 +24,67 @@ namespace dominospizza.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(BasketViewModel basketViewModel)
         {
-            List<FullOrder> fullOrders = _context.FullOrders.Include(x => x.Orders).Where(x => x.AppUser.UserName == User.Identity.Name).ToList();
-            return View(fullOrders);
-        }
-       
-        public async Task<IActionResult> PlaceOrder()
-        {
-
-            List<FullOrder> fullOrders = _context.FullOrders.Include(x => x.Orders).Where(x => x.AppUser.UserName == User.Identity.Name).ToList();
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
-
-
-            foreach (var item in fullOrders)
+            if (!ModelState.IsValid) return View();
+            basketViewModel = new BasketViewModel
             {
-                _context.FullOrders.Add(new FullOrder
-                {
-                    OrderDescription = item.OrderDescription,
-                    Address = item.Address,
-                    Phone = item.Phone,
-                    CreatedAt = item.CreatedAt,
-                    TotalAmount = item.TotalAmount,
-                    AppUserId = user.Id
-                });
-            }
+                Address=basketViewModel.Address,
+                Phone=basketViewModel.Phone,
+                OrderDescription=basketViewModel.OrderDescription
+            };
 
-            await _context.SaveChangesAsync();
-
-            Response.Cookies.Delete("Basket");
-
-            return RedirectToAction("Index", "Home");
+            return View(basketViewModel);
         }
+
+        //private void _addOrderItem(ref FullOrder fullOrder, BasketItem basketItem,Product product, int count)
+        //{
+        //    Order order = new Order
+        //    {
+        //        ProductId = basketItem.ProductId,
+        //        Name = product.Name,
+        //        Image=product.Image,
+        //        Count = count,
+        //        Total = (decimal)product.Price * count
+
+        //    };
+
+        //    fullOrder.Orders.Add(order);
+        //}
+
+
+        //public async Task<IActionResult> PlaceOrder()
+        //{
+
+        //    List<FullOrder> fullOrders = _context.FullOrders.Include(x => x.Orders).Where(x => x.AppUser.UserName == User.Identity.Name).ToList();
+        //    var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+
+        //    foreach (var item in fullOrders)
+        //    {
+        //        _context.FullOrders.Add(new FullOrder
+        //        {
+        //            OrderDescription = item.OrderDescription,
+        //            Address = item.Address,
+        //            Phone = item.Phone,
+        //            CreatedAt = item.CreatedAt,
+        //            TotalAmount = item.TotalAmount,
+        //            AppUserId = user.Id
+        //        });
+        //    }
+
+        //    await _context.SaveChangesAsync();
+
+        //    Response.Cookies.Delete("Basket");
+
+        //     List<BasketItem> memberBasketItem =await _context.BasketItems.Where(x => x.AppUserId == user.Id).ToListAsync();
+
+        //       _context.BasketItems.RemoveRange(memberBasketItem);
+
+        //       _context.SaveChanges();
+
+        //    return RedirectToAction("Index", "Home");
+        //}
 
     }
 }

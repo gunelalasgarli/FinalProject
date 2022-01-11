@@ -1,7 +1,7 @@
 ﻿@model List<BasketViewModel> 
 @{
     ViewData["Title"] = "Index";
-    
+
     double total = 0;
     //foreach (var item in Model)
     //    {
@@ -12,16 +12,23 @@
 <section id="cart">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-md-6">
-                @foreach (var item in Model)
-                {
-                    total += (double)item.Price * item.Count;
-                    <div class="cart-inside">
+            <div class="col-lg-12">
+                <div class="cart-inside">
+                    @if (Model.Count == 0)
+                    {
                         <div class="empty-cart">
-                            <img src="img/homepageslider/empty-cart.844437f4.png" alt="" class="empty-cart-img">
+                            <img src="~/img/homepageslider/empty-cart.844437f4.png" alt="" class="empty-cart-img">
                             <h1 class="empty-cart-text">sizin səbətiniz boşdur</h1>
                         </div>
+                    }
+
+                    else 
+                    {
+                         @foreach (var item in Model)
+                    {
+                        total += (double)item.Price * item.Count;
                         <ul class="cart-list">
+
                             <li class="cart-list-item">
                                 <div class="item-image-holder">
                                     <img src="~/img/Product/@item.Image" alt="That's an image">
@@ -40,9 +47,11 @@
                                     </a>
                                 </div>
                             </li>
-                        </ul>
-                    </div>
-                }
+                        </ul>}
+                    }
+                </div>
+
+
                 <hr>
                 <div class="cart-bottom">
                     <div class="container">
@@ -54,6 +63,7 @@
                         <div class="row">
                             <form class="text-center" method="post">
                                 <button asp-controller="Cart" asp-action="EmptyCart" type="submit" class="btn btn-danger">Səbəti Boşalt</button>
+                                <button asp-controller="Order" asp-action="Index" type="submit" class="btn btn-danger">Sifariş et</button>
                             </form>
                         </div>
                     </div>

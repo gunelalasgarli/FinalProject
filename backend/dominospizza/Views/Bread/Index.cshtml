@@ -9,28 +9,27 @@
         @foreach (Product item in Model)
         {
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <a href="">
-                    <div class="pizza-item">
-                        <div class="pizza-item-img">
-                            <img src="~/img/Product/@item.Image" alt="That's an image">
-
+                
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="~/img/Product/@item.Image" alt="That's an image">
+                    </div>
+                    <div class="menu-item-text">
+                        <div class="text-head">
+                            <h4>@item.Name</h4>
                         </div>
-                        <div class="pizza-item-text">
-                            <div class="text-head">
-                                <h4>@item.Name</h4>
-                            </div>
-                            <div class="text-description">
-                                <p>@item.Description</p>
-                            </div>
-                            <div class="price">
-                                <h6>@item.Price.ToString("F2") AZN</h6>
-                                <div data-id="@item.Id" class="btn btn-lg btn-outline-danger addToCart">
-                                    SƏBƏTƏ ƏLAVƏ ET
-                                </div>
-                            </div>
+                        <div class="text-description">
+                            <p>@item.Description</p>
+                        </div>
+                        <div class="price">
+                            <h6>@item.Price.ToString("F2")AZN</h6>
+                            <a asp-controller="Cart" asp-action="addtocart" asp-route-Id="@item.Id" asp-route-count="1" class="btn btn-lg btn-outline-danger addToCart">
+                                SƏBƏTƏ ƏLAVƏ ET
+                            </a>
                         </div>
                     </div>
-                </a>
+                </div>
+               
             </div>
 
         }

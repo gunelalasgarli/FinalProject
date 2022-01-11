@@ -158,13 +158,15 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> @if (User.Identity.IsAuthenticated)
-                                {@user.UserName}</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    @if (User.Identity.IsAuthenticated)
+                                    {@user.UserName}
+                                </span>
                                 <img class="img-profile rounded-circle"
                                      src="~/img/icons/account before.png">
                             </a>
                             <!-- Dropdown - User Information -->
-                           
+
                         </li>
 
                     </ul>
@@ -213,7 +215,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" >Logout</a>
+                    <a class="btn btn-primary">Logout</a>
                 </div>
             </div>
         </div>
@@ -228,13 +230,10 @@
 
     <!-- Custom scripts for all pages-->
     <script src="~/manage/js/sb-admin-2.min.js"></script>
+    <script src="~/js/script.js"></script>
+    @RenderSection("Scripts", required: false);
 
-    <!-- Page level plugins -->
-    <script src="~/manage/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="~/manage/js/demo/chart-area-demo.js"></script>
-    <script src="~/manage/js/demo/chart-pie-demo.js"></script>
+    
 
 </body>
 

@@ -20,11 +20,11 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h4 class="card-title">Products</h4>
-
         <div class="col-md-8 offset-md-2">
             <form method="get">
                 <div class="input-group">
-                    <input type="text" name="search" class="form-control form-control-lg" placeholder="Type your keywords here">
+                    <input type="text" name="search" id="search-input" class="form-control form-control-lg" placeholder="Type your keywords here">
+                    
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-lg btn-default">
                             <i class="fa fa-search"></i>
@@ -35,12 +35,12 @@
         </div>
     </div>
 
-    <div class="card-body">
+    <div class="card-body ">
         <a asp-controller="Product" asp-action="Create" class="btn btn-outline-success">
             Create
         </a>
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered testClass" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -113,8 +113,6 @@
 </div>
 
 
-<script src="~/Manage/vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="~/Manage/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <style>
     .backendButton:hover {
         background-image: linear-gradient(to right,red,blue) !important;

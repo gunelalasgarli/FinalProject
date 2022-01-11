@@ -19,7 +19,7 @@ namespace dominospizza.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            List<Product> product = await _context.Products.Where(p => p.CategoryId == 2&& p.IsDeleted == false).Include(p=>p.ProductType).ToListAsync();
+            List<Product> product = await _context.Products.Where(p => p.CategoryId == 2&& p.IsDeleted == false).Include(p=>p.ProductType).Include(p => p.ProductSizes).ToListAsync();
             ViewBag.Types = _context.ProductTypes.Include(x => x.Products).ToList();
             return View(product);
         }

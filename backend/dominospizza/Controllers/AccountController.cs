@@ -225,7 +225,7 @@ namespace dominospizza.Controllers
             return RedirectToAction("Login");
         }
 
-        //[Authorize(Roles = "Member")]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> Profile()
         {
             AppUser member = await _userManager.FindByNameAsync(User.Identity.Name);
@@ -241,7 +241,7 @@ namespace dominospizza.Controllers
         }
 
         [HttpPost]
-        //[Authorize(Roles = "Member")]
+        [Authorize(Roles = "User")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Profile(ProfileViewModel profileVM)
         {

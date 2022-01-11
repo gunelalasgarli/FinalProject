@@ -44,13 +44,11 @@ namespace dominospizza.Areas.Manage.Controllers
         }
         public IActionResult Search(string search)
         {
-            var query = _context.Products.Include(x => x.Name)
-                                         .Include(x => x.Category).ThenInclude(x => x.Name)
-                                         .Include(x => x.ProductType).ThenInclude(x => x.Name)
-                                         .AsQueryable().Where(x => x.Name.Contains(search));
-            List<Product> products = query.OrderByDescending(x => x.Id).Take(10).ToList();
+            var query = _context.Products.Where(x => x.Name.ToLower().Contains(search))
+                                         .Include(x => x.Category)
+                                         .ToListAsync();
 
-            return PartialView("_SearchPartial", products);
+            return PartialView("_SearchPartial", query);
         }
         public async Task<IActionResult> Edit(int id)
         {

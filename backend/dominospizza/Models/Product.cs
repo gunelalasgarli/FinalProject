@@ -22,7 +22,8 @@ namespace dominospizza.Models
         public IEnumerable<BasketItem> BasketItems { get; set; }
         [NotMapped]
         public IFormFile ProductImage { get; set; }
-        public List<ProductSize> ProductSizes { get; set; }
+        public Nullable<int> ProductSizeId { get; set; }
+        public ProductSize ProductSizes { get; set; }
         [NotMapped]
         public int Count { get; set; }
 

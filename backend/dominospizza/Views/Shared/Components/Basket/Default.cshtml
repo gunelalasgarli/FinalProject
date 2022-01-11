@@ -1,11 +1,10 @@
 ﻿@model List<BasketViewModel>
-@{ Layout = null;
+@{ 
     double total = 0;
-    foreach (var item in Model)
-    {
-        total += (double)item.Price * item.Count;
-    } 
-    }
+    //foreach (var item in Model)
+    //{
+    //} 
+}
 
 <li class="cart">
     <a asp-controller="Cart" asp-action="Index">
@@ -18,42 +17,51 @@
     </a>
     <div class="cart-dropdown">
         <div class="cart-inside">
-            <div class="empty-cart">
-                <img src="img/homepageslider/empty-cart.844437f4.png" alt="" class="empty-cart-img">
-                <h1 class="empty-cart-text">sizin səbətiniz boşdur</h1>
-            </div>
-            <ul class="cart-list">
-                @foreach (var item in Model)
-                {
-                    <li class="cart-list-item">
-                        <div class="item-image-holder">
-                            <img src="~/img/Product/@item.Image">
-                        </div>
-                        <div class="info-holder">
-                            <h6 class="product-title"><a>@item.Name</a></h6>
-                            <span class="quantity">@item.Count x</span>
-                            <span class="amount">@item.Price$</span>
-                        </div>
-                        <div class="item-editor">
-                            <a class="item-remove">
-                                <i class="fal fa-times">
-                                </i>
-                            </a>
-                        </div>
+            @if (Model.Count == 0)
+            {
+                <div class="empty-cart">
+                    <img src="~/img/homepageslider/empty-cart.844437f4.png" alt="" class="empty-cart-img">
+                    <h1 class="empty-cart-text">sizin səbətiniz boşdur</h1>
+                </div>
+            }
+            else
+            {
+                <ul class="cart-list">
+                    @foreach (var item in Model)
+                    {
+                        total += (double)item.Price * item.Count;
 
-                    </li>
+                <li class="cart-list-item">
+                    <div class="item-image-holder">
+                        <img src="~/img/Product/@item.Image" alt="That's an image">
 
+                    </div>
+                    <div class="info-holder">
+                        <h4 class="product-title">
+                            @item.Name
+                        </h4>
+                        <span class="quantity">@item.Count x</span>
+                        <span class="amount">@item.Price AZN</span>
+                    </div>
+                    <div class="item-editor">
+                        <a class="item-remove" asp-controller="Cart" asp-action="removefromcart" asp-route-id="@item.ProductId">
+                            <i class="fal fa-times"></i>
+                        </a>
+                    </div>
+                </li>
                 }
 
-            </ul>
+                </ul>
+            }
+
         </div>
         <div class="cart-bottom">
             <div class="container">
                 <div class="row">
                     <div class="bottom bottom-left col-6">
-                        <button asp-controller="Cart" asp-action="Index" type="submit" class="btn btn-lg btn-outline-danger">
+                        <a asp-controller="Cart" asp-action="Index" type="submit" class="btn btn-lg btn-outline-danger">
                             Səbəti gör
-                        </button>
+                        </a>
                     </div>
                     <div class="bottom bottom-right col-6">
                         ÜMUMİ @total.ToString("F2") AZN
