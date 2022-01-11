@@ -12,5 +12,6 @@ namespace dominospizza.Models
         public int SizesId { get; set; }
         public Product Product { get; set; }
         public Sizes Sizes { get; set; }
+        public IEnumerable<BasketItem> BasketItems { get; set; }
     }
 }

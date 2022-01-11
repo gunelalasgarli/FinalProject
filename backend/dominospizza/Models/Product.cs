@@ -19,7 +19,7 @@ namespace dominospizza.Models
         public ProductType ProductType { get; set; }
         public Category Category { get; set; }
         public bool IsDeleted { get; set; }
-
+        public IEnumerable<BasketItem> BasketItems { get; set; }
         [NotMapped]
         public IFormFile ProductImage { get; set; }
         public List<ProductSize> ProductSizes { get; set; }

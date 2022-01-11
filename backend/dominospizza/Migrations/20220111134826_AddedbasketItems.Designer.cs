@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using dominospizza.DAL;
 
 namespace dominospizza.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220111134826_AddedbasketItems")]
+    partial class AddedbasketItems
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -237,19 +239,9 @@ namespace dominospizza.Migrations
                     b.Property<int>("Count")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ProductSizeId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AppUserId");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("ProductSizeId");
 
                     b.ToTable("BasketItems");
                 });
@@ -463,7 +455,7 @@ namespace dominospizza.Migrations
                     b.Property<int>("Count")
                         .HasColumnType("int");
 
-                    b.Property<int>("FullOrderId")
+                    b.Property<int?>("FullOrderId")
                         .HasColumnType("int");
 
                     b.Property<string>("Image")
@@ -481,8 +473,6 @@ namespace dominospizza.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("FullOrderId");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("Orders");
                 });
@@ -691,16 +681,6 @@ namespace dominospizza.Migrations
                     b.HasOne("dominospizza.Models.AppUser", "AppUser")
                         .WithMany()
                         .HasForeignKey("AppUserId");
-
-                    b.HasOne("dominospizza.Models.Product", "Product")
-                        .WithMany("BasketItems")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("dominospizza.Models.ProductSize", "ProductSize")
-                        .WithMany("BasketItems")
-                        .HasForeignKey("ProductSizeId");
                 });
 
             modelBuilder.Entity("dominospizza.Models.DrinkSize", b =>
@@ -723,15 +703,7 @@ namespace dominospizza.Migrations
                 {
                     b.HasOne("dominospizza.Models.FullOrder", "FullOrder")
                         .WithMany("Orders")
-                        .HasForeignKey("FullOrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("dominospizza.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FullOrderId");
                 });
 
             modelBuilder.Entity("dominospizza.Models.Product", b =>

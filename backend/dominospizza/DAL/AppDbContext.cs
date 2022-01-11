@@ -27,5 +27,7 @@ namespace dominospizza.DAL
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<ProductType> ProductTypes { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<FullOrder> FullOrders { get; set; }
+        public virtual DbSet<BasketItem> BasketItems { get; set; }
     }
 }

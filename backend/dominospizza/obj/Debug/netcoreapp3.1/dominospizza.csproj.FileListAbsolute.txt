@@ -210,3 +210,5 @@ C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\n
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Locations\Index.cshtml.g.cs
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Locations\Create.cshtml.g.cs
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Locations\Edit.cshtml.g.cs
+C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Order\Index.cshtml.g.cs
+C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Order\Confirm.cshtml.g.cs

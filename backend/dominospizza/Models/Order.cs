@@ -12,17 +12,11 @@ namespace dominospizza.Models
         public int ProductId { get; set; }
         public string Image { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
         public int Count { get; set; }
         public decimal Total { get; set; }
-        public AppUser AppUser { get; set; }
-        public string AppUserId { get; set; }
-        [StringLength(maximumLength: 250)]
-        public string Address { get; set; }
-        [Required]
-        [StringLength(maximumLength: 25)]
-        public string Phone { get; set; }
-        public string OrderDescription { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public int FullOrderId { get; set; }
+        public FullOrder FullOrder { get; set; }
+        public Product Product { get; set; }
+
     }
 }

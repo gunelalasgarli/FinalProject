@@ -19,6 +19,14 @@
     <Compile Remove="Migrations\20211228140147_AddedProductTypeTable.Designer.cs" />
     <Compile Remove="Migrations\20220108184306_AddedOrderTable.cs" />
     <Compile Remove="Migrations\20220108184306_AddedOrderTable.Designer.cs" />
+    <Compile Remove="Migrations\20220110204336_AddedOrderRelations.cs" />
+    <Compile Remove="Migrations\20220110204336_AddedOrderRelations.Designer.cs" />
+    <Compile Remove="Migrations\20220110204752_AddedDescriptionColtoOrderTable.cs" />
+    <Compile Remove="Migrations\20220110204752_AddedDescriptionColtoOrderTable.Designer.cs" />
+    <Compile Remove="Migrations\20220111113127_AddedBasketItemTable.cs" />
+    <Compile Remove="Migrations\20220111113127_AddedBasketItemTable.Designer.cs" />
+    <Compile Remove="Migrations\20220111134553_ADdedBasketItemsTable.cs" />
+    <Compile Remove="Migrations\20220111134553_ADdedBasketItemsTable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -10,10 +10,12 @@ namespace dominospizza.ViewModels.Basket
         public int ProductId { get; set; }
         public string Name { get; set; }
         public string Image { get; set; }
-        public string Phone { get; set; } = "5";
         public int Count { get; set; }
         public decimal Total { get; set; }
-        public string Description { get; set; }
+        public double TotalAmount { get; set; } = 1;
         public decimal Price { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
+        public string OrderDescription { get; set; }
     }
 }

@@ -91,14 +91,12 @@
             let urlPart = url.slice(url.indexOf('count'), url.indexOf('count') + 7);
             url = url.replace(urlPart, `count=${quantitiy}`);
             document.querySelectorAll('.addToCart')[1].setAttribute('href', url);
-
         }
     });
 
     $('.scrollable label').on('click', function () {
         $('#total-price').text($(this).find('.price-size').text());
         price = $(this).find('.price-size').text().slice(0, -1);
-
     });
 
 </script>

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using dominospizza.DAL;
 
 namespace dominospizza.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220110204041_AddedFullOrderTable")]
+    partial class AddedFullOrderTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -224,36 +226,6 @@ namespace dominospizza.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("dominospizza.Models.BasketItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ProductSizeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("ProductSizeId");
-
-                    b.ToTable("BasketItems");
-                });
-
             modelBuilder.Entity("dominospizza.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -366,8 +338,10 @@ namespace dominospizza.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("OrderDescription")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Phone")
                         .IsRequired()
@@ -463,9 +437,6 @@ namespace dominospizza.Migrations
                     b.Property<int>("Count")
                         .HasColumnType("int");
 
-                    b.Property<int>("FullOrderId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
@@ -479,10 +450,6 @@ namespace dominospizza.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FullOrderId");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("Orders");
                 });
@@ -686,23 +653,6 @@ namespace dominospizza.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("dominospizza.Models.BasketItem", b =>
-                {
-                    b.HasOne("dominospizza.Models.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId");
-
-                    b.HasOne("dominospizza.Models.Product", "Product")
-                        .WithMany("BasketItems")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("dominospizza.Models.ProductSize", "ProductSize")
-                        .WithMany("BasketItems")
-                        .HasForeignKey("ProductSizeId");
-                });
-
             modelBuilder.Entity("dominospizza.Models.DrinkSize", b =>
                 {
                     b.HasOne("dominospizza.Models.Sizes", "Sizes")
@@ -717,21 +667,6 @@ namespace dominospizza.Migrations
                     b.HasOne("dominospizza.Models.AppUser", "AppUser")
                         .WithMany()
                         .HasForeignKey("AppUserId");
-                });
-
-            modelBuilder.Entity("dominospizza.Models.Order", b =>
-                {
-                    b.HasOne("dominospizza.Models.FullOrder", "FullOrder")
-                        .WithMany("Orders")
-                        .HasForeignKey("FullOrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("dominospizza.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("dominospizza.Models.Product", b =>
