@@ -35,6 +35,15 @@ namespace dominospizza.Controllers
             }
             else
             {
+                //AppUser appUser = await _usermanager.FindByNameAsync(User.Identity.Name);
+                //List<BasketItems> items = _context.BasketItems.Where(x => x.AppUserId == appUser.Id && x.isDeleted == false).ToList();
+                //for (int i = 0; i < basketItems.Quantities.Count(); i++)
+                //{
+                //    items[i].Count = basketItems.Quantities[i];
+                //}
+                //await _context.SaveChangesAsync();
+                //return Redirect(HttpContext.Request.Headers["Referer"].ToString());
+
                 basketProducts = await _context.BasketItems.Where(x=>x.AppUserId==user.Id && x.IsDeleted == false).Select(x => new BasketViewModel
                 {
                     Count = x.Count,
@@ -49,31 +58,41 @@ namespace dominospizza.Controllers
 
             return View(basketProducts);
         }
+        
+            
         public async Task<IActionResult> AddToCart(int? Id, int count,int size)
         {
 
-            if (Id == null) return NotFound();
+            if (Id == null) return RedirectToAction("Index", "Error");
             Product product = await _context.Products.Include(x => x.Category).FirstOrDefaultAsync(x => x.Id == Id);
             string sizeStr = "";
             double price = 0;
-            if (product == null) return NotFound();
-            switch (size)
+            if (product == null) return RedirectToAction("Index", "Error");
+            if (product.ProductTypeId != 13) 
             {
-                case 1:
-                    sizeStr = "Kicik";
-                    price = product.Price;
-                    break;
-                case 2:
-                    sizeStr = "Orta";
-                    price = product.Price*1.6;
-                    break;
-                case 3:
-                    sizeStr = "Böyük";
-                    price = product.Price * 2;
-                    break;
-                default:
-                    break;
+                switch (size)
+                {
+                    case 1:
+                        sizeStr = "Kicik";
+                        price = product.Price;
+                        break;
+                    case 2:
+                        sizeStr = "Orta";
+                        price = product.Price * 1.6;
+                        break;
+                    case 3:
+                        sizeStr = "Böyük";
+                        price = product.Price * 2;
+                        break;
+                    default:
+                        break;
+                }
             }
+            else
+            {
+                price = product.Price;
+            }
+           
             AppUser user = User.Identity.IsAuthenticated ? await _usermanager.FindByNameAsync(User.Identity.Name) : null;
             List<BasketViewModel> productBaskets = new List<BasketViewModel>();
             string basket = HttpContext.Request.Cookies["Basket"];
@@ -148,6 +167,7 @@ namespace dominospizza.Controllers
 
                 //await _context.SaveChangesAsync();
                 #endregion
+
                 BasketItem memberBasketItem = _context.BasketItems.FirstOrDefault(x => x.AppUserId == user.Id && x.ProductId==product.Id && x.IsDeleted == false);
                 if (memberBasketItem == null)
                 {
@@ -172,18 +192,18 @@ namespace dominospizza.Controllers
                 }
                
             }
-            productBaskets = _context.BasketItems.Where(x => x.AppUserId == user.Id).Select(x =>
-                  new BasketViewModel
-                  {
-                      ProductId = product.Id,
-                      Count = count,
-                      Size = sizeStr,
-                      Name = product.Name,
-                      Image = product.Image,
-                      Total = (decimal)price * count,
-                  }).ToList();
+                productBaskets = _context.BasketItems.Select(x =>
+                      new BasketViewModel
+                      {
+                          ProductId = product.Id,
+                          Count = count,
+                          Size = sizeStr,
+                          Name = product.Name,
+                          Image = product.Image,
+                          Total = (decimal)price * count,
+                      }).ToList();
 
-            _context.SaveChanges();
+                _context.SaveChanges();
                
                 return RedirectToAction(nameof(Index), "Home");
         }
@@ -248,7 +268,7 @@ namespace dominospizza.Controllers
 
         public async Task<IActionResult> RemoveFromCart(int? Id)
         {
-            if (Id == null) return NotFound();
+            if (Id == null) return RedirectToAction("Index", "Error");
             List<BasketViewModel> productBaskets = new List<BasketViewModel>();
 
             AppUser user = User.Identity.IsAuthenticated ? await _usermanager.FindByNameAsync(User.Identity.Name) : null;
@@ -258,7 +278,7 @@ namespace dominospizza.Controllers
                 string basketStr = HttpContext.Request.Cookies["Basket"];
                 productBaskets = JsonConvert.DeserializeObject<List<BasketViewModel>>(basketStr);
                 BasketViewModel productBasket = productBaskets.FirstOrDefault(x => x.ProductId == Id);
-                if (productBasket == null) return NotFound();
+                if (productBasket == null) return RedirectToAction("Index", "Error");
 
                 if (productBasket.Count == 1 || productBasket.Count <= 0)
                 {

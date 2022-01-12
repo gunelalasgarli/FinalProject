@@ -107,7 +107,7 @@ namespace dominospizza.Areas.Manage.Controllers
         {
             Category category = _context.Categories.FirstOrDefault(x => x.Id == id&& x.IsDeleted==false);
 
-            if (category == null) return RedirectToAction("index", "error");
+            if (category == null) return RedirectToAction("Index", "Error");
 
             return View(category);
         }
@@ -120,7 +120,7 @@ namespace dominospizza.Areas.Manage.Controllers
 
             Category existCategory = _context.Categories.FirstOrDefault(x => x.Id == category.Id && x.IsDeleted==false);
 
-            if (existCategory == null) return RedirectToAction("index", "error");
+            if (existCategory == null) return RedirectToAction("Index", "Error");
 
             if (category.CategoryImage != null)
             {

@@ -133,12 +133,12 @@ namespace dominospizza.Controllers
         {
             if (string.IsNullOrWhiteSpace(email))
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error");
             }
             AppUser appUser = await _userManager.FindByEmailAsync(email);
 
             if (appUser == null)
-                return NotFound();
+                return RedirectToAction("Index", "Error");
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress("Blueoceanel", "blueoceanelexample@gmail.com"));
 
@@ -172,14 +172,14 @@ namespace dominospizza.Controllers
         {
             if (string.IsNullOrWhiteSpace(Id) || string.IsNullOrWhiteSpace(token))
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error");
             }
 
             AppUser appuser = await _userManager.FindByIdAsync(Id);
             var resetToken = await _userManager.GeneratePasswordResetTokenAsync(appuser);
             if (appuser == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error");
             }
 
             ResetPasswordVM resetPasswordVM = new ResetPasswordVM
@@ -204,13 +204,13 @@ namespace dominospizza.Controllers
             }
             if (string.IsNullOrWhiteSpace(resetPasswordVM.Id) || string.IsNullOrWhiteSpace(resetPasswordVM.Token))
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error");
             }
 
             AppUser appuser = await _userManager.FindByIdAsync(resetPasswordVM.Id);
             if (appuser == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error");
             }
 
             IdentityResult identityResult = await _userManager.ResetPasswordAsync(appuser, resetPasswordVM.Token, resetPasswordVM.Password);

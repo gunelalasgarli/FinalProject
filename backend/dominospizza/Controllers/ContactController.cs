@@ -1,5 +1,6 @@
 ﻿using dominospizza.DAL;
 using dominospizza.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,7 +21,6 @@ namespace dominospizza.Controllers
             _userManager = userManager;
         }
 
-
         public IActionResult Index()
         {
             return View();
@@ -29,7 +29,7 @@ namespace dominospizza.Controllers
         {
             TempData["Success"] = false;
 
-            if (!ModelState.IsValid) return NotFound();
+            if (!ModelState.IsValid) return View();
 
             AppUser appUser = await _userManager.FindByNameAsync(User.Identity.Name);
 

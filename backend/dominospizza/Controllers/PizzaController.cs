@@ -26,9 +26,9 @@ namespace dominospizza.Controllers
 
         public async Task<IActionResult> Detail(int? Id)
         {
-            if (Id == null) return NotFound();
+            if (Id == null) return RedirectToAction("Index", "Error");
             Product product = await _context.Products.Where(p => p.IsDeleted==false && p.CategoryId == 2).FirstOrDefaultAsync(p => p.Id == Id);
-            if (product == null) return NotFound();
+            if (product == null) return RedirectToAction("Index", "Error");
 
             return PartialView("_ModalPartial",product);
         }

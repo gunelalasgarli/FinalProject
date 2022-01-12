@@ -36,7 +36,7 @@ namespace dominospizza.Controllers
         {
             TempData["Success"] = false;
 
-            if (!ModelState.IsValid) return NotFound();
+            if (!ModelState.IsValid) return RedirectToAction("Index", "Error");
 
             AppUser appUser = await _userManager.FindByNameAsync(User.Identity.Name);
 

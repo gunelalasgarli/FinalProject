@@ -3,15 +3,15 @@
     ViewData["Title"] = "Index";
     if (TempData["Success"] != null)
     {
-    if (bool.Parse(TempData["Success"].ToString()) == true)
-    {
-        <input type="hidden" id="success" />
+        if (bool.Parse(TempData["Success"].ToString()) == true)
+        {
+            <input type="hidden" id="success" />
+        }
+        else
+        {
+            <input type="hidden" id="error" />
+        }
     }
-    else
-    {
-        <input type="hidden" id="error" />
-}
-}
 }
 <section id="contact-us">
     <div class="container">
@@ -23,25 +23,35 @@
         <div class="form-section">
             <form class="row" method="post" asp-action="SendMessage">
                 <div class="col-md-6 contact-item">
-                    <label for="name" class="form-label">Ad*</label>
+                    <label asp-for="Name" class="form-label">Ad*</label>
                     <input asp-for="Name" type="text" class="form-control" id="inputAddress" placeholder="Ad">
+                    <span class="text-danger" asp-validation-for="Name"></span>
+
                 </div>
                 <div class="col-md-6 contact-item">
-                    <label for="name" class="form-label">Soyad</label>
+                    <label asp-for="Surname" class="form-label">Soyad</label>
                     <input asp-for="Surname" type="text" class="form-control" id="inputAddress2" placeholder="Soyad">
+                    <span class="text-danger" asp-validation-for="Surname"></span>
+
                 </div>
                 <div class="col-md-6 contact-item">
-                    <label for="email" class="form-label">Email</label>
+                    <label asp-for="Email" class="form-label">Email</label>
                     <input asp-for="Email" type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    <span class="text-danger" asp-validation-for="Email"></span>
+
                 </div>
                 <div class="col-md-6 contact-item">
-                    <label for="tel" class="form-label">Mobil nömrə</label>
+                    <label asp-for="Phone" class="form-label">Mobil nömrə</label>
                     <input asp-for="Phone" type="tel" class="form-control" id="inputCity" placeholder="Mobil nömrə">
+                    <span class="text-danger" asp-validation-for="Phone"></span>
+
                 </div>
 
                 <div class="col-md-6 contact-item">
-                    <label for="message" class="form-label">Sizin Mesajınız</label>
+                    <label asp-for="MessageDescription" class="form-label">Sizin Mesajınız</label>
                     <textarea asp-for="MessageDescription" class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Sizin Mesajınız"></textarea>
+                    <span class="text-danger" asp-validation-for="MessageDescription"></span>
+
                 </div>
 
                 <div class="col-12 contact-btn">

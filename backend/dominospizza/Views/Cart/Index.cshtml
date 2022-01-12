@@ -1,13 +1,16 @@
-﻿@model List<BasketViewModel> 
-@{
-    ViewData["Title"] = "Index";
+﻿@model List<BasketViewModel>
+@{ ViewData["Title"] = "Index";
 
     double total = 0;
     //foreach (var item in Model)
     //    {
     //        total += (double)item.Price * item.Count;
-    //    }
- }
+    //    } }
+}
+@inject UserManager<AppUser> usermanager;
+@{
+    AppUser user = User.Identity.IsAuthenticated ? await usermanager.FindByNameAsync(User.Identity.Name) : null;
+}
 
 <section id="cart">
     <div class="container">
@@ -16,38 +19,38 @@
                 <div class="cart-inside">
                     @if (Model.Count == 0)
                     {
-                        <div class="empty-cart">
-                            <img src="~/img/homepageslider/empty-cart.844437f4.png" alt="" class="empty-cart-img">
-                            <h1 class="empty-cart-text">sizin səbətiniz boşdur</h1>
-                        </div>
+                    <div class="empty-cart">
+                        <img src="~/img/homepageslider/empty-cart.844437f4.png" alt="" class="empty-cart-img">
+                        <h1 class="empty-cart-text">sizin səbətiniz boşdur</h1>
+                    </div> 
                     }
 
-                    else 
+                    else
                     {
-                         @foreach (var item in Model)
-                    {
-                        total += (double)item.Price * item.Count;
-                        <ul class="cart-list">
+        @foreach (var item in Model)
+        {
+            total += (double)item.Price * item.Count;
+                <ul class="cart-list">
 
-                            <li class="cart-list-item">
-                                <div class="item-image-holder">
-                                    <img src="~/img/Product/@item.Image" alt="That's an image">
+                    <li class="cart-list-item">
+                        <div class="item-image-holder">
+                            <img src="~/img/Product/@item.Image" alt="That's an image">
 
-                                </div>
-                                <div class="info-holder">
-                                    <h4 class="product-title">
-                                        @item.Name
-                                    </h4>
-                                    <span class="quantity">@item.Count x</span>
-                                    <span class="amount">@item.Price AZN</span>
-                                </div>
-                                <div class="item-editor">
-                                    <a class="item-remove" asp-action="removefromcart" asp-route-id="@item.ProductId">
-                                        <i class="fal fa-times"></i>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>}
+                        </div>
+                        <div class="info-holder">
+                            <h4 class="product-title">
+                                @item.Name
+                            </h4>
+                            <span class="quantity">@item.Count x</span>
+                            <span class="amount">@item.Price AZN</span>
+                        </div>
+                        <div class="item-editor">
+                            <a class="item-remove" asp-action="removefromcart" asp-route-id="@item.ProductId">
+                                <i class="fal fa-times"></i>
+                            </a>
+                        </div>
+                    </li>
+                </ul>}
                     }
                 </div>
 
@@ -63,13 +66,21 @@
                         <div class="row">
                             <form class="text-center" method="post">
                                 <button asp-controller="Cart" asp-action="EmptyCart" type="submit" class="btn btn-danger">Səbəti Boşalt</button>
+                                @if (User.Identity.IsAuthenticated)
+                                {
                                 <button asp-controller="Order" asp-action="Index" type="submit" class="btn btn-danger">Sifariş et</button>
+                                }
+                                else
+                                { 
+                                <button asp-controller="Account" asp-action="Login" type="submit" class="btn btn-danger">Sifariş et</button>
+
+                                }
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-          
+
         </div>
     </div>
 </section>

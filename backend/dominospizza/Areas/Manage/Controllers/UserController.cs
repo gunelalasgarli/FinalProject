@@ -74,9 +74,9 @@ namespace dominospizza.Areas.Manage.Controllers
 
         public async Task<IActionResult> Activation(string id)
         {
-            if (id == null) return NotFound();
+            if (id == null) return RedirectToAction("Index", "Error");
             AppUser user = await _userManager.FindByIdAsync(id);
-            if (user == null) return NotFound();
+            if (user == null) return RedirectToAction("Index", "Error");
 
             user.isActive = !user.isActive;
             await _context.SaveChangesAsync();
@@ -89,9 +89,9 @@ namespace dominospizza.Areas.Manage.Controllers
 
         public async Task<IActionResult> Delete(string id)
         {
-            if (id == null) return NotFound();
+            if (id == null) return RedirectToAction("Index", "Error");
             AppUser user = await _userManager.FindByIdAsync(id);
-            if (user == null) return NotFound();
+            if (user == null) return RedirectToAction("Index", "Error");
 
             user.isDelete = true;
             await _context.SaveChangesAsync();
@@ -106,9 +106,9 @@ namespace dominospizza.Areas.Manage.Controllers
         [ActionName("Delete")]
         public async Task<IActionResult> DeletePost(string id)
         {
-            if (id == null) return NotFound();
+            if (id == null) return RedirectToAction("Index", "Error");
             AppUser user = await _userManager.FindByIdAsync(id);
-            if (user == null) return NotFound();
+            if (user == null) return RedirectToAction("Index", "Error");
 
             if (user.isDelete)
                 user.isDelete = false;
@@ -125,9 +125,9 @@ namespace dominospizza.Areas.Manage.Controllers
 
         public async Task<IActionResult> ActivationPost(string id)
         {
-            if (id == null) return NotFound();
+            if (id == null) return RedirectToAction("Index", "Error");
             AppUser user = await _userManager.FindByIdAsync(id);
-            if (user == null) return NotFound();
+            if (user == null) return RedirectToAction("Index", "Error");
 
             if (user.isDelete)
                 user.isDelete = false;
@@ -149,11 +149,11 @@ namespace dominospizza.Areas.Manage.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ChangePassword(string Id, string Password)
         {
-            if (Id == null) return NotFound();
+            if (Id == null) return RedirectToAction("Index", "Error");
 
             AppUser appUser = await _userManager.FindByIdAsync(Id);
 
-            if (appUser == null) return NotFound();
+            if (appUser == null) return RedirectToAction("Index", "Error");
 
             string token = await _userManager.GeneratePasswordResetTokenAsync(appUser);
 
@@ -183,9 +183,9 @@ namespace dominospizza.Areas.Manage.Controllers
         #region Update User
         public IActionResult UpdateUser(string id)
         {
-            if (id == null) return NotFound();
+            if (id == null) return RedirectToAction("Index", "Error");
             AppUser user = _userManager.Users.FirstOrDefault(c => c.Id == id);
-            if (user == null) return NotFound();
+            if (user == null) return RedirectToAction("Index", "Error");
             return View(user);
         }
 
@@ -193,9 +193,9 @@ namespace dominospizza.Areas.Manage.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateUser(string id, AppUser userNewParam)
         {
-            if (id == null) return NotFound();
+            if (id == null) return RedirectToAction("Index", "Error");
             AppUser user = await _userManager.FindByIdAsync(id);
-            if (user == null) return NotFound();
+            if (user == null) return RedirectToAction("Index", "Error");
 
             AppUserVM appUserVM = new AppUserVM
             {
@@ -249,9 +249,9 @@ namespace dominospizza.Areas.Manage.Controllers
         //#region Change Role
         //public async Task<IActionResult> ChangeRole(string id)
         //{
-        //    if (id == null) return NotFound();
+        //    if (id == null) return RedirectToAction("Index", "Error");
         //    AppUser user = await _userManager.FindByIdAsync(id);
-        //    if (user == null) return NotFound();
+        //    if (user == null) return RedirectToAction("Index", "Error");
         //    AppUserVM userVM = await GetAppUserVMAsync(user);
         //    return View(userVM);
         //}
@@ -260,10 +260,10 @@ namespace dominospizza.Areas.Manage.Controllers
         //[ValidateAntiForgeryToken]
         //public async Task<IActionResult> ChangeRole(string id, string role)
         //{
-        //    if (id == null || role == null) return NotFound();
+        //    if (id == null || role == null) return RedirectToAction("Index", "Error");
 
         //    AppUser user = await _userManager.FindByIdAsync(id);
-        //    if (user == null) return NotFound();
+        //    if (user == null) return RedirectToAction("Index", "Error");
         //    string oldRole = (await _userManager.GetRolesAsync(user))[0];
 
         //    switch (role)
@@ -307,11 +307,11 @@ namespace dominospizza.Areas.Manage.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ChangeRole(string Id)
         {
-            if (Id == null) return NotFound();
+            if (Id == null) return RedirectToAction("Index", "Error");
 
             AppUser appUser = await _userManager.FindByIdAsync(Id);
 
-            if (appUser == null) return NotFound();
+            if (appUser == null) return RedirectToAction("Index", "Error");
 
             var userRoles = await _userManager.GetRolesAsync(appUser);
 
@@ -336,11 +336,11 @@ namespace dominospizza.Areas.Manage.Controllers
 
         public async Task<IActionResult> ChangeRole(string Id, string Roles)
         {
-            if (Id == null) return NotFound();
+            if (Id == null) return RedirectToAction("Index", "Error");
 
             AppUser appUser = await _userManager.FindByIdAsync(Id);
 
-            if (appUser == null) return NotFound();
+            if (appUser == null) return RedirectToAction("Index", "Error");
 
             var userRoles = await _userManager.GetRolesAsync(appUser);
 

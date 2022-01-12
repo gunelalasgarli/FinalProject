@@ -38,7 +38,7 @@ namespace dominospizza.Areas.Manage.Controllers
 
         public async Task<IActionResult> Detail(int? id)
         {
-            if (id == null) return NotFound();
+            if (id == null) return RedirectToAction("Index","Error");
             Message message = await _context.Messages.FirstOrDefaultAsync(c => c.Id == id);
             return View(message);
         }
