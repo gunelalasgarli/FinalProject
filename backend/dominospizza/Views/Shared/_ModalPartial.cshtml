@@ -35,9 +35,9 @@
 
                             </div>
                             <div class="total-price text-center">
-                                <h6 id="total-price">@Model.Price.ToString("F2")$</h6>
+                                <h6><span id="total-price">@Model.Price.ToString("F2")</span>AZN</h6>
                             </div>
-                            <a asp-controller="Cart" asp-action="addtocart" asp-route-Id="@Model.Id" asp-route-count="1"
+                            <a asp-controller="Cart" asp-action="addtocart" asp-route-Id="@Model.Id" asp-route-count="1" asp-route-size="1"
                                data-id="@Model.Id" class="btn btn-lg btn-outline-danger addToCart">
                                 SƏBƏTƏ ƏLAVƏ ET
                             </a>
@@ -47,13 +47,13 @@
                             <h6 class="title">Ölçü seçin</h6>
                             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                                <label class="btn btn-outline-primary" for="btnradio1"><img src="img/pizza/small.png" alt=""><br>Kiçik<br> <span class="price-size">@Model.Price.ToString("F2")$</span></label>
+                                <label class="btn btn-outline-primary" for="btnradio1"><img src="img/pizza/small.png" alt=""><br><span class="size">Kiçik</span><br> <span class="price-size">@Model.Price.ToString("F2")</span>AZN</label>
 
                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                                <label class="btn btn-outline-primary" for="btnradio2"><img src="img/pizza/medium.png" alt=""><br>Orta<br> <span class="price-size">@((Model.Price*1.6).ToString("F2"))$</span></label>
+                                <label class="btn btn-outline-primary" for="btnradio2"><img src="img/pizza/medium.png" alt=""><br><span class="size">Orta</span><br> <span class="price-size">@((Model.Price*1.6).ToString("F2"))</span>AZN</label>
 
                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                                <label class="btn btn-outline-primary" for="btnradio3"><img src="img/pizza/extra.png" alt=""><br>Böyük<br> <span class="price-size">@((Model.Price*2).ToString("F2"))$</span></label>
+                                <label class="btn btn-outline-primary" for="btnradio3"><img src="img/pizza/extra.png" alt=""><br><span class="size">Böyük</span><br> <span class="price-size">@((Model.Price*2).ToString("F2"))</span>AZN</label>
                             </div>
                             <hr>
                         </div>
@@ -73,7 +73,7 @@
         e.preventDefault();
         quantitiy++;
         $('#quantity').val(quantitiy);
-        $('#total-price').text(`${+quantitiy * +price}$`);
+        $('#total-price').text(`${(+quantitiy * +price).toFixed(2)}`);
         let url = document.querySelectorAll('.addToCart')[1].getAttribute('href');
         let urlPart = url.slice(url.indexOf('count'), url.indexOf('count') + 7);
         url = url.replace(urlPart, `count=${quantitiy}`);
@@ -86,7 +86,7 @@
         if (quantitiy > 1) {
             quantitiy--;
             $('#quantity').val(quantitiy);
-            $('#total-price').text(`${+quantitiy * +price}$`);
+            $('#total-price').text(`${(+quantitiy * +price).toFixed(2)}`);
             let url = document.querySelectorAll('.addToCart')[1].getAttribute('href');
             let urlPart = url.slice(url.indexOf('count'), url.indexOf('count') + 7);
             url = url.replace(urlPart, `count=${quantitiy}`);
@@ -94,9 +94,16 @@
         }
     });
 
-    $('.scrollable label').on('click', function () {
-        $('#total-price').text($(this).find('.price-size').text());
-        price = $(this).find('.price-size').text().slice(0, -1);
-    });
+    document.querySelectorAll('.scrollable label').forEach((elem, index) => {
+        elem.addEventListener('click', function () {
+            document.querySelector('#total-price').innerText = elem.querySelector('.price-size').innerText;
+            let url = document.querySelector('.addToCart').getAttribute('href');
+            let urlPart = url.slice(url.indexOf('size'), url.indexOf('size') + 6);
+            url = url.replace(urlPart, `size=${index+1}`);
+            price = elem.querySelector('.price-size').innerText.slice(0, -1);
+            console.log(url)
+        });
+
+    })
 
 </script>

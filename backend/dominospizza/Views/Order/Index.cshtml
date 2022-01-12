@@ -1,7 +1,20 @@
 ﻿
-@model BasketViewModel
-@{ ViewData["Title"] = "Checkout";
-                double totalPrice = 0; }
+@model BillingAddress
+@{ ViewData["Title"] = "Index";
+    double totalPrice = 0;
+
+if (TempData["Success"] != null)
+{
+    if (bool.Parse(TempData["Success"].ToString()) == true)
+    {
+        <input type="hidden" id="success" />
+ }
+    else
+    {
+        <input type="hidden" id="error" />
+}
+}
+}
 
 
 <main>
@@ -9,8 +22,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <form class="text-center mx-2" method="post">
+                    <form class="text-center mx-2" method="post" asp-action="PlaceOrder">
                         <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseZero" aria-expanded="false" aria-controls="flush-collapseZero">
+                                        Ad Soyad
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseZero" class="accordion-collapse collapse" aria-labelledby="flush-headingZero" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <input asp-for="FullName" type="text" class="form-control" id="inputAddress" placeholder="Ad, Soyad">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -51,7 +76,7 @@
                             </div>
 
                         </div>
-                        <button asp-controller="Order" asp-action="PlaceOrder" type="submit" class="btn m-2">Sifarişi qəbul et</button>
+                        <button type="submit" class="btn m-2">Sifarişi qəbul et</button>
 
                     </form>
                 </div>
@@ -60,5 +85,36 @@
         </div>
     </section>
 </main>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "2000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            if ($("#success").length) {
+                toastr["success"]("Sifariş qəbul edildi")
+            }
+            else if ($("#error").length) {
+                toastr["error"]("Xəta baş verdi!")
+            }
+
+        })
+    </script>
+}
 
 

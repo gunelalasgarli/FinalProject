@@ -35,7 +35,7 @@ namespace dominospizza.Controllers
             }
             else
             {
-                basketProducts = await _context.BasketItems.Where(x=>x.AppUserId==user.Id).Select(x => new BasketViewModel
+                basketProducts = await _context.BasketItems.Where(x=>x.AppUserId==user.Id && x.IsDeleted == false).Select(x => new BasketViewModel
                 {
                     Count = x.Count,
                     Image = x.Product.Image,
@@ -49,12 +49,27 @@ namespace dominospizza.Controllers
 
             return View(basketProducts);
         }
-        public async Task<IActionResult> AddToCart(int? Id, int count)
+        public async Task<IActionResult> AddToCart(int? Id, int count,int size)
         {
 
             if (Id == null) return NotFound();
             Product product = await _context.Products.Include(x => x.Category).FirstOrDefaultAsync(x => x.Id == Id);
+            string sizeStr = "";
             if (product == null) return NotFound();
+            switch (size)
+            {
+                case 1:
+                    sizeStr = "Kicik";
+                    break;
+                case 2:
+                    sizeStr = "Orta";
+                    break;
+                case 3:
+                    sizeStr = "Böyük";
+                    break;
+                default:
+                    break;
+            }
             AppUser user = User.Identity.IsAuthenticated ? await _usermanager.FindByNameAsync(User.Identity.Name) : null;
             List<BasketViewModel> productBaskets = new List<BasketViewModel>();
             string basket = HttpContext.Request.Cookies["Basket"];
@@ -63,14 +78,18 @@ namespace dominospizza.Controllers
                 #region AddCookie
                 if (basket == null)
                 {
-                    productBaskets.Add(new BasketViewModel
+                    BasketViewModel basketVM = new BasketViewModel
                     {
                         ProductId = product.Id,
                         Count = count,
                         Name = product.Name,
                         Image = product.Image,
-                        Price = (decimal)product.Price
-                    });
+                        Price = (decimal)product.Price,
+                        Size = sizeStr
+                    };
+                    
+                    productBaskets.Add(basketVM);
+                       
                 }
                 else
                 {
@@ -84,7 +103,9 @@ namespace dominospizza.Controllers
                             Count = count,
                             Image = product.Image,
                             Name = product.Name,
-                            Price = (decimal)product.Price
+                            Price = (decimal)product.Price,
+                            Size = sizeStr
+
                         });
                     }
                     else
@@ -122,34 +143,42 @@ namespace dominospizza.Controllers
 
                 //await _context.SaveChangesAsync();
                 #endregion
-                BasketItem memberBasketItem = _context.BasketItems.FirstOrDefault(x => x.AppUserId == user.Id && x.ProductId==product.Id);
+                BasketItem memberBasketItem = _context.BasketItems.FirstOrDefault(x => x.AppUserId == user.Id && x.ProductId==product.Id && x.IsDeleted == false);
                 if (memberBasketItem == null)
                 {
                     memberBasketItem = new BasketItem
                     {
                         AppUserId = user.Id,
                         Count = count,
-                        ProductId=product.Id
-                        
-                    };
+                        ProductId=product.Id,
+                        CreatedAt = DateTime.Now,
+                        Size = sizeStr,
+                        Name=product.Name,
+                        Image=product.Image
+
+
+                };
                     _context.BasketItems.Add(memberBasketItem);
                 }
                 else
                 {
                     memberBasketItem.Count+=count;
                 }
-
-                _context.SaveChanges();
-                productBaskets = _context.BasketItems.Where(x => x.AppUserId == user.Id).Select(x =>
-                    new BasketViewModel
-                    {
-                        ProductId = product.Id,
-                        Count = count,
-                        Name = product.Name,
-                        Image = product.Image,
-                        Total = (decimal)product.Price * count,
-                    }).ToList();
+               
             }
+            productBaskets = _context.BasketItems.Where(x => x.AppUserId == user.Id).Select(x =>
+                  new BasketViewModel
+                  {
+                      ProductId = product.Id,
+                      Count = count,
+                      Size = sizeStr,
+                      Name = product.Name,
+                      Image = product.Image,
+                      Total = (decimal)product.Price * count,
+                  }).ToList();
+
+            _context.SaveChanges();
+               
                 return RedirectToAction(nameof(Index), "Home");
         }
 
@@ -196,7 +225,7 @@ namespace dominospizza.Controllers
             }
             else
             {
-                List<BasketItem> memberBasketItem =await _context.BasketItems.Where(x => x.AppUserId == user.Id).ToListAsync();
+                List<BasketItem> memberBasketItem =await _context.BasketItems.Where(x => x.AppUserId == user.Id && x.IsDeleted==false).ToListAsync();
 
                 
                     _context.BasketItems.RemoveRange(memberBasketItem);
@@ -239,7 +268,7 @@ namespace dominospizza.Controllers
             }
             else
             {
-                BasketItem memberBasketItem = _context.BasketItems.FirstOrDefault(x => x.AppUserId == user.Id && x.ProductId==Id);
+                BasketItem memberBasketItem = _context.BasketItems.FirstOrDefault(x => x.AppUserId == user.Id && x.ProductId==Id && x.IsDeleted == false);
 
                 if (memberBasketItem.Count == 1)
                 {

@@ -24,67 +24,132 @@ namespace dominospizza.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Index(BasketViewModel basketViewModel)
+        public IActionResult Index()
         {
-            if (!ModelState.IsValid) return View();
-            basketViewModel = new BasketViewModel
-            {
-                Address=basketViewModel.Address,
-                Phone=basketViewModel.Phone,
-                OrderDescription=basketViewModel.OrderDescription
-            };
-
-            return View(basketViewModel);
+            return View();
         }
 
-        //private void _addOrderItem(ref FullOrder fullOrder, BasketItem basketItem,Product product, int count)
-        //{
-        //    Order order = new Order
-        //    {
-        //        ProductId = basketItem.ProductId,
-        //        Name = product.Name,
-        //        Image=product.Image,
-        //        Count = count,
-        //        Total = (decimal)product.Price * count
+       
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> PlaceOrder(BillingAddress billingAddress)
+        {
+            TempData["Success"] = false;
 
-        //    };
+            if (!ModelState.IsValid) return NotFound();
 
-        //    fullOrder.Orders.Add(order);
-        //}
+            AppUser appUser = await _userManager.FindByNameAsync(User.Identity.Name);
 
+            List<BasketItem> basketItems = await _context.BasketItems
+                .Include(b => b.Product)
+                .Where(b => b.IsDeleted == false && b.AppUserId == appUser.Id)
+                .ToListAsync();
 
-        //public async Task<IActionResult> PlaceOrder()
-        //{
+            if (basketItems.Count <= 0)
+            {
+                TempData["Error"] =true;
+                return RedirectToAction("Index", "Home");
+            }
 
-        //    List<FullOrder> fullOrders = _context.FullOrders.Include(x => x.Orders).Where(x => x.AppUser.UserName == User.Identity.Name).ToList();
-        //    var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            int? orderNo = _context.Orders.OrderByDescending(o => o.Id).FirstOrDefault()?.No;
 
+            billingAddress.AppUserId = appUser.Id;
 
-        //    foreach (var item in fullOrders)
-        //    {
-        //        _context.FullOrders.Add(new FullOrder
-        //        {
-        //            OrderDescription = item.OrderDescription,
-        //            Address = item.Address,
-        //            Phone = item.Phone,
-        //            CreatedAt = item.CreatedAt,
-        //            TotalAmount = item.TotalAmount,
-        //            AppUserId = user.Id
-        //        });
-        //    }
+            FullOrder order = new FullOrder
+            {
+                AppUserId = appUser.Id,
+                No = (int)(orderNo == null ? 1000 : orderNo++),
+                OrderedAt = DateTime.UtcNow.AddHours(4),
+                BillingAddress = billingAddress,
+            };
 
-        //    await _context.SaveChangesAsync();
+            List<Order> orderItems = new List<Order>();
 
-        //    Response.Cookies.Delete("Basket");
+            int orderItemNo = 0;
+            double total = 0;
 
-        //     List<BasketItem> memberBasketItem =await _context.BasketItems.Where(x => x.AppUserId == user.Id).ToListAsync();
+            foreach (BasketItem item in basketItems)
+            {
+                orderItemNo++;
+                Order orderItem = new Order
+                {
+                    No = orderItemNo,
+                    Count = item.Count,
+                    Total = (decimal)item.Product.Price,
+                    ProductId = item.ProductId,
+                    Name=item.Name,
+                    Image=item.Image,
+                    Size=item.Size
+                };
 
-        //       _context.BasketItems.RemoveRange(memberBasketItem);
+                total += (orderItem.Count * (double)orderItem.Total);
 
-        //       _context.SaveChanges();
+                orderItems.Add(orderItem);
+                item.IsDeleted = true;
 
-        //    return RedirectToAction("Index", "Home");
-        //}
+            }
 
+            order.TotalAmount = total;
+            order.Orders = orderItems;
+
+            await _context.FullOrders.AddAsync(order);
+            await _context.SaveChangesAsync();
+
+            TempData["Success"] = true;
+
+           
+        
+            return RedirectToAction("Index", "Order");
+        }
     }
+
+    //private void _addOrderItem(ref FullOrder fullOrder, BasketItem basketItem,Product product, int count)
+    //{
+    //    Order order = new Order
+    //    {
+    //        ProductId = basketItem.ProductId,
+    //        Name = product.Name,
+    //        Image=product.Image,
+    //        Count = count,
+    //        Total = (decimal)product.Price * count
+
+    //    };
+
+    //    fullOrder.Orders.Add(order);
+    //}
+
+
+    //public async Task<IActionResult> PlaceOrder()
+    //{
+
+    //    List<FullOrder> fullOrders = _context.FullOrders.Include(x => x.Orders).Where(x => x.AppUser.UserName == User.Identity.Name).ToList();
+    //    var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+
+    //    foreach (var item in fullOrders)
+    //    {
+    //        _context.FullOrders.Add(new FullOrder
+    //        {
+    //            OrderDescription = item.OrderDescription,
+    //            Address = item.Address,
+    //            Phone = item.Phone,
+    //            CreatedAt = item.CreatedAt,
+    //            TotalAmount = item.TotalAmount,
+    //            AppUserId = user.Id
+    //        });
+    //    }
+
+    //    await _context.SaveChangesAsync();
+
+    //    Response.Cookies.Delete("Basket");
+
+    //     List<BasketItem> memberBasketItem =await _context.BasketItems.Where(x => x.AppUserId == user.Id).ToListAsync();
+
+    //       _context.BasketItems.RemoveRange(memberBasketItem);
+
+    //       _context.SaveChanges();
+
+    //    return RedirectToAction("Index", "Home");
+    //}
+
 }

@@ -26,8 +26,8 @@ namespace dominospizza.Areas.Manage.Controllers
             _context = context;
             _env = env;
         }
-        
-        public async Task<IActionResult> Index(int page = 1,string search = null)
+
+        public async Task<IActionResult> Index(int page = 1, string search = null)
         {
             var query = _context.Products.AsQueryable();
 
@@ -39,13 +39,12 @@ namespace dominospizza.Areas.Manage.Controllers
             }
             ViewBag.SelectedPage = page;
             ViewBag.TotalPageCount = Math.Ceiling(_context.Products.Count() / 4m);
-            List<Product> lists =await _context.Products.Include(a => a.Category).Skip((page - 1) * 4).Take(4).ToListAsync();
+            List<Product> lists = await _context.Products.Include(a => a.Category).Where(x=>x.IsDeleted == false).Skip((page - 1) * 4).Take(4).ToListAsync();
             return View(lists);
         }
-        public IActionResult Search(string search)
+        public async Task<IActionResult> Search(string search)
         {
-            var query = _context.Products.Where(x => x.Name.ToLower().Contains(search))
-                                         .Include(x => x.Category)
+            var query = await _context.Products.Include(x => x.Category).Where(x => x.Name.ToLower().Contains(search)||x.Category.Name.ToLower().Contains(search) && x.IsDeleted == false)
                                          .ToListAsync();
 
             return PartialView("_SearchPartial", query);
@@ -54,7 +53,7 @@ namespace dominospizza.Areas.Manage.Controllers
         {
             ViewBag.Categories = await _context.Categories.ToListAsync();
             ViewBag.ProductTypes = await _context.ProductTypes.ToListAsync();
-            Product product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
+            Product product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted==false);
             if (product == null)
             {
                 return RedirectToAction("index");
@@ -68,7 +67,7 @@ namespace dominospizza.Areas.Manage.Controllers
             ViewBag.Categories = await _context.Categories.ToListAsync();
             ViewBag.ProductTypes = await _context.ProductTypes.ToListAsync();
 
-            Product existproduct = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
+            Product existproduct = await _context.Products.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == false);
             if (!await _context.Categories.AnyAsync(x => x.Id == product.CategoryId)) return RedirectToAction("index");
             if (!await _context.ProductTypes.AnyAsync(x => x.Id == product.ProductTypeId)) return RedirectToAction("index");
             if (existproduct == null)
@@ -177,7 +176,7 @@ namespace dominospizza.Areas.Manage.Controllers
         }
         public async Task<IActionResult> Delete(int id)
         {
-            Product product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
+            Product product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted==false);
             if (product == null)
             {
                 return RedirectToAction("index");
@@ -192,7 +191,8 @@ namespace dominospizza.Areas.Manage.Controllers
             var path = Path.Combine(rootPath, "img/Product", product.Image);
             System.IO.File.Delete(path);
 
-            _context.Products.Remove(product);
+            //_context.Products.Remove(product);
+            product.IsDeleted = true;
             await _context.SaveChangesAsync();
             return RedirectToAction("index");
         }

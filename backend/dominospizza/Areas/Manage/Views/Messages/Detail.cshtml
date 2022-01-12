@@ -1,0 +1,33 @@
+﻿@model Message
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Message Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Name</td>
+                <td>@Model.Surname</td>
+                <td>@Model.Email</td>
+                <td>@Model.Phone</td>
+                <td>@Model.CreatedAt</td>
+                <td>@Model.MessageDescription</td>
+            </tr>
+        </tbody>
+
+    </table>
+    <div class="mt-4 text-center">
+        <a asp-action="Index" class="btn btn-dark ml-3">Go Back</a>
+    </div>
+</div>

@@ -1,6 +1,17 @@
-﻿
+﻿@model Message
 @{
     ViewData["Title"] = "Index";
+    if (TempData["Success"] != null)
+    {
+    if (bool.Parse(TempData["Success"].ToString()) == true)
+    {
+        <input type="hidden" id="success" />
+    }
+    else
+    {
+        <input type="hidden" id="error" />
+}
+}
 }
 <section id="contact-us">
     <div class="container">
@@ -10,27 +21,27 @@
             </div>
         </div>
         <div class="form-section">
-            <form class="row">
+            <form class="row" method="post" asp-action="SendMessage">
                 <div class="col-md-6 contact-item">
                     <label for="name" class="form-label">Ad*</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="Ad">
+                    <input asp-for="Name" type="text" class="form-control" id="inputAddress" placeholder="Ad">
                 </div>
                 <div class="col-md-6 contact-item">
                     <label for="name" class="form-label">Soyad</label>
-                    <input type="text" class="form-control" id="inputAddress2" placeholder="Soyad">
+                    <input asp-for="Surname" type="text" class="form-control" id="inputAddress2" placeholder="Soyad">
                 </div>
                 <div class="col-md-6 contact-item">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    <input asp-for="Email" type="email" class="form-control" id="inputEmail4" placeholder="Email">
                 </div>
                 <div class="col-md-6 contact-item">
                     <label for="tel" class="form-label">Mobil nömrə</label>
-                    <input type="tel" class="form-control" id="inputCity" placeholder="Mobil nömrə">
+                    <input asp-for="Phone" type="tel" class="form-control" id="inputCity" placeholder="Mobil nömrə">
                 </div>
 
                 <div class="col-md-6 contact-item">
                     <label for="message" class="form-label">Sizin Mesajınız</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Sizin Mesajınız"></textarea>
+                    <textarea asp-for="MessageDescription" class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Sizin Mesajınız"></textarea>
                 </div>
 
                 <div class="col-12 contact-btn">
@@ -40,3 +51,33 @@
         </div>
     </div>
 </section>
+
+@section Scripts{
+    <script>$(document).ready(function () {
+
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "2000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            if ($("#success").length) {
+                toastr["success"]("Mesajınız göndərildi")
+            }
+            else if ($("#error").length) {
+                toastr["error"]("Xəta baş verdi!")
+            }
+
+        })</script>
+}

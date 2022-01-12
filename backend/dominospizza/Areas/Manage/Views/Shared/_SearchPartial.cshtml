@@ -1,5 +1,22 @@
-﻿
-@{ 
+﻿@model List<Product>
+@{
     Layout = null;
+    int count = 1;
 }
-<h2>    grgrrgrgrgrgrgrgrgrgrgrgrgr</h2>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <th scope="row">@count</th>
+        <td><img src="~/img/Product/@item.Image" style="width:50px!important"></td>
+        <td>@item.Name</td>
+        <td>@item.Price</td>
+        <td>@item.Description</td>
+        <td class="col-md-3">
+            <a class="btn btn-warning" asp-action="edit" asp-route-id="@item.Id">Update</a>
+            <a class="btn btn-danger delete-btn" asp-action="delete" asp-route-id="@item.Id">Delete</a>
+        </td>
+    </tr>
+    count++;
+
+}

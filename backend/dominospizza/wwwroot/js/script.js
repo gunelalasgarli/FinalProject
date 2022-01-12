@@ -2,7 +2,6 @@
 $(document).ready(function () {
     $('#search-input').keyup(function () {
 
-        
         let search = $(this).val().trim();
         if (search.length === 0) {
         }
@@ -10,10 +9,12 @@ $(document).ready(function () {
             url: `Product/Search?search=${search}`,
             method: 'GET',
             success: function (resp) {
-                $('#dataTable').append(resp);
+                $('#dataTable').html(resp);
+                console.log(resp);
             }
         })
     })
+
     $('.slick-list').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -130,7 +131,7 @@ $(document).ready(function () {
         e.preventDefault();
         quantitiy++;
         $('#quantity').val(quantitiy);
-        $('#total-price').text(`${+quantitiy * +price}$`);
+        $('#total-price').text(`${(+quantitiy * +price).toFixed(2)}$`);
         url = url.replace(urlPart, `count=${quantitiy}`);
         console.log(url);
         document.querySelectorAll('.addToCart')[1].setAttribute('href', url);
@@ -141,7 +142,7 @@ $(document).ready(function () {
         if (quantitiy > 1) {
             quantitiy--;
             $('#quantity').val(quantitiy);
-            $('#total-price').text(`${+quantitiy * +price}$`);
+            $('#total-price').text(`${(+quantitiy * +price).toFixed(2)}$`);
             url = url.replace(urlPart, `count=${quantitiy}`);
             document.querySelectorAll('.addToCart')[1].setAttribute('href', url);
 

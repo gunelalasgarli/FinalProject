@@ -37,7 +37,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-controller="Dashboard">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-area="Manage" asp-controller="Dashboard">
 
                 <div class="sidebar-brand-text mx-3">Dominos Pizza Admin Panel</div>
             </a>
@@ -47,7 +47,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" asp-controller="Dashboard">
+                <a class="nav-link" asp-area="Manage" asp-controller="Dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
@@ -72,55 +72,61 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <!-- Divider -->
             <li class="nav-item">
-                <a class="nav-link" asp-controller="HomePage" asp-action="Index">
+                <a class="nav-link" asp-area="Manage" asp-controller="HomePage" asp-action="Index">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Home Page</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" asp-controller="Setting" asp-action="Index">
+                <a class="nav-link" asp-area="Manage" asp-controller="Setting" asp-action="Index">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Settings</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" asp-controller="Slider" asp-action="Index">
+                <a class="nav-link" asp-area="Manage" asp-controller="Slider" asp-action="Index">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Slider</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" asp-controller="Category" asp-action="Index">
+                <a class="nav-link" asp-area="Manage" asp-controller="Category" asp-action="Index">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Category</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" asp-controller="Product" asp-action="Index">
+                <a class="nav-link" asp-area="Manage" asp-controller="Product" asp-action="Index">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Products</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" asp-controller="Orders" asp-action="Index">
+                <a class="nav-link" asp-area="Manage" asp-controller="Order" asp-action="Index">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Orders</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" asp-controller="Locations" asp-action="Index">
+                <a class="nav-link" asp-area="Manage" asp-controller="Locations" asp-action="Index">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Location</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" asp-controller="User" asp-action="Index">
+                <a class="nav-link" asp-area="Manage" asp-controller="User" asp-action="Index">
                     <i class="fas fa-fw fa-table"></i>
                     <span>User</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" asp-controller="Role" asp-action="Index">
+                <a class="nav-link" asp-area="Manage" asp-controller="Messages" asp-action="Index">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Messages</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="Manage" asp-controller="Role" asp-action="Index">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Role</span>
                 </a>
@@ -166,7 +172,7 @@
                                      src="~/img/icons/account before.png">
                             </a>
                             <!-- Dropdown - User Information -->
-
+                            
                         </li>
 
                     </ul>
@@ -207,15 +213,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Are you sure to Delete?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">If you sure to Delete item click to Delete button.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary">Logout</a>
+                    <a class="btn btn-primary">Delete</a>
                 </div>
             </div>
         </div>

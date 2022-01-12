@@ -85,8 +85,7 @@ namespace dominospizza.Areas.Manage.Controllers
         public async Task<IActionResult> Detail(int? id)
         {
             if (id == null) return NotFound();
-            Slider slider = _context.Sliders
-                .FirstOrDefault(c => c.Id == id);
+            Slider slider = _context.Sliders.FirstOrDefault(c => c.Id == id);
             if (slider == null) return NotFound();
             await _context.SaveChangesAsync();
             return View(slider);

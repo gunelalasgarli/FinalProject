@@ -1,0 +1,34 @@
+﻿@model FullOrder
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="container">
+    <table class="table table-striped">
+        
+        <tbody>
+            
+            @foreach (var item in Model.Orders)
+            { 
+                <tr>
+                <td>@item.No</td>
+                <td><img src="~/img/Product/@item.Image" style="width:50px!important"></td>
+                <td>Product: @item.Name</td>
+                <td>Count: @item.Count</td>
+                <td>Size: @item.Size</td> 
+                </tr>
+            }
+
+            <th scope="row">Customer Full Name:@Model.BillingAddress.FullName</th>
+            <th scope="row">Customer Phone Number: @Model.BillingAddress.Phone</th>
+            <th scope="row">Customer Address: @Model.BillingAddress.Address</th>
+            <th scope="row">Order Description: @Model.BillingAddress.OrderDescription</th>
+
+            <th scope="row">Total: @Model.TotalAmount</th>
+
+        </tbody>
+    </table>
+    <div class="mt-4 text-center">
+        <a asp-action="Index" class="btn btn-dark ml-3">Go Back</a>
+    </div>
+</div>

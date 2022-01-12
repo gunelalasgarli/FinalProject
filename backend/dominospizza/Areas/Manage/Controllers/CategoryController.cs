@@ -105,7 +105,7 @@ namespace dominospizza.Areas.Manage.Controllers
 
         public IActionResult Edit(int id)
         {
-            Category category = _context.Categories.FirstOrDefault(x => x.Id == id);
+            Category category = _context.Categories.FirstOrDefault(x => x.Id == id&& x.IsDeleted==false);
 
             if (category == null) return RedirectToAction("index", "error");
 
@@ -118,7 +118,7 @@ namespace dominospizza.Areas.Manage.Controllers
         {
             if (!ModelState.IsValid) return NotFound();
 
-            Category existCategory = _context.Categories.FirstOrDefault(x => x.Id == category.Id);
+            Category existCategory = _context.Categories.FirstOrDefault(x => x.Id == category.Id && x.IsDeleted==false);
 
             if (existCategory == null) return RedirectToAction("index", "error");
 
@@ -188,12 +188,12 @@ namespace dominospizza.Areas.Manage.Controllers
 
         public IActionResult DeleteFetch(int id)
         {
-            Category category = _context.Categories.FirstOrDefault(x => x.Id == id);
+            Category category = _context.Categories.FirstOrDefault(x => x.Id == id && x.IsDeleted==false);
             if (category == null) return RedirectToAction("index");
 
             try
             {
-                _context.Categories.Remove(category);
+                category.IsDeleted = true;
                 _context.SaveChanges();
             }
             catch (Exception)

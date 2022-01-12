@@ -237,11 +237,26 @@ namespace dominospizza.Migrations
                     b.Property<int>("Count")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int?>("ProductSizeId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Size")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -252,6 +267,38 @@ namespace dominospizza.Migrations
                     b.HasIndex("ProductSizeId");
 
                     b.ToTable("BasketItems");
+                });
+
+            modelBuilder.Entity("dominospizza.Models.BillingAddress", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("OrderDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("BillingAddresses");
                 });
 
             modelBuilder.Entity("dominospizza.Models.Category", b =>
@@ -312,23 +359,20 @@ namespace dominospizza.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
-
                     b.Property<string>("AppUserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<int?>("BillingAddressId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("No")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("OrderedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("OrderDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(25)")
-                        .HasMaxLength(25);
 
                     b.Property<double>("TotalAmount")
                         .HasColumnType("float");
@@ -336,6 +380,8 @@ namespace dominospizza.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AppUserId");
+
+                    b.HasIndex("BillingAddressId");
 
                     b.ToTable("FullOrders");
                 });
@@ -395,6 +441,9 @@ namespace dominospizza.Migrations
                     b.Property<string>("ClosingTime")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -407,6 +456,41 @@ namespace dominospizza.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Locations");
+                });
+
+            modelBuilder.Entity("dominospizza.Models.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MessageDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("dominospizza.Models.Order", b =>
@@ -425,11 +509,20 @@ namespace dominospizza.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("No")
+                        .HasColumnType("int");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Size")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Total")
                         .HasColumnType("decimal(18,2)");
@@ -631,7 +724,7 @@ namespace dominospizza.Migrations
             modelBuilder.Entity("dominospizza.Models.BasketItem", b =>
                 {
                     b.HasOne("dominospizza.Models.AppUser", "AppUser")
-                        .WithMany()
+                        .WithMany("BasketItems")
                         .HasForeignKey("AppUserId");
 
                     b.HasOne("dominospizza.Models.Product", "Product")
@@ -645,10 +738,28 @@ namespace dominospizza.Migrations
                         .HasForeignKey("ProductSizeId");
                 });
 
+            modelBuilder.Entity("dominospizza.Models.BillingAddress", b =>
+                {
+                    b.HasOne("dominospizza.Models.AppUser", "AppUser")
+                        .WithMany("BillingAddresses")
+                        .HasForeignKey("AppUserId");
+                });
+
             modelBuilder.Entity("dominospizza.Models.FullOrder", b =>
                 {
                     b.HasOne("dominospizza.Models.AppUser", "AppUser")
-                        .WithMany()
+                        .WithMany("FullOrders")
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("dominospizza.Models.BillingAddress", "BillingAddress")
+                        .WithMany("FullOrders")
+                        .HasForeignKey("BillingAddressId");
+                });
+
+            modelBuilder.Entity("dominospizza.Models.Message", b =>
+                {
+                    b.HasOne("dominospizza.Models.AppUser", "AppUser")
+                        .WithMany("Messages")
                         .HasForeignKey("AppUserId");
                 });
 

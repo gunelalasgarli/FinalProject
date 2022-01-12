@@ -17,5 +17,6 @@ namespace dominospizza.ViewModels.Basket
         public string Address { get; set; }
         public string Phone { get; set; }
         public string OrderDescription { get; set; }
+        public string Size { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace dominospizza.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            List<Location> location = await _context.Locations.ToListAsync();
+            List<Location> location = await _context.Locations.Where(x=>x.IsDeleted==false).ToListAsync();
             
             return View(location);
         }

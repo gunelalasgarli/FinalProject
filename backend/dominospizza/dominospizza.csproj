@@ -33,6 +33,10 @@
     <Compile Remove="Migrations\20220111194724_addedRelations.Designer.cs" />
     <Compile Remove="Migrations\20220111194944_addedRelations.cs" />
     <Compile Remove="Migrations\20220111194944_addedRelations.Designer.cs" />
+    <Compile Remove="Migrations\20220112112036_AddedIsdeletedToLocTAble.cs" />
+    <Compile Remove="Migrations\20220112112036_AddedIsdeletedToLocTAble.Designer.cs" />
+    <Compile Remove="Migrations\20220112112250_AddedIsdeletedToLocTAbleee.cs" />
+    <Compile Remove="Migrations\20220112112250_AddedIsdeletedToLocTAbleee.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

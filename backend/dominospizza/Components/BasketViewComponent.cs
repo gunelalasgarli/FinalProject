@@ -35,7 +35,7 @@ namespace dominospizza.Components
             }
             else
             {
-                basketProducts = await _context.BasketItems.Where(x => x.AppUserId == user.Id).Select(x => new BasketViewModel
+                basketProducts = await _context.BasketItems.Where(x => x.AppUserId == user.Id && x.IsDeleted == false).Select(x => new BasketViewModel
                 {
                     Count = x.Count,
                     Image = x.Product.Image,

@@ -10,9 +10,14 @@ namespace dominospizza.Models
     {
         public int Id { get; set; }
         public int ProductId { get; set; }
+        public int No { get; set; }
+
         public string Image { get; set; }
         public string Name { get; set; }
+        public string Size { get; set; }
         public int Count { get; set; }
+        public bool IsDeleted { get; set; }
+
         public decimal Total { get; set; }
         public int FullOrderId { get; set; }
         public FullOrder FullOrder { get; set; }
