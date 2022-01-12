@@ -20,7 +20,7 @@ namespace dominospizza.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            List<Category> categories  = await _context.Categories.ToListAsync();
+            List<Category> categories  = await _context.Categories.Where(a=>a.IsDeleted==false).ToListAsync();
 
 
             return View(categories);

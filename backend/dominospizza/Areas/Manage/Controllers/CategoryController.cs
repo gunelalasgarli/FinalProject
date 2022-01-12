@@ -37,7 +37,7 @@ namespace dominospizza.Areas.Manage.Controllers
             }
 
             List<Category> categories = query
-               .Skip((page - 1) * 4).Take(4).ToList();
+               .Where(a=>a.IsDeleted==false).Skip((page - 1) * 4).Take(4).ToList();
 
             
             ViewBag.SelectedPage = page;

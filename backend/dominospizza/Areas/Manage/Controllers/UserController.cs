@@ -14,7 +14,7 @@ using static dominospizza.Helpers.Helper;
 
 namespace dominospizza.Areas.Manage.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,Member")]
     [Area("Manage")]
     
     public class UserController : Controller

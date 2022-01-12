@@ -28,14 +28,14 @@ namespace dominospizza.Areas.Manage.Controllers
         {
             ViewBag.SelectedPage = page;
             ViewBag.TotalPageCount = Math.Ceiling(_context.Locations.Count() / 4m);
-            List<Location> locations = await _context.Locations.ToListAsync();
+            List<Location> locations = await _context.Locations.Where(x=>x.IsDeleted == false).ToListAsync();
             return View(locations);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(Location location)
         {
-            Location locationsdb = await _context.Locations.FirstOrDefaultAsync();
+            Location locationsdb = await _context.Locations.FirstOrDefaultAsync(x => x.IsDeleted == false);
             if (!ModelState.IsValid) return View(locationsdb);
             locationsdb.Name = location.Name;
             locationsdb.Phone = location.Phone;
@@ -68,7 +68,7 @@ namespace dominospizza.Areas.Manage.Controllers
         }
         public async Task<IActionResult> Delete(int id)
         {
-            Location location = await _context.Locations.FirstOrDefaultAsync(x => x.Id == id);
+            Location location = await _context.Locations.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted==false);
             if (location == null)
             {
                 return RedirectToAction("index");
@@ -79,14 +79,14 @@ namespace dominospizza.Areas.Manage.Controllers
                 return RedirectToAction("index");
             }
 
-            _context.Locations.Remove(location);
+            location.IsDeleted = true;
             await _context.SaveChangesAsync();
             return RedirectToAction("index");
         }
         public async Task<IActionResult> Edit(int id)
         {
             
-            Location location = await _context.Locations.FirstOrDefaultAsync(x => x.Id == id);
+            Location location = await _context.Locations.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == false);
             if (location == null)
             {
                 return RedirectToAction("index");
@@ -99,7 +99,7 @@ namespace dominospizza.Areas.Manage.Controllers
         public async Task<IActionResult> Edit(int id, Location location)
         {
           
-            Location existLocation = await _context.Locations.FirstOrDefaultAsync(x => x.Id == id);
+            Location existLocation = await _context.Locations.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted==false);
            
             if (existLocation == null)
             {

@@ -75,14 +75,14 @@ namespace dominospizza.Areas.Manage.Controllers
             return RedirectToAction("index");
         }
 
-        public async Task<IActionResult> Delete(string name)
-        {
-            IdentityRole deleterole = _roleManager.Roles.FirstOrDefault(x => x.Name == name);
+        //public async Task<IActionResult> Delete(string name)
+        //{
+        //    IdentityRole deleterole = _roleManager.Roles.FirstOrDefault(x => x.Name == name);
 
-            await _roleManager.DeleteAsync(deleterole);
+        //    await _roleManager.DeleteAsync(deleterole);
 
-            return RedirectToAction("index");
-        }
+        //    return RedirectToAction("index");
+        //}
 
     }
 }

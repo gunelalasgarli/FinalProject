@@ -15,6 +15,7 @@ namespace dominospizza.Models
         public string Size { get; set; }
         public string Name { get; set; }
         public string Image { get; set; }
+        public double Price { get; set; }
 
         public AppUser AppUser { get; set; }
         public int ProductId { get; set; }

@@ -47,9 +47,28 @@
             <td>@category.Name</td>
             <td>
                 <a asp-action="edit" asp-route-id="@category.Id" class="btn btn-warning">Update</a>
-                <a asp-action="deletefetch" asp-route-id="@category.Id" class="btn btn-danger" data-toggle="tooltip" title="" data-original-title="Trash">Delete</a>
+                <a data-toggle="modal" data-target="#logoutModal" class="btn btn-danger" >Delete</a>
             </td>
-        </tr>}
+        </tr>
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Are you sure to Delete?</h5>
+                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">If you sure to Delete item click to Delete button.</div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                        <a asp-action="deletefetch" asp-route-id="@category.Id" class="btn btn-primary">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        }
                 </tbody>
             </table>
             <nav aria-label="Page navigation example" class="d-flex justify-content-center">

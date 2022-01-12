@@ -41,8 +41,8 @@ namespace dominospizza.Components
                     Image = x.Product.Image,
                     ProductId = x.ProductId,
                     Name = x.Product.Name,
-                    Price = (decimal)x.Product.Price,
-                    Total = (decimal)x.Product.Price * x.Count
+                    Price = (decimal)x.Price,
+                    Total = (decimal)x.Price * x.Count
 
                 }).ToListAsync();
             }

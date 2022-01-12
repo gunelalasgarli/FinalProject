@@ -75,7 +75,7 @@ namespace dominospizza.Controllers
                 {
                     No = orderItemNo,
                     Count = item.Count,
-                    Total = (decimal)item.Product.Price,
+                    Total = (decimal)item.Price,
                     ProductId = item.ProductId,
                     Name=item.Name,
                     Image=item.Image,

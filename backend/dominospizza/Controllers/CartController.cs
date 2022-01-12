@@ -41,7 +41,7 @@ namespace dominospizza.Controllers
                     Image = x.Product.Image,
                     ProductId = x.ProductId,
                     Name = x.Product.Name,
-                    Price = (decimal)x.Product.Price ,
+                    Price = (decimal)x.Price ,
                     Total= (decimal)x.Product.Price* x.Count
 
                 }).ToListAsync();
@@ -55,17 +55,21 @@ namespace dominospizza.Controllers
             if (Id == null) return NotFound();
             Product product = await _context.Products.Include(x => x.Category).FirstOrDefaultAsync(x => x.Id == Id);
             string sizeStr = "";
+            double price = 0;
             if (product == null) return NotFound();
             switch (size)
             {
                 case 1:
                     sizeStr = "Kicik";
+                    price = product.Price;
                     break;
                 case 2:
                     sizeStr = "Orta";
+                    price = product.Price*1.6;
                     break;
                 case 3:
                     sizeStr = "Böyük";
+                    price = product.Price * 2;
                     break;
                 default:
                     break;
@@ -84,8 +88,9 @@ namespace dominospizza.Controllers
                         Count = count,
                         Name = product.Name,
                         Image = product.Image,
-                        Price = (decimal)product.Price,
+                        Price = (decimal)price,
                         Size = sizeStr
+
                     };
                     
                     productBaskets.Add(basketVM);
@@ -103,7 +108,7 @@ namespace dominospizza.Controllers
                             Count = count,
                             Image = product.Image,
                             Name = product.Name,
-                            Price = (decimal)product.Price,
+                            Price = (decimal)price,
                             Size = sizeStr
 
                         });
@@ -154,7 +159,8 @@ namespace dominospizza.Controllers
                         CreatedAt = DateTime.Now,
                         Size = sizeStr,
                         Name=product.Name,
-                        Image=product.Image
+                        Image=product.Image,
+                        Price = price
 
 
                 };
@@ -174,7 +180,7 @@ namespace dominospizza.Controllers
                       Size = sizeStr,
                       Name = product.Name,
                       Image = product.Image,
-                      Total = (decimal)product.Price * count,
+                      Total = (decimal)price * count,
                   }).ToList();
 
             _context.SaveChanges();
