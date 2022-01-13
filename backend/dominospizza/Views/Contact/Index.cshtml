@@ -1,7 +1,9 @@
 ﻿@model Message
 @{
     ViewData["Title"] = "Index";
-    if (TempData["Success"] != null)
+    
+}
+@{ if (TempData["Success"] != null)
     {
         if (bool.Parse(TempData["Success"].ToString()) == true)
         {
@@ -11,8 +13,7 @@
         {
             <input type="hidden" id="error" />
         }
-    }
-}
+    }}
 <section id="contact-us">
     <div class="container">
         <div class="row">
@@ -21,7 +22,7 @@
             </div>
         </div>
         <div class="form-section">
-            <form class="row" method="post" asp-action="SendMessage">
+            <form class="row" asp-action="SendMessage">
                 <div class="col-md-6 contact-item">
                     <label asp-for="Name" class="form-label">Ad*</label>
                     <input asp-for="Name" type="text" class="form-control" id="inputAddress" placeholder="Ad">
@@ -64,7 +65,7 @@
 
 @section Scripts{
     <script>$(document).ready(function () {
-
+   
             toastr.options = {
                 "closeButton": false,
                 "debug": false,

@@ -27,22 +27,30 @@ namespace dominospizza.Controllers
         }
         public async Task<IActionResult> SendMessage(Message message)
         {
-            TempData["Success"] = false;
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
 
-            if (!ModelState.IsValid) return View();
+            }
+            else
+            {
+                TempData["Success"] = false;
 
-            AppUser appUser = await _userManager.FindByNameAsync(User.Identity.Name);
+                if (!ModelState.IsValid) return View();
 
-            message.AppUserId = appUser.Id;
-            message.CreatedAt = DateTime.Now;
+                AppUser appUser = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            await _context.Messages.AddAsync(message);
-            await _context.SaveChangesAsync();
+                message.AppUserId = appUser.Id;
+                message.CreatedAt = DateTime.Now;
+
+                await _context.Messages.AddAsync(message);
+                await _context.SaveChangesAsync();
 
 
-            TempData["Success"] = true;
+                TempData["Success"] = true;
+            }
 
-            return RedirectToAction("Index", "Contact");
+            return RedirectToAction("Index","Contact");
         }
     }
 }
