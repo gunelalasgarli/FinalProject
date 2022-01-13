@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="form-section">
-            <form class="row" asp-action="SendMessage">
+            <form class="row" method="post" asp-action="SendMessage">
                 <div class="col-md-6 contact-item">
                     <label asp-for="Name" class="form-label">Ad*</label>
                     <input asp-for="Name" type="text" class="form-control" id="inputAddress" placeholder="Ad">
@@ -56,7 +56,15 @@
                 </div>
 
                 <div class="col-12 contact-btn">
-                    <button type="submit" class="btn btn-danger">Göndər</button>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <button type="submit" class="btn btn-danger">Göndər</button>
+                    }
+                    else
+                    {
+                        <a asp-controller="Account" asp-action="Login" class="btn btn-danger">Göndər</a>
+
+                    }
                 </div>
             </form>
         </div>

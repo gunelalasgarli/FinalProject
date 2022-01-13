@@ -39,8 +39,11 @@ namespace dominospizza.Controllers
             _roleManager = roleManager;
             _env = env;
         }
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-       
         public IActionResult Login()
         {
             return View();

@@ -170,7 +170,6 @@ C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\n
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\About\Index.cshtml.g.cs
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Account\ChangePassword.cshtml.g.cs
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Account\ForgotPassword.cshtml.g.cs
-C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Account\Profile.cshtml.g.cs
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Account\SignUp.cshtml.g.cs
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Bread\Index.cshtml.g.cs
@@ -217,3 +216,4 @@ C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\n
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Error\Index.cshtml.g.cs
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Order\MyOrders.cshtml.g.cs
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Index.cshtml.g.cs
+C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs

@@ -25,6 +25,7 @@ namespace dominospizza.Controllers
         {
             return View();
         }
+        [HttpPost]
         public async Task<IActionResult> SendMessage(Message message)
         {
             if (!User.Identity.IsAuthenticated)
