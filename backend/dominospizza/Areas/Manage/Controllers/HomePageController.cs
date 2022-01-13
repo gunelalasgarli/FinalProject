@@ -42,17 +42,12 @@ namespace dominospizza.Areas.Manage.Controllers
             {
                 if (homePagesdb.SectionImg1 != null)
                 {
-                    Helper.DeleteImage(_env.WebRootPath, path, homePagesdb.SectionImg1);
                     if (!homePage.SectionImage1.IsImage())
                     {
                         ModelState.AddModelError("PhoneImage", "Please select file in a correct form");
                         return View();
                     }
-                    if (homePage.SectionImage1.CheckLength(200))
-                    {
-                        ModelState.AddModelError("PhoneImage", "File is too long");
-                        return View();
-                    }
+                    
                     homePagesdb.SectionImg1 = await homePage.SectionImage1.SaveImageAsync(_env.WebRootPath, path);
 
                 }
@@ -61,17 +56,13 @@ namespace dominospizza.Areas.Manage.Controllers
             {
                 if (homePagesdb.SectionImg2 != null)
                 {
-                    Helper.DeleteImage(_env.WebRootPath, path, homePagesdb.SectionImg2);
+                   
                     if (!homePage.SectionImage2.IsImage())
                     {
                         ModelState.AddModelError("HeaderImage", "Please select file in a correct form");
                         return View();
                     }
-                    if (homePage.SectionImage2.CheckLength(200))
-                    {
-                        ModelState.AddModelError("HeaderImage", "File is too long");
-                        return View();
-                    }
+                   
                     homePagesdb.SectionImg2 = await homePage.SectionImage2.SaveImageAsync(_env.WebRootPath, path);
                 }
             }
@@ -80,17 +71,12 @@ namespace dominospizza.Areas.Manage.Controllers
             {
                 if (homePagesdb.SectionImg3 != null)
                 {
-                    Helper.DeleteImage(_env.WebRootPath, path, homePagesdb.SectionImg3);
                     if (!homePage.SectionImage3.IsImage())
                     {
                         ModelState.AddModelError("HeaderImage", "Please select file in a correct form");
                         return View();
                     }
-                    if (homePage.SectionImage3.CheckLength(200))
-                    {
-                        ModelState.AddModelError("HeaderImage", "File is too long");
-                        return View();
-                    }
+                  
                     homePagesdb.SectionImg3 = await homePage.SectionImage3.SaveImageAsync(_env.WebRootPath, path);
                 }
             }
@@ -98,17 +84,13 @@ namespace dominospizza.Areas.Manage.Controllers
             {
                 if (homePagesdb.SignImg != null)
                 {
-                    Helper.DeleteImage(_env.WebRootPath, path, homePagesdb.SignImg);
+                    
                     if (!homePage.SignImage1.IsImage())
                     {
                         ModelState.AddModelError("HeaderImage", "Please select file in a correct form");
                         return View();
                     }
-                    if (homePage.SignImage1.CheckLength(200))
-                    {
-                        ModelState.AddModelError("HeaderImage", "File is too long");
-                        return View();
-                    }
+                    
                     homePagesdb.SignImg = await homePage.SignImage1.SaveImageAsync(_env.WebRootPath, path);
                 }
             }
