@@ -39,7 +39,7 @@
                     <tr>
                         <th scope="row">@count</th>
                         <td>@item.BillingAddress.FullName</td>
-                        <td>@item.TotalAmount</td>
+                        <td>@item.TotalAmount.ToString("F2")</td>
                         <td>@item.OrderedAt</td>
                         <td class="col-md-3">
                             <a class="btn btn-outline-primary" asp-action="detail" asp-route-id="@item.Id">Detail</a>

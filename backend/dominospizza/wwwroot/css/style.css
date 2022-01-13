@@ -750,9 +750,7 @@ a .pizza-item-text .price .btn {
   margin: 0 0;
 }
 
-.modal .modal-dialog .modal-content .modal-body .info-modal .scrollable {
-  height: 100px;
-}
+
 
 .modal .modal-dialog .modal-content .modal-body .info-modal .scrollable .btn-group .btn {
   color: #616161;

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace dominospizza.Areas.Manage.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Member")]
     [Area("manage")]
     public class RoleController : Controller
     {

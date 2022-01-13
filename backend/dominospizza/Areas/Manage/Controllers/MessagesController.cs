@@ -31,8 +31,7 @@ namespace dominospizza.Areas.Manage.Controllers
 
             ViewBag.SelectedPage = page;
             ViewBag.TotalPageCount = Math.Ceiling(_context.Products.Count() / 4m);
-            List<Message> messages = await _context.Messages.OrderByDescending(x => x.CreatedAt)
-                                                                .Skip((page - 1) * 4).Take(4).ToListAsync();
+            List<Message> messages = await _context.Messages.OrderByDescending(x => x.CreatedAt).Skip((page - 1) * 4).Take(4).ToListAsync();
             return View(messages);
         }
 

@@ -54,6 +54,7 @@ namespace dominospizza.Areas.Manage.Controllers
                         return View();
                     }
                     homePagesdb.SectionImg1 = await homePage.SectionImage1.SaveImageAsync(_env.WebRootPath, path);
+
                 }
             }
             if (homePage.SectionImage2 != null)

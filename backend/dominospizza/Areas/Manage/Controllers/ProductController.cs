@@ -35,7 +35,7 @@ namespace dominospizza.Areas.Manage.Controllers
 
             if (!string.IsNullOrWhiteSpace(search))
             {
-                query = query.Where(x => x.Name.Contains(search));
+                query = query.Where(x =>x.IsDeleted==false&& x.Name.Contains(search));
             }
             ViewBag.SelectedPage = page;
             ViewBag.TotalPageCount = Math.Ceiling(_context.Products.Count() / 4m);
@@ -44,7 +44,7 @@ namespace dominospizza.Areas.Manage.Controllers
         }
         public async Task<IActionResult> Search(string search)
         {
-            var query = await _context.Products.Include(x => x.Category).Where(x => x.Name.ToLower().Contains(search)||x.Category.Name.ToLower().Contains(search) && x.IsDeleted == false)
+            var query = await _context.Products.Include(x => x.Category).Where(x =>x.IsDeleted == false && x.Name.ToLower().Contains(search)||x.Category.Name.ToLower().Contains(search))
                                          .ToListAsync();
 
             return PartialView("_SearchPartial", query);
@@ -114,6 +114,8 @@ namespace dominospizza.Areas.Manage.Controllers
             existproduct.ProductTypeId = product.ProductTypeId;
             existproduct.Price = product.Price;
             existproduct.Name = product.Name;
+            existproduct.Image = product.Image;
+            existproduct.Description = product.Description;
 
             await _context.SaveChangesAsync();
             return RedirectToAction("index");

@@ -17,23 +17,28 @@
             <span asp-validation-for="@Model.Name" class="text-danger"></span>
         </div>
         <div class="form-group">
+            <label asp-for="@Model.Description">Description</label>
+            <textarea asp-for="@Model.Description" class="form-control" id="Description" rows="3"></textarea>
+            <span asp-validation-for="@Model.Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
             <label asp-for="@Model.CategoryId">Category</label>
             <select class="form-control" asp-for="@Model.CategoryId" asp-items="@(new SelectList(catagories,"Id","Name"))">
             </select>
-            </div> 
+        </div>
         <div class="form-group col-md-3">
-                   <label asp-for="@Model.ProductTypeId">ProductType</label>
+            <label asp-for="@Model.ProductTypeId">ProductType</label>
             <select class="form-control" asp-for="@Model.ProductTypeId" asp-items="@(new SelectList(productTypes,"Id","Name"))">
             </select>
         </div>
-            <div class="form-group">
-                <label asp-for="@Model.ProductImage">Image</label>
-                <input asp-for="@Model.ProductImage" accept="image/*" class="form-control" rows="3">
-                <span asp-validation-for="@Model.ProductImage" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <button asp-action="Index" class="btn btn-secondary">Go Back</button>
+        <div class="form-group">
+            <label asp-for="@Model.ProductImage">Image</label>
+            <input asp-for="@Model.ProductImage" accept="image/*" class="form-control" rows="3">
+            <span asp-validation-for="@Model.ProductImage" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button asp-action="Index" class="btn btn-secondary">Go Back</button>
 
-</form>
+    </form>
 
 </div>

@@ -28,7 +28,7 @@ namespace dominospizza.Areas.Manage.Controllers
         {
             ViewBag.SelectedPage = page;
             ViewBag.TotalPageCount = Math.Ceiling(_context.Locations.Count() / 4m);
-            List<Location> locations = await _context.Locations.Where(x=>x.IsDeleted == false).ToListAsync();
+            List<Location> locations = await _context.Locations.Where(x=>x.IsDeleted == false).Skip((page - 1) * 4).Take(4).ToListAsync();
             return View(locations);
         }
         [HttpPost]
