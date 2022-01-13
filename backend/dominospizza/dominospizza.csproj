@@ -37,6 +37,8 @@
     <Compile Remove="Migrations\20220112112036_AddedIsdeletedToLocTAble.Designer.cs" />
     <Compile Remove="Migrations\20220112112250_AddedIsdeletedToLocTAbleee.cs" />
     <Compile Remove="Migrations\20220112112250_AddedIsdeletedToLocTAbleee.Designer.cs" />
+    <Compile Remove="Migrations\20220113121012_newColADded.cs" />
+    <Compile Remove="Migrations\20220113121012_newColADded.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -27,53 +27,53 @@ namespace dominospizza.Areas.Manage.Controllers
             return View(roles);
         }
 
-        public IActionResult Create()
-        {
-            return View();
-        }
+        //public IActionResult Create()
+        //{
+        //    return View();
+        //}
 
-        [HttpPost]
-        [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> Create(IdentityRole identityRole)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
+        //[HttpPost]
+        //[AutoValidateAntiforgeryToken]
+        //public async Task<IActionResult> Create(IdentityRole identityRole)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View();
+        //    }
 
-            await _roleManager.CreateAsync(identityRole);
+        //    await _roleManager.CreateAsync(identityRole);
 
-            await _roleManager.UpdateAsync(identityRole);
+        //    await _roleManager.UpdateAsync(identityRole);
 
-            return RedirectToAction("index");
-        }
+        //    return RedirectToAction("index");
+        //}
 
 
-        public IActionResult Update(string name)
-        {
-            IdentityRole role = _roleManager.Roles.FirstOrDefault(x => x.Name == name);
-            if (role == null) return NotFound();
+        //public IActionResult Update(string name)
+        //{
+        //    IdentityRole role = _roleManager.Roles.FirstOrDefault(x => x.Name == name);
+        //    if (role == null) return NotFound();
 
-            TempData["name"] = name;
+        //    TempData["name"] = name;
 
-            return View(role);
-        }
+        //    return View(role);
+        //}
 
-        [HttpPost]
-        [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> Update(IdentityRole identityRole)
-        {
-            var name = TempData["name"];
-            IdentityRole existRole = _roleManager.Roles.FirstOrDefault(x => x.Name == name.ToString());
+        //[HttpPost]
+        //[AutoValidateAntiforgeryToken]
+        //public async Task<IActionResult> Update(IdentityRole identityRole)
+        //{
+        //    var name = TempData["name"];
+        //    IdentityRole existRole = _roleManager.Roles.FirstOrDefault(x => x.Name == name.ToString());
 
-            if (existRole == null) return NotFound();
+        //    if (existRole == null) return NotFound();
 
-            existRole.Name = identityRole.Name;
+        //    existRole.Name = identityRole.Name;
 
-            await _roleManager.UpdateAsync(existRole);
+        //    await _roleManager.UpdateAsync(existRole);
 
-            return RedirectToAction("index");
-        }
+        //    return RedirectToAction("index");
+        //}
 
         //public async Task<IActionResult> Delete(string name)
         //{

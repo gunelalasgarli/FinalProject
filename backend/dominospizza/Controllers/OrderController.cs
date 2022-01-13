@@ -5,11 +5,18 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MimeKit;
+using MailKit;
+using MimeKit.Text;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using MailKit.Net.Smtp;
+using MailKit.Security;
+using Microsoft.AspNetCore.Hosting;
 
 namespace dominospizza.Controllers
 {
@@ -17,11 +24,15 @@ namespace dominospizza.Controllers
     {
         private readonly AppDbContext _context;
         private readonly UserManager<AppUser> _userManager;
+        private readonly IWebHostEnvironment _env;
 
-        public OrderController(AppDbContext context, UserManager<AppUser> userManager)
+
+        public OrderController(AppDbContext context, UserManager<AppUser> userManager,
+            IWebHostEnvironment env)
         {
             _context = context;
             _userManager = userManager;
+            _env = env;
         }
 
         public IActionResult Index()
@@ -97,8 +108,49 @@ namespace dominospizza.Controllers
 
             TempData["Success"] = true;
 
-           
-        
+            //email
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("Dominos Pizza", "blueoceanelexample@gmail.com"));
+
+            message.To.Add(new MailboxAddress(appUser.FullName, appUser.Email));
+            message.Subject = "Order Confirmed";
+
+            string emailbody = string.Empty;
+
+            using (StreamReader streamReader = new StreamReader(Path.Combine(_env.WebRootPath, "templates", "Order.html")))
+            {
+                emailbody = streamReader.ReadToEnd();
+            }
+
+
+            emailbody = emailbody.Replace("{{total}}", order.TotalAmount.ToString());
+
+            string orderTem = string.Empty;
+
+            foreach (var item in order.Orders)
+            {
+                string tr = @$"<tr>
+                     <td width=\""75 %\"" align=\""left\"" style =\""font - family: Open Sans, Helvetica, Arial, sans-serif; font - size: 16px; font - weight: 400; line - height: 24px; padding: 15px 10px 5px 10px;\"" > {item.Name} </td>
+                     <td width=\""25 %\"" align=\""left\"" style =\""font - family: Open Sans, Helvetica, Arial, sans-serif; font - size: 16px; font - weight: 400; line - height: 24px; padding: 15px 10px 5px 10px;\"" > {item.Count}X{item.Product.Price} </td>
+                </tr>";
+
+                orderTem += tr;
+            }
+            string TotalA = order.TotalAmount.ToString("F2");
+            emailbody = emailbody.Replace("{{total}}",TotalA).Replace("{{orderItems}}", orderTem);
+
+            
+
+            message.Body = new TextPart(TextFormat.Html) { Text = emailbody };
+
+            using var smtp = new SmtpClient();
+            smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
+            smtp.Authenticate("blueoceanelexample@gmail.com", "Blue@123");
+            smtp.Send(message);
+            smtp.Disconnect(true);
+
+
+
             return RedirectToAction("Index", "Order");
         }
     }

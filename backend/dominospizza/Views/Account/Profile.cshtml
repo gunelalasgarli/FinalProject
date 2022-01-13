@@ -1,8 +1,6 @@
 ﻿@model ProfileViewModel
 @{
     ViewData["Title"] = "Profile";
-    int index = 0;
-    int orderItemIndex = 0;
 }
 
 @if (TempData["Success"] != null)
@@ -86,7 +84,7 @@
                 "hideMethod": "fadeOut"
             }
             if ($("#success").length) {
-               toastr["success"]("Şifrəniz uğurla dəyişdirildi!")
+               toastr["success"]("Məlumat uğurla dəyişdirildi!")
             }
             else if ($("#error").length) {
                 toastr["error"]("Xəta baş verdi!")

@@ -10,7 +10,7 @@
 <div class="card">
     <div class="card-head">
         <h4>Roles</h4>
-        <a asp-action="create" asp-controller="role" class="btn btn-outline-success">Create</a>
+        @*<a asp-action="create" asp-controller="role" class="btn btn-outline-success">Create</a>*@
     </div>
 
     <table class="table table-striped projects">
@@ -18,7 +18,7 @@
             <tr>
                 <th scope="row">#</th>
                 <th scope="col">Name</th>
-                <th scope="col">Setting</th>
+                @*<th scope="col">Setting</th>*@
             </tr>
             @foreach (var role in Model)
             {
@@ -26,10 +26,10 @@
         <tr>
             <th scope="row">@count</th>
             <td>@role.Name</td>
-            <td>
-                <a asp-action="update" asp-controller="role" asp-route-name="@role.Name" class="btn btn-warning">Update</a>
+            <!--<td>-->
+               @* <a asp-action="update" asp-controller="role" asp-route-name="@role.Name" class="btn btn-warning">Update</a>*@
                 @*<a data-toggle="modal" data-target="#logoutModal" class="btn btn-danger btn-role-delete">Delete</a>*@
-            </td>
+            <!--</td>-->
         </tr>
                         @*<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                              aria-hidden="true">
