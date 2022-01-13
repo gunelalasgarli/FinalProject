@@ -1,0 +1,36 @@
+﻿@model List<FullOrder>
+@{
+    ViewData["Title"] = "MyOrders";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Ordered at</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Tel</th>
+                        <th scope="col">Order Item Count</th>
+                        <th scope="col">Order Total</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        @foreach (var item in Model)
+                        {
+                    <tr>
+                        <td>@item.OrderedAt</td>
+                        <td>@item.BillingAddress.Address</td>
+                        <td>@item.BillingAddress.Phone</td>
+                        <td>@item.Orders.Count</td>
+                        <td>@item.TotalAmount.ToString("F2")</td>
+                    </tr>
+                        }
+                </tbody>
+            </table>
+        </div>
+    </div>           
+ </div>

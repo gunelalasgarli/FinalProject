@@ -40,7 +40,9 @@
                                     <a class="nav-link" asp-controller="Account" asp-action="Profile">Profil, @user.UserName</a>
                                     </li>
                                 }
-                                
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Order" asp-action="MyOrders">Sifarişlərim</a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" asp-controller="Account" asp-action="Logout">Çıxış et</a>
                                 </li>
@@ -94,6 +96,7 @@
                                 {
                                     <li class="user-dropdown-list-item"><a asp-area="Manage" asp-controller="Dashboard" asp-action="Index"><i class="fas fa-unlock"></i> Admin Panel</a></li>
                                 }
+                                <li class="user-dropdown-list-item"><a asp-controller="Order" asp-action="MyOrders"><i class="fas fa-user"></i>Sifarişlərim</a></li>
                                 <li class="user-dropdown-list-item"><a asp-controller="Account" asp-action="Logout"><i class="fas fa-sign-out-alt"></i>Çıxış et</a></li>
                             </ul>
                         </div>

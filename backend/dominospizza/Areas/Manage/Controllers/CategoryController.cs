@@ -101,7 +101,6 @@ namespace dominospizza.Areas.Manage.Controllers
             return RedirectToAction("index");
         }
 
-        [Authorize(Roles = "Admin")]
 
         public IActionResult Edit(int id)
         {

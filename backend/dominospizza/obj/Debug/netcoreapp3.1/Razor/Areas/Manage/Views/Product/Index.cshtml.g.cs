@@ -42,13 +42,20 @@ using dominospizza.ViewModels.AccountViewModel;
 #nullable disable
 #nullable restore
 #line 5 "C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\Areas\Manage\Views\_ViewImports.cshtml"
+using dominospizza.Areas.Manage.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\Areas\Manage\Views\_ViewImports.cshtml"
 using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"bd9f67f333f9f6c8beabd275928246ed6ea69a84", @"/Areas/Manage/Views/Product/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f6acf763023cb86cfb27db7fd8e2b1e4097ec32a", @"/Areas/Manage/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a564e2e7ed4b8de5e2923d919a184fcc6978b6ec", @"/Areas/Manage/Views/_ViewImports.cshtml")]
     public class Areas_Manage_Views_Product_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Product>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("method", "get", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -120,7 +127,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
             WriteLiteral("\n<div class=\"card shadow mb-4\">\n    <div class=\"card-header py-3\">\n        <h4 class=\"card-title\">Products</h4>\n        <div class=\"col-md-8 offset-md-2\">\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd9f67f333f9f6c8beabd275928246ed6ea69a849554", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd9f67f333f9f6c8beabd275928246ed6ea69a849787", async() => {
                 WriteLiteral(@"
                 <div class=""input-group"">
                     <input type=""text"" name=""search"" id=""search-input"" class=""form-control form-control-lg"" placeholder=""Type your keywords here"">
@@ -148,7 +155,7 @@ using Microsoft.AspNetCore.Identity;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\n        </div>\n    </div>\n\n    <div class=\"card-body \">\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd9f67f333f9f6c8beabd275928246ed6ea69a8411565", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd9f67f333f9f6c8beabd275928246ed6ea69a8411798", async() => {
                 WriteLiteral("\n            Create\n        ");
             }
             );
@@ -199,7 +206,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
             WriteLiteral("</th>\n                        <td>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "bd9f67f333f9f6c8beabd275928246ed6ea69a8414240", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "bd9f67f333f9f6c8beabd275928246ed6ea69a8414473", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -247,7 +254,7 @@ AddHtmlAttributeValue("", 1910, item.Image, 1910, 11, false);
 #line hidden
 #nullable disable
             WriteLiteral("</td>\n                        <td class=\"col-md-3\">\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd9f67f333f9f6c8beabd275928246ed6ea69a8416821", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd9f67f333f9f6c8beabd275928246ed6ea69a8417054", async() => {
                 WriteLiteral("Update");
             }
             );
@@ -297,7 +304,7 @@ AddHtmlAttributeValue("", 1910, item.Image, 1910, 11, false);
                                     <div class=""modal-footer"">
                                         <button class=""btn btn-secondary"" type=""button"" data-dismiss=""modal"">Cancel</button>
                                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd9f67f333f9f6c8beabd275928246ed6ea69a8420495", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd9f67f333f9f6c8beabd275928246ed6ea69a8420728", async() => {
                 WriteLiteral("Delete");
             }
             );
@@ -337,7 +344,7 @@ AddHtmlAttributeValue("", 1910, item.Image, 1910, 11, false);
 #line hidden
 #nullable disable
             WriteLiteral("               </tbody>\n            </table>\n            <nav aria-label=\"Page navigation example\" class=\"d-flex justify-content-center\">\n                <ul class=\"pagination\">\n                    <li class=\"page-item\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd9f67f333f9f6c8beabd275928246ed6ea69a8423405", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd9f67f333f9f6c8beabd275928246ed6ea69a8423638", async() => {
                 WriteLiteral("first page");
             }
             );
@@ -358,7 +365,7 @@ AddHtmlAttributeValue("", 1910, item.Image, 1910, 11, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</li>\n                    <li class=\"page-item\">\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd9f67f333f9f6c8beabd275928246ed6ea69a8425035", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd9f67f333f9f6c8beabd275928246ed6ea69a8425268", async() => {
                 WriteLiteral("\n                            <span aria-hidden=\"true\">&laquo;</span>\n                            <span class=\"sr-only\">Previous</span>\n                        ");
             }
             );
@@ -421,7 +428,7 @@ AddHtmlAttributeValue("", 1910, item.Image, 1910, 11, false);
 #line hidden
 #nullable disable
             WriteLiteral("        <li class=\"page-item\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd9f67f333f9f6c8beabd275928246ed6ea69a8428767", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd9f67f333f9f6c8beabd275928246ed6ea69a8429000", async() => {
 #nullable restore
 #line 118 "C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\Areas\Manage\Views\Product\Index.cshtml"
                                                                                                                                      Write(i);
@@ -474,7 +481,7 @@ AddHtmlAttributeValue("", 5423, i==selectedPage?"background-color:blue;color:whi
 #line hidden
 #nullable disable
             WriteLiteral("                    <li class=\"page-item\">\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd9f67f333f9f6c8beabd275928246ed6ea69a8431972", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd9f67f333f9f6c8beabd275928246ed6ea69a8432205", async() => {
                 WriteLiteral("\n                            <span aria-hidden=\"true\">&raquo;</span>\n                            <span class=\"sr-only\">Next</span>\n                        ");
             }
             );
@@ -505,7 +512,7 @@ AddHtmlAttributeValue("", 5423, i==selectedPage?"background-color:blue;color:whi
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\n                    </li>\n                    <li class=\"page-item\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd9f67f333f9f6c8beabd275928246ed6ea69a8434445", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd9f67f333f9f6c8beabd275928246ed6ea69a8434678", async() => {
                 WriteLiteral("last page");
             }
             );

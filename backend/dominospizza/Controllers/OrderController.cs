@@ -40,7 +40,11 @@ namespace dominospizza.Controllers
             return View();
         }
 
-       
+        public IActionResult MyOrders()
+        {
+            List<FullOrder> fullOrders = _context.FullOrders.Include(x => x.Orders).Include(x=>x.BillingAddress).Where(x => x.AppUser.UserName == User.Identity.Name).ToList();
+            return View(fullOrders);
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> PlaceOrder(BillingAddress billingAddress)
@@ -122,16 +126,13 @@ namespace dominospizza.Controllers
                 emailbody = streamReader.ReadToEnd();
             }
 
-
-            emailbody = emailbody.Replace("{{total}}", order.TotalAmount.ToString());
-
             string orderTem = string.Empty;
 
             foreach (var item in order.Orders)
             {
                 string tr = @$"<tr>
                      <td width=\""75 %\"" align=\""left\"" style =\""font - family: Open Sans, Helvetica, Arial, sans-serif; font - size: 16px; font - weight: 400; line - height: 24px; padding: 15px 10px 5px 10px;\"" > {item.Name} </td>
-                     <td width=\""25 %\"" align=\""left\"" style =\""font - family: Open Sans, Helvetica, Arial, sans-serif; font - size: 16px; font - weight: 400; line - height: 24px; padding: 15px 10px 5px 10px;\"" > {item.Count}X{item.Product.Price} </td>
+                     <td width=\""25 %\"" align=\""left\"" style =\""font - family: Open Sans, Helvetica, Arial, sans-serif; font - size: 16px; font - weight: 400; line - height: 24px; padding: 15px 10px 5px 10px;\"" > {item.Count}X{item.Total} </td>
                 </tr>";
 
                 orderTem += tr;

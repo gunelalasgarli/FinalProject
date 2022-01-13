@@ -131,6 +131,9 @@ namespace dominospizza.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ForgotPassword(string email)
         {
+            TempData["Success"] = false;
+
+
             if (string.IsNullOrWhiteSpace(email))
             {
                 return RedirectToAction("Index", "Error");
@@ -140,7 +143,7 @@ namespace dominospizza.Controllers
             if (appUser == null)
                 return RedirectToAction("Index", "Error");
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Blueoceanel", "blueoceanelexample@gmail.com"));
+            message.From.Add(new MailboxAddress("Dominos Pizza", "blueoceanelexample@gmail.com"));
 
             message.To.Add(new MailboxAddress(appUser.FullName, appUser.Email));
             message.Subject = "Reset Password";
@@ -165,7 +168,9 @@ namespace dominospizza.Controllers
             smtp.Send(message);
             smtp.Disconnect(true);
 
-            return View();
+            TempData["Success"] = true;
+
+            return RedirectToAction("ForgotPassword");
         }
 
         public async Task<IActionResult> ChangePassword(string Id, string token)
@@ -225,7 +230,6 @@ namespace dominospizza.Controllers
             return RedirectToAction("Login");
         }
 
-        [Authorize(Roles = "User")]
         public async Task<IActionResult> Profile()
         {
             AppUser member = await _userManager.FindByNameAsync(User.Identity.Name);
@@ -241,7 +245,6 @@ namespace dominospizza.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "User")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Profile(ProfileViewModel profileVM)
         {
