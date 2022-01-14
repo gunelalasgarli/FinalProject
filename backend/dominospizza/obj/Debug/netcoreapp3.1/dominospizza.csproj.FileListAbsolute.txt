@@ -217,3 +217,4 @@ C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\n
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Order\MyOrders.cshtml.g.cs
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Index.cshtml.g.cs
 C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\ASUS\Desktop\finalproject\FinalProject\backend\dominospizza\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Footer\Index.cshtml.g.cs

@@ -1,0 +1,63 @@
+﻿@*@model List<Contact>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Home Page CRUD</h4>
+            <form class="forms-sample" method="post" enctype="multipart/form-data">
+                @foreach (var item in Model)
+                {
+                    <div class="form-group">
+                        <label asp-for="@item.FooterImage"></label>
+                        <input asp-for="@item.FooterImage" class="form-control">
+                        <span class="text-danger" asp-validation-for="@item.FooterImage"></span>
+                        @if (item.FooterLogo != null)
+                        {
+                            <div class="my-2">
+                                <img width="200" src="~/img/homepageslider/@item.FooterLogo" />
+                            </div>
+                        }
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="@item.SocialImage"></label>
+                        <input asp-for="@item.SocialImage" class="form-control">
+                        <span class="text-danger" asp-validation-for="@item.SocialImage"></span>
+                        @if (item.SocialImg != null)
+                        {
+                            <div class="my-2">
+                                <img width="200" src="~/img/homepageslider/@item.SocialImg" />
+                            </div>
+                        }
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@item.PayImage"></label>
+                        <input asp-for="@item.PayImage" class="form-control">
+                        <span class="text-danger" asp-validation-for="@item.PayImage"></span>
+                        @if (item.PayImg != null)
+                        {
+                            <div class="my-2">
+                                <img width="200" src="~/img/homepageslider/@item.PayImg" />
+                            </div>
+                        }
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label asp-for="@item.SocialLink">Socil Media Link</label>
+                        <input class="form-control" asp-for="@item.SocialLink" />
+                        <span class="text-danger" asp-validation-for="@item.SocialLink" value="@(item.SocialLink!=null?item.SocialLink:"")"></span>
+                    </div>
+
+                }
+
+                <button type="submit" class="btn btn-primary mr-2">Save</button>
+                <a class="btn btn-light" asp-controller="Dashboard" asp-action="Index">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>*@

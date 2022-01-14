@@ -19,12 +19,13 @@
                 </tr>
             }
 
-            <th scope="row">Full Name:@Model.BillingAddress.FullName</th>
+            <th scope="row">Full Name:
+        @Model.BillingAddress.FullName</th>
             <th scope="row">Phone Number: @Model.BillingAddress.Phone</th>
             <th scope="row">Address: @Model.BillingAddress.Address</th>
             <th scope="row">Order Description: @Model.BillingAddress.OrderDescription</th>
 
-            <th scope="row">Total: @Model.TotalAmount.ToString("F2")</th>
+            <th scope="row">Total: @Model.TotalAmount.ToString("F2") AZN</th>
 
         </tbody>
     </table>

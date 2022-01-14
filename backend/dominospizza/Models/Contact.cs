@@ -20,6 +20,8 @@ namespace dominospizza.Models
         [NotMapped]
         public IFormFile FooterImage { get; set; }
         [NotMapped]
-        public IFormFile LinkImage { get; set; }
+        public IFormFile SocialImage { get; set; }
+        [NotMapped]
+        public IFormFile PayImage { get; set; }
     }
 }
