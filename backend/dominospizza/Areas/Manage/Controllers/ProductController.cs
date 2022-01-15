@@ -44,7 +44,7 @@ namespace dominospizza.Areas.Manage.Controllers
         }
         public async Task<IActionResult> Search(string search)
         {
-            var query = await _context.Products.Include(x => x.Category).Where(x =>x.IsDeleted == false && x.Name.ToLower().Contains(search)||x.Category.Name.ToLower().Contains(search))
+            var query = await _context.Products.Include(x => x.Category).Where(x =>x.IsDeleted == false && (x.Name.ToLower().Contains(search)||x.Category.Name.ToLower().Contains(search)))
                                          .ToListAsync();
 
             return PartialView("_SearchPartial", query);
@@ -193,8 +193,8 @@ namespace dominospizza.Areas.Manage.Controllers
             var path = Path.Combine(rootPath, "img/Product", product.Image);
             System.IO.File.Delete(path);
 
-            _context.Products.Remove(product);
-            //product.IsDeleted = true;
+            //_context.Products.Remove(product);
+            product.IsDeleted = true;
             await _context.SaveChangesAsync();
             return RedirectToAction("index");
         }
